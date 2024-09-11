@@ -12,30 +12,33 @@ import java.io.IOException;
 
 public class ExcelDataReader {
 
-    private Workbook workbook;
-    private Sheet sheet;
+	private Workbook workbook;
 
-    public ExcelDataReader(String filePath, String sheetName) {
-        try {
-            FileInputStream fis = new FileInputStream(new File(filePath));
-            workbook = new XSSFWorkbook(fis); // XLSX formatı için
-            sheet = workbook.getSheet(sheetName);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+	private Sheet sheet;
 
-    public String getCellData(int rowNum, int colNum) {
-        Row row = sheet.getRow(rowNum);
-        Cell cell = row.getCell(colNum);
-        return cell.getStringCellValue();
-    }
+	public ExcelDataReader(String filePath, String sheetName) {
+		try {
+			FileInputStream fis = new FileInputStream(new File(filePath));
+			workbook = new XSSFWorkbook(fis); // XLSX formatı için
+			sheet = workbook.getSheet(sheetName);
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
-    public int getRowCount() {
-        return sheet.getPhysicalNumberOfRows();
-    }
+	public String getCellData(int rowNum, int colNum) {
+		Row row = sheet.getRow(rowNum);
+		Cell cell = row.getCell(colNum);
+		return cell.getStringCellValue();
+	}
 
-    public int getColumnCount(int rowNum) {
-        return sheet.getRow(rowNum).getPhysicalNumberOfCells();
-    }
+	public int getRowCount() {
+		return sheet.getPhysicalNumberOfRows();
+	}
+
+	public int getColumnCount(int rowNum) {
+		return sheet.getRow(rowNum).getPhysicalNumberOfCells();
+	}
+
 }

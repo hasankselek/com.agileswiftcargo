@@ -1,52 +1,138 @@
 package utilities;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
-import java.util.concurrent.TimeUnit;
+
+import java.net.URL;
 
 public class Driver {
 
-    private Driver(){
+	private static ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
 
-    }
-    public static WebDriver driver;
-    private static ConfigLoader configLoader = new ConfigLoader();
+	private static ConfigLoader configLoader = new ConfigLoader();
 
-    public static WebDriver getDriver(){
+	private Driver() {
 
-        if (driver == null){
-            String browser = configLoader.getConfigValue("browser");
+	}
 
-            switch (browser){
-                case "firefox":
-                    driver=new FirefoxDriver();
-                    break;
-                case "safari" :
-                    driver= new SafariDriver();
-                    break;
-                case  "edge":
-                    driver = new EdgeDriver();
-                    break;
-                default:
-                    driver = new ChromeDriver();
-            }
+	public static WebDriver getDriver() {
+		// if this thread doesn't have a web driver yet - create it and add to pool
+		if (driverPool.get() == null) {
+			System.out.println("TRYING TO CREATE DRIVER");
+			// this line will tell which browser should open based on the value from
+			// properties file
 
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-        }
+			String browserParamFromEnv = System.getProperty("browser");
+			String browser = browserParamFromEnv == null ? configLoader.getConfigValue("browser") : browserParamFromEnv;
+			switch (browser) {
 
-        return driver;
-    }
+				case "chrome":
+					// WebDriverManager.chromedriver().setup();
+					ChromeOptions opt = new ChromeOptions();
+					// Bu seçenek, Chrome’da “Tarayıcı otomasyon yazılımı tarafından
+					// kontrol ediliyor” bildirimini devre dışı bırakır.
+					opt.setExperimentalOption("excludeSwitches", new String[] { "enable-automation" });
+					// Bu, Chrome’da yüklü olan tüm eklentileri devre dışı bırakır.
+					opt.addArguments("--disable-extensions");
+					// Bu, Chrome bildirimlerini devre dışı bırakır, böylece testler
+					// sırasında bildirimler testlerin akışını bozmaz.
+					opt.addArguments("disable-notifications");
+					// “Sandbox” Chrome’un güvenlik özelliğidir, ancak belirli CI/CD
+					// sistemlerinde Chrome’un ek izinlere ihtiyaç duyduğu durumlarda bu
+					// ayarı devre dışı bırakmak faydalı olabilir.
+					opt.addArguments("no-sandbox");
+					// Bu seçenek, uzak hata ayıklama sırasında tüm kökenlerden (origin)
+					// gelen isteklere izin verir, özellikle uzaktan WebDriver kullanımı
+					// ya da çapraz kökenli kaynakları test ederken işe yarar.
+					opt.addArguments("--remote-allow-origins=*");
+					opt.setAcceptInsecureCerts(true);
+					driverPool.set(new ChromeDriver(opt));
+					break;
 
-    public static void quitDriver(){
+				case "firefox":
+					WebDriverManager.firefoxdriver().setup();
+					driverPool.set(new FirefoxDriver());
+					break;
 
-        if (driver != null){
-            driver.quit();
-            driver = null;
-        }
+				case "ie":
+					if (!System.getProperty("os.name").toLowerCase().contains("windows")) {
+						throw new WebDriverException("Your OS doesn't support Internet Explorer");
+					}
+					WebDriverManager.iedriver().setup();
+					driverPool.set(new InternetExplorerDriver());
+					break;
+				case "edge":
+					if (!System.getProperty("os.name").toLowerCase().contains("windows")) {
+						throw new WebDriverException("Your OS doesn't support Edge");
+					}
+					WebDriverManager.edgedriver().setup();
+					driverPool.set(new EdgeDriver());
+					break;
+				case "safari":
+					if (!System.getProperty("os.name").toLowerCase().contains("mac")) {
+						throw new WebDriverException("Your OS doesn't support Safari");
+					}
+					WebDriverManager.getInstance(SafariDriver.class).setup();
+					driverPool.set(new SafariDriver());
+					break;
 
-    }
+				case "remote_chrome":
+					try {
+						DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+						desiredCapabilities.setBrowserName("chrome");
+						desiredCapabilities.setCapability("platform", Platform.ANY);
+						driverPool
+							.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), desiredCapabilities));
+					}
+					catch (Exception e) {
+						e.printStackTrace();
+					}
+					break;
+				case "remote_firefox":
+					try {
+						DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+						desiredCapabilities.setBrowserName("firefox");
+						desiredCapabilities.setCapability("platform", Platform.ANY);
+						driverPool
+							.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), desiredCapabilities));
+					}
+					catch (Exception e) {
+						e.printStackTrace();
+					}
+					break;
+			}
+		}
+
+		return driverPool.get();
+	}
+
+	public static void closeDriver() {
+		try {
+			driverPool.get().quit();
+			driverPool.remove();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			if (driverPool.get() != null) {
+				driverPool.get().quit();
+				driverPool.remove();
+			}
+		}
+
+	}
+
 }

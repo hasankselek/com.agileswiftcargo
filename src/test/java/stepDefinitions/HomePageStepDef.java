@@ -1,4 +1,7 @@
 package stepDefinitions;
 
-public class HomePageStepDef {
+public class HomePageStepDef extends BaseStep {
+
+
+
 }
