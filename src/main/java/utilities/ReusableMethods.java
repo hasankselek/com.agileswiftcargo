@@ -7,6 +7,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
@@ -222,6 +223,7 @@ public class ReusableMethods {
      * @param element the WebElement to scroll to
      */
     public static void scrollToElement(WebElement element) {
+
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("arguments[0].scrollIntoView(true);", element);
     }
@@ -232,6 +234,7 @@ public class ReusableMethods {
      * @param scrollY the amount to scroll in the Y-axis
      */
     public static void scrollByAmount(int scrollY) {
+
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("window.scrollBy(0," + scrollY + ")");
     }
@@ -309,7 +312,24 @@ public class ReusableMethods {
     }
 
     public static void clickWithText(String text){
+
         Driver.getDriver().findElement(By.xpath("//*[text()='" + text + "']")).click();
+    }
+
+    public static WebElement waitForClickablility(WebElement element, int timeout) {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
+        return wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public static void waitAndClick(WebElement element, int timeout) {
+        for (int i = 0; i < timeout; i++) {
+            try {
+                element.click();
+                return;
+            } catch (WebDriverException e) {
+                hardWait(2);
+            }
+        }
     }
 
     //========================= Sort Methods =========================//
@@ -357,6 +377,64 @@ public class ReusableMethods {
 
         List<Integer> originalPrices = new ArrayList<>(prices);
         Assert.assertEquals(prices, originalPrices);
+    }
+
+    //========================= Select Methods =========================//
+
+    /**
+     * @param element
+     * @param check
+     */
+    public static void selectCheckBox(WebElement element, boolean check) {
+        if (check) {
+            if (!element.isSelected()) {
+                element.click();
+            }
+        } else {
+            if (element.isSelected()) {
+                element.click();
+            }
+        }
+    }
+
+    /**
+     * Selects a random value from a dropdown list and returns the selected Web Element
+     * @param select
+     * @return
+     */
+    public static WebElement selectRandomTextFromDropdown(Select select) {
+        Random random = new Random();
+        List<WebElement> weblist = select.getOptions();
+        int optionIndex = 1 + random.nextInt(weblist.size() - 1);
+        select.selectByIndex(optionIndex);
+        return select.getFirstSelectedOption();
+    }
+
+    public static void selectAnItemFromDropdown(WebElement item, String selectItem) {
+        hardWait(5);
+        Select select = new Select(item);
+        for (int i = 0; i < select.getOptions().size(); i++) {
+            if (select.getOptions().get(i).getText().equalsIgnoreCase(selectItem)) {
+                select.getOptions().get(i).click();
+                break;
+            }
+        }
+    }
+
+    public static void selectByVisibleText(WebElement elements, String text) {
+        Select select = new Select(elements);
+        select.selectByVisibleText(text);
+    }
+
+    public static void selectByIndex(WebElement elements, int index) {
+        Select select = new Select(elements);
+        select.selectByIndex(index);
+    }
+
+    public static void selectByValue(WebElement elements, String value) {
+        Select select = new Select(elements);
+        List<WebElement> elementCount = select.getOptions();
+        select.selectByValue(value);
     }
 
 

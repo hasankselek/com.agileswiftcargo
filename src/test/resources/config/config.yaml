@@ -1,2 +1,3 @@
 browser=chrome
 url=https://qa.agileswiftcargo.com/
+testData=src/test/resources/testData/testData.xlsx
