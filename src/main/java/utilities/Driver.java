@@ -12,15 +12,13 @@ public class Driver {
     private Driver(){
 
     }
-
     public static WebDriver driver;
+    private static ConfigLoader configLoader = new ConfigLoader();
 
     public static WebDriver getDriver(){
 
-        String browser =ConfigReader.getProperty("browser");
-
-
         if (driver == null){
+            String browser = configLoader.getConfigValue("browser");
 
             switch (browser){
                 case "firefox":
@@ -44,8 +42,9 @@ public class Driver {
     }
 
     public static void quitDriver(){
-        driver.quit();
+
         if (driver != null){
+            driver.quit();
             driver = null;
         }
 
