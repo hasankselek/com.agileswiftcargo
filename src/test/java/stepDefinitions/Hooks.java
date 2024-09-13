@@ -1,13 +1,9 @@
-package stepDefinitions.hooks;
+package stepDefinitions;
 
 import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import utilities.ConfigLoader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
