@@ -1,6 +1,6 @@
 package utilities;
 
-import pages.HomePages.HomePage;
+import pages.homePages.HomePage;
 
 public class Pages {
 
