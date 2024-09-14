@@ -55,7 +55,6 @@ public class HomePageStepDef  extends BaseStep {
     public void user_goes_to_the_why_agile_swift_cargo_title() {
 
         JSUtilities.scrollToElement(DRIVER,PAGES.getHomePage().getWhyAgileSwiftCargoText());
-
     }
 
     @Then("User verifies that the headers are displayed")
@@ -64,6 +63,10 @@ public class HomePageStepDef  extends BaseStep {
         PAGES.getHomePage().getWhyAgileSwiftCargoHeadings();
     }
 
+    @Then("User verifies that the images are displayed")
+    public void userVerifiesThatTheImagesAreDisplayed() {
 
+        PAGES.getHomePage().getWhyAgileSwiftCargoImages();
 
+    }
 }

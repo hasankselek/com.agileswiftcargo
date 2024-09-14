@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class HomePage extends BasePage {
 
@@ -24,6 +25,9 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//h5[@class='my-3 font-weight-bold']")
     private List<WebElement> whyAgileSwiftCargoHeadings;
 
+    @FindBy(xpath = "//div[@class='text-center whycourier-box mb-0']")
+    private List<WebElement> whyAgileSwiftCargoImages;
+
     public void getWhyAgileSwiftCargoHeadings(){
 
         String expectedHeader = "Why Agile Swift Cargo";
@@ -38,10 +42,21 @@ public class HomePage extends BasePage {
 
     }
 
+    public void getWhyAgileSwiftCargoImages(){
+
+        ReusableMethods.hardWait(3);
+        for (int i = 0; i < whyAgileSwiftCargoImages.size(); i++) {
+            assertTrue(whyAgileSwiftCargoImages.get(i).isDisplayed());
+        }
+
+    }
+
     public WebElement getWhyAgileSwiftCargoText(){
 
         return whyAgileSwiftCargoText;
     }
+
+
 
 
 
