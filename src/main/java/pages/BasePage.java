@@ -6,6 +6,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.ConfigLoader;
 import utilities.Driver;
+import utilities.ExcelDataReader;
+import utilities.Pages;
 
 import java.time.Duration;
 
@@ -15,9 +17,15 @@ public abstract class BasePage {
 
 	public Actions actions;
 
-	protected WebDriverWait wait;
+	public WebDriverWait wait;
 
-	protected  ConfigLoader configLoader;
+	public ConfigLoader configLoader;
+
+	public ExcelDataReader hasanExcelReader;
+
+	public Pages pages;
+
+
 
 	public BasePage() {
 		driver = Driver.getDriver();
@@ -26,6 +34,8 @@ public abstract class BasePage {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		actions = new Actions(driver);
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		hasanExcelReader = new ExcelDataReader(configLoader.getConfigValue("testData"), configLoader.getConfigValue("hasan"));
+		pages = new Pages();
 	}
 
 }
