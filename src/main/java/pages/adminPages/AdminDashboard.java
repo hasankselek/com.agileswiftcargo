@@ -1,7 +1,6 @@
-package pages.AdminPages;
+package pages.adminPages;
 
 import pages.BasePage;
-import utilities.ConfigLoader;
 
 public class AdminDashboard extends BasePage {
 

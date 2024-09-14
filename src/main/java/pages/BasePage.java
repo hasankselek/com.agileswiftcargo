@@ -15,9 +15,9 @@ public abstract class BasePage {
 
 	public Actions actions;
 
-	protected WebDriverWait wait;
+	public WebDriverWait wait;
 
-	protected  ConfigLoader configLoader;
+	public  ConfigLoader configLoader;
 
 	public BasePage() {
 		driver = Driver.getDriver();
