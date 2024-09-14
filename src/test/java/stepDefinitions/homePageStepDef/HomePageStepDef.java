@@ -4,11 +4,13 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.homePages.HomePage;
+import stepDefinitions.BaseStep;
+import utilities.JSUtilities;
 import utilities.ReusableMethods;
 
 import static org.junit.Assert.*;
 
-public class HomePageStepDef  {
+public class HomePageStepDef  extends BaseStep {
 
     HomePage homePage = new HomePage();
 
@@ -47,9 +49,19 @@ public class HomePageStepDef  {
 
         homePage.registerButton.click();
         ReusableMethods.waitForPageToLoad(1);
+    }
 
+    @When("User goes to the Why Agile Swift Cargo title")
+    public void user_goes_to_the_why_agile_swift_cargo_title() {
 
+        JSUtilities.scrollToElement(DRIVER,PAGES.getHomePage().getWhyAgileSwiftCargoText());
 
+    }
+
+    @Then("User verifies that the headers are displayed")
+    public void user_verifies_that_the_headers_are_displayed() {
+
+        PAGES.getHomePage().getWhyAgileSwiftCargoHeadings();
     }
 
 

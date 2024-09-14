@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.ConfigLoader;
 import utilities.Driver;
 
+
 import java.time.Duration;
 
 public abstract class BasePage {
@@ -17,9 +18,10 @@ public abstract class BasePage {
 
 	public WebDriverWait wait;
 
-	public  ConfigLoader configLoader;
+	public ConfigLoader configLoader;
 
 	public BasePage() {
+
 		driver = Driver.getDriver();
 		configLoader = new ConfigLoader();
 		PageFactory.initElements(driver, this);
