@@ -28,6 +28,9 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//div[@class='text-center whycourier-box mb-0']")
     private List<WebElement> whyAgileSwiftCargoImages;
 
+    @FindBy(xpath = "//input[@placeholder='Enter tracking id']")
+    private WebElement trackingIdTextBox;
+
     public void getWhyAgileSwiftCargoHeadings(){
 
         String expectedHeader = "Why Agile Swift Cargo";
@@ -55,6 +58,22 @@ public class HomePage extends BasePage {
 
         return whyAgileSwiftCargoText;
     }
+
+    public void getTrackingIdBoxIsDisplayed(){
+
+        assertTrue(trackingIdTextBox.isDisplayed());
+    }
+
+    public void getTrackingIdBoxIsEnabled(){
+
+        assertTrue(trackingIdTextBox.isEnabled());
+    }
+
+    public void enterTrackingID(String trackingID){
+
+        trackingIdTextBox.sendKeys(trackingID);
+    }
+
 
 
 

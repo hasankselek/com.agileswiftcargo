@@ -21,20 +21,19 @@ public class HomePageStepDef  extends BaseStep {
         homePage.driver.get(homePage.configLoader.getConfigValue(configdenUrl));
 
     }
+
     @Then("Verifies access to homepage")
     public void verifies_access_to_homepage() {
 
         assertEquals(homePage.configLoader.getConfigValue("homepageUrl"),homePage.driver.getCurrentUrl());
-
-
     }
+
     @Then("Verifies homepage load successfully")
     public void verifies_homepage_load_successfully() {
 
         assertTrue(homePage.ourServicesHeader.isDisplayed());
 
     }
-
 
     @Then("Verifies register button is displayed")
     public void verifiesRegisterButtonIsDisplayed() {
@@ -51,22 +50,47 @@ public class HomePageStepDef  extends BaseStep {
         ReusableMethods.waitForPageToLoad(1);
     }
 
-    @When("User goes to the Why Agile Swift Cargo title")
+    @When("The user goes to the Why Agile Swift Cargo title")
     public void user_goes_to_the_why_agile_swift_cargo_title() {
 
         JSUtilities.scrollToElement(DRIVER,PAGES.getHomePage().getWhyAgileSwiftCargoText());
     }
 
-    @Then("User verifies that the headers are displayed")
+    @Then("The user verifies that the headers are displayed")
     public void user_verifies_that_the_headers_are_displayed() {
 
         PAGES.getHomePage().getWhyAgileSwiftCargoHeadings();
     }
 
-    @Then("User verifies that the images are displayed")
+    @Then("The user verifies that the images are displayed")
     public void userVerifiesThatTheImagesAreDisplayed() {
 
         PAGES.getHomePage().getWhyAgileSwiftCargoImages();
 
+    }
+
+    @Then("Verifies that the text box labelled Enter tracking id is displayed")
+    public void verifiesThatTheTextBoxLabelledEnterTrackingIdIsDisplayed() {
+
+        PAGES.getHomePage().getTrackingIdBoxIsDisplayed();
+
+    }
+
+    @Then("Verifies that data can be entered in the Text Box")
+    public void verifiesThatDataCanBeEnteredInTheTextBox() {
+
+        PAGES.getHomePage().getTrackingIdBoxIsEnabled();
+    }
+
+    @When("Enter tracking id {string} in the Enter tracking id box")
+    public void enterTrackingIdInTheEnterTrackingIdBox(String trackingID) {
+
+        PAGES.getHomePage().enterTrackingID(trackingID);
+    }
+
+    @And("Clicks {string} button")
+    public void clicksButton(String text) {
+
+        ReusableMethods.clickWithText(text);
     }
 }

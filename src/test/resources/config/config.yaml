@@ -1,3 +1,4 @@
 browser=chrome
 homepageUrl=https://qa.agileswiftcargo.com/
 testData=src/test/resources/testData/testData.xlsx
+trackingNo=AS726353160C464
