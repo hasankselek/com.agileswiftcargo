@@ -32,6 +32,7 @@ Feature: US_003 As a user, I want to be able to register on the page in order to
     Then Enters into Password box
     Then Enters into Address box
     When Clicks Privacy Policy & Terms. checkbox
+    Then Clicks Register My Account button
     And  Verifies login page opens
 
 
@@ -44,10 +45,12 @@ Feature: US_003 As a user, I want to be able to register on the page in order to
     Then Enters into Full Name box
     And  Selects hub
     And  Enters into Mobile box
-    Then Enters into Password box
+    Then Enters wrong format password into Password box
     Then Enters into Address box
     When Clicks Privacy Policy & Terms. checkbox
-    And  Verifies login page opens
+    Then Clicks Register My Account button
+    And  Verifies warning message visiblty
+
 
 
 
