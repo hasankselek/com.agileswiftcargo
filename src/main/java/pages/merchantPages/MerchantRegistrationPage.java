@@ -1,4 +1,4 @@
-package pages.merchantPage;
+package pages.merchantPages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,6 +29,18 @@ public class MerchantRegistrationPage extends BasePage {
 
     @FindBy(xpath = "//*[text()='Agile Swift Cargo']")
     public WebElement privacyPolicyLink;
+
+    @FindBy(id = "select2-hub_id-container")
+    public WebElement selectHubDropdown;
+
+    @FindBy(xpath ="//*[text()='New York City']")
+    public WebElement newYorkHub;
+
+    @FindBy(xpath = "//*[text()='Register My Account']")
+    public WebElement registerMyAccButton;
+
+    @FindBy(xpath = "//*[@class='invalid-feedback']")
+    public WebElement warningMessage;
 
 
 
