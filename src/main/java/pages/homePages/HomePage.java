@@ -1,5 +1,6 @@
 package pages.homePages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
@@ -30,6 +31,11 @@ public class HomePage extends BasePage {
 
     @FindBy(xpath = "//input[@placeholder='Enter tracking id']")
     private WebElement trackingIdTextBox;
+
+    @FindBy(xpath = "//*[@class='text-primary']")
+    private List<WebElement> navigationArrows;
+
+
 
     public void getWhyAgileSwiftCargoHeadings(){
 
@@ -73,6 +79,32 @@ public class HomePage extends BasePage {
 
         trackingIdTextBox.sendKeys(trackingID);
     }
+
+
+    public void serviceHeadersVisibilty(String text){
+
+        assertTrue(driver.findElement(By.xpath("(//*[text()='"+text+"'])[1]")).isDisplayed());
+
+
+    }
+
+    public void clickNavigationArrow(int servisNo){
+
+        navigationArrows.get(servisNo-1).click();
+
+    }
+
+    public void navigationArrowsVisibility(){
+
+        for (int i = 0; i < navigationArrows.size(); i++) {
+            assertTrue(navigationArrows.get(i).isDisplayed());
+        }
+
+
+    }
+
+
+
 
 
 

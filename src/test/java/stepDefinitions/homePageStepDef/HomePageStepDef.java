@@ -3,6 +3,7 @@ package stepDefinitions.homePageStepDef;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.WebElement;
 import pages.homePages.HomePage;
 import stepDefinitions.BaseStep;
 import utilities.JSUtilities;
@@ -93,4 +94,107 @@ public class HomePageStepDef  extends BaseStep {
 
         ReusableMethods.clickWithText(text);
     }
+
+
+
+    @Then("Verifies Our Service header visibilty")
+    public void verifiesOurServiceHeaderVisibilty() {
+
+        assertTrue(homePage.ourServicesHeader.isDisplayed());
+
+    }
+
+    @Then("Verifies {string}, {string}, {string}, {string} headers visibility")
+    public void verifiesECommerceDeliveryPickDropPackageingWarehousingHeadersVisibility(String header1 , String header2 , String header3 , String header4) {
+
+        if (homePage.driver.getCurrentUrl().equals("https://qa.agileswiftcargo.com/")){
+
+           ReusableMethods.scrollToElement(homePage.ourServicesHeader);
+
+            homePage.serviceHeadersVisibilty(header1);
+            homePage.serviceHeadersVisibilty(header2);
+            homePage.serviceHeadersVisibilty(header3);
+            homePage.serviceHeadersVisibilty(header4);
+        } else {
+
+            homePage.serviceHeadersVisibilty(header1);
+            homePage.serviceHeadersVisibilty(header2);
+            homePage.serviceHeadersVisibilty(header3);
+            homePage.serviceHeadersVisibilty(header4);
+
+        }
+
+
+
+    }
+
+    @And("Verifies an arrow visible under the services and is clickable")
+    public void verifiesAnArrowVisibleUnderTheServicesAndIsClickable() {
+
+        homePage.navigationArrowsVisibility();
+        homePage.clickNavigationArrow(1);
+
+
+
+
+    }
+
+    @Then("Clicks arrow under the {string}")
+    public void clicksArrowUnderThe(String serviceHeader) {
+
+       if (homePage.driver.getCurrentUrl().equals("https://qa.agileswiftcargo.com/")){
+           ReusableMethods.scrollToElement(homePage.ourServicesHeader);
+           ReusableMethods.hardWait(2);
+
+           if (serviceHeader.equals("E-Commerce delivery")){
+
+               homePage.clickNavigationArrow(1);
+
+           } else if (serviceHeader.equals("Pick & Drop")) {
+
+               homePage.clickNavigationArrow(2);
+
+           } else if (serviceHeader.equals("Packageing")) {
+
+               homePage.clickNavigationArrow(3);
+
+
+           } else if (serviceHeader.equals("Warehousing")) {
+
+               homePage.clickNavigationArrow(4);
+
+           } else {
+               System.out.println("Sorry,there is no such a service");
+           }
+       } else {
+
+           if (serviceHeader.equals("E-Commerce delivery")){
+
+               homePage.clickNavigationArrow(1);
+
+           } else if (serviceHeader.equals("Pick & Drop")) {
+
+               homePage.clickNavigationArrow(2);
+
+           } else if (serviceHeader.equals("Packageing")) {
+
+               homePage.clickNavigationArrow(3);
+
+
+           } else if (serviceHeader.equals("Warehousing")) {
+
+               homePage.clickNavigationArrow(4);
+
+           } else {
+               System.out.println("Sorry,there is no such a service");
+           }
+
+
+       }
+
+
+
+    }
+
+
 }

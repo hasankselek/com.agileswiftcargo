@@ -86,6 +86,7 @@ public class MerchantRegisterStepDef {
 
         merchantRegistrationPage.newYorkHub.click();
         ReusableMethods.hardWait(2);
+        merchantRegistrationPage.selectHubDropdown.click();
     }
 
     @And("Enters into Mobile box")
