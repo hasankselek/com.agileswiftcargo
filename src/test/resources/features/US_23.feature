@@ -1,0 +1,34 @@
+Feature: [US_023] As a merchant, I want to view expense data and make payments.
+
+  Scenario: [TC_2301] Payout Menu Visibility
+    Given Go to the "homepageUrl"
+    Then Login as an merchant
+    Then Click on the "Accounts" link in the left menu.
+    And Verify that the "Payout" link under Accounts is visible and clickable.
+
+  Scenario: [TC_2302] Payout Page Navigation
+    Given Go to the "homepageUrl"
+    Then Login as an merchant
+    Then Click on the "Accounts" link in the left menu.
+    Then Click on the "Payout" link in the left menu.
+    Then Verify that the "Payout" page loads correctly by checking the page title and URL.
+
+  Scenario: [TC_2303] Payout List Display
+
+    Given Go to the "homepageUrl"
+    Then Login as an merchant
+    Then Click on the "Accounts" link in the left menu.
+    Then Click on the "Payout" link in the left menu.
+    And Verify that the table headers "#", "Card Type", "To Account", "Transaction Id", "Amount (Tk)" is displayed correctly.
+    And Verify that Payout List have at least 3 data
+
+  Scenario: [TC_2304] Stripe Link Visibility and Functionality
+
+    Given Go to the "homepageUrl"
+    Then Login as an merchant
+    Then Click on the "Accounts" link in the left menu.
+    Then Click on the "Payout" link in the left menu.
+    Then Verify if the Stripe logo is visible
+    And Verify that the Stripe link is visible and clickable.
+    Then Click on the Stripe link.
+    And Verify that Stripe link redirected to the relevant page.

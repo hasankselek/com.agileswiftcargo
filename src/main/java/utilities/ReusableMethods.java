@@ -427,4 +427,27 @@ public class ReusableMethods {
 		select.selectByValue(value);
 	}
 
+	public static WebElement findMenuItemByTextMerchant(WebDriver driver, String menuText) {
+		// <li> elementlerini bul class="navbar-nav" içinde
+		List<WebElement> menuItems = driver.findElements(By.xpath("//*[@class='navbar-nav']//li"));
+
+		// Metni içeren WebElement'i bulmak için bir değişken oluştur
+		WebElement foundElement = null;
+
+		// Her bir menü öğesini kontrol et
+		for (WebElement item : menuItems) {
+			// Metni al ve başındaki/sonundaki boşlukları temizle
+			String normalizedText = item.getText().trim();
+
+			// Eğer normalize edilmiş text beklenen text ile eşleşiyorsa
+			if (normalizedText.equals(menuText)) {
+				foundElement = item;  // Metni içeren WebElement'i bul
+				break;  // Döngüden çık
+			}
+		}
+
+		// WebElement'i döndür (null olabilir, bu nedenle null kontrolü yapılmalı)
+		return foundElement;
+	}
+
 }

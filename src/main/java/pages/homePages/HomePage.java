@@ -35,6 +35,9 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//*[@class='text-primary']")
     private List<WebElement> navigationArrows;
 
+    @FindBy(xpath = "//*[text()='Login']")
+    public WebElement loginButton;
+
 
 
     public void getWhyAgileSwiftCargoHeadings(){
