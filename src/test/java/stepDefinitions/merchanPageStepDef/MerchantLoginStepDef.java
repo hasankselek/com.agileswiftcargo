@@ -5,7 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import pages.homePages.HomePage;
-import pages.merchantPages.MerchantLoginPage;
+import pages.MerchantPages.MerchantLoginPage;
 import utilities.ConfigLoader;
 import utilities.ExcelDataReader;
 import utilities.ReusableMethods;

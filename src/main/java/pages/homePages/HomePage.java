@@ -37,13 +37,16 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//*[@class='text-primary']")
     private List<WebElement> navigationArrows;
     @FindBy(xpath = "//*[text()='Subscribe Us']")
-   public WebElement SubscribeUsText;
+    public WebElement SubscribeUsText;
     @FindBy(xpath = "//*[@class='fa fa-paper-plane']")
     public WebElement footerEnterMailButon;
     @FindBy(xpath = "(//*[@class='form-control'])[2]")
     public WebElement enterMailButtonu;
     @FindBy(xpath = "//div[@class='toast toast-error']")
-   public WebElement werifyText;
+    public WebElement werifyText;
+
+    @FindBy(xpath = "//*[text()='Login']")
+    public WebElement loginButton;
 
     @FindBy(xpath = "//*[text()='Home']")
     public WebElement homeText;
@@ -67,10 +70,10 @@ public class HomePage extends BasePage {
     public WebElement contactText;
 
 
-    public void getWhyAgileSwiftCargoHeadings(){
+    public void getWhyAgileSwiftCargoHeadings() {
 
         String expectedHeader = "Why Agile Swift Cargo";
-        assertEquals(expectedHeader,whyAgileSwiftCargoText.getText());
+        assertEquals(expectedHeader, whyAgileSwiftCargoText.getText());
         ReusableMethods.hardWait(3);
 
         List<String> expectedHeadings = Arrays.asList("Timely Delivery", "Limitless Pickup", "Cash on delivery (COD)", "Get Payment Any Time", "Secure Handling", "Live Tracking Update");
@@ -81,7 +84,7 @@ public class HomePage extends BasePage {
 
     }
 
-    public void getWhyAgileSwiftCargoImages(){
+    public void getWhyAgileSwiftCargoImages() {
 
         ReusableMethods.hardWait(3);
         for (int i = 0; i < whyAgileSwiftCargoImages.size(); i++) {
@@ -90,40 +93,40 @@ public class HomePage extends BasePage {
 
     }
 
-    public WebElement getWhyAgileSwiftCargoText(){
+    public WebElement getWhyAgileSwiftCargoText() {
 
         return whyAgileSwiftCargoText;
     }
 
-    public void getTrackingIdBoxIsDisplayed(){
+    public void getTrackingIdBoxIsDisplayed() {
 
         assertTrue(trackingIdTextBox.isDisplayed());
     }
 
-    public void getTrackingIdBoxIsEnabled(){
+    public void getTrackingIdBoxIsEnabled() {
 
         assertTrue(trackingIdTextBox.isEnabled());
     }
 
-    public void enterTrackingID(String trackingID){
+    public void enterTrackingID(String trackingID) {
 
         trackingIdTextBox.sendKeys(trackingID);
     }
 
-    public void serviceHeadersVisibilty(String text){
+    public void serviceHeadersVisibilty(String text) {
 
-        assertTrue(driver.findElement(By.xpath("(//*[text()='"+text+"'])[1]")).isDisplayed());
+        assertTrue(driver.findElement(By.xpath("(//*[text()='" + text + "'])[1]")).isDisplayed());
 
-
-    }
-
-    public void clickNavigationArrow(int servisNo){
-
-        navigationArrows.get(servisNo-1).click();
 
     }
 
-    public void navigationArrowsVisibility(){
+    public void clickNavigationArrow(int servisNo) {
+
+        navigationArrows.get(servisNo - 1).click();
+
+    }
+
+    public void navigationArrowsVisibility() {
 
         for (int i = 0; i < navigationArrows.size(); i++) {
             assertTrue(navigationArrows.get(i).isDisplayed());
@@ -131,14 +134,6 @@ public class HomePage extends BasePage {
 
 
     }
-
-
-
-
-
-
-
-
 
 
 }

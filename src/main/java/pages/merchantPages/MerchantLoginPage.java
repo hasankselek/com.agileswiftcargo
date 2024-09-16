@@ -1,15 +1,17 @@
-package pages.merchantPages;
+package pages.MerchantPages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
+import pages.homePages.HomePage;
 import utilities.ExcelDataReader;
 import utilities.ReusableMethods;
 
 public class MerchantLoginPage extends BasePage {
 
-    ExcelDataReader reader = new ExcelDataReader(configLoader.getConfigValue("testData"),"merchantLogin");
+    ExcelDataReader reader = new ExcelDataReader(configLoader.getConfigValue("testData"), "merchantLogin");
+    HomePage homePage = new HomePage();
 
     @FindBy(id = "email")
     public WebElement emailBox;
@@ -30,35 +32,25 @@ public class MerchantLoginPage extends BasePage {
     public WebElement forgotPasswordLink;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public void loginAsMerchant(int rowAccessInfo) {
 
-        emailBox.sendKeys(reader.getCellData(rowAccessInfo,1));
-        passwordBox.sendKeys(reader.getCellData(rowAccessInfo,2));
+        emailBox.sendKeys(reader.getCellData(rowAccessInfo, 1));
+        passwordBox.sendKeys(reader.getCellData(rowAccessInfo, 2));
         signInButton.click();
 
     }
 
-    public void clickEasyLinks(String linkText){
+    public void directlyLoginAsMerchant(int rowAccessInfo) {
+        homePage.loginButton.click();
+        loginAsMerchant(rowAccessInfo);
+        ReusableMethods.hardWait(1);
+    }
 
-        driver.findElement(By.xpath("//*[text()='"+linkText+"']")).click();
 
-
-
+    public void clickEasyLinks(String linkText) {
+        driver.findElement(By.xpath("//*[text()='" + linkText + "']")).click();
     }
 
 
 }
+
