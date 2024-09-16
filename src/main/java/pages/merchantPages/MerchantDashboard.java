@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 public class MerchantDashboard extends BasePage {
 
-    @FindBy(xpath = "(//img[@class='user-avatar-md rounded-circle'])[9]")
+    @FindBy(xpath = "//li[@class='nav-item dropdown nav-user d-lg-block']//a[@id='navbarDropdownMenuLink2']")
     private WebElement profileIcon;
 
     @FindBy(xpath = "(//div[@class='dropdown-menu dropdown-menu-right nav-user-dropdown show'])/a[@class='dropdown-item']")

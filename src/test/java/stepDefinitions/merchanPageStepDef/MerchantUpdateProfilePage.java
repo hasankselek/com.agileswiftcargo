@@ -31,4 +31,22 @@ public class MerchantUpdateProfilePage extends BaseStep {
 
         PAGES.getMerchantUpdateProfilPage().getClickSaveChangeButton();
     }
+
+    @Then("Verifies that the error message is displayed")
+    public void verifiesThatTheErrorMessageIsDisplayed() {
+
+        PAGES.getMerchantUpdateProfilPage().getErrorMessages();
+    }
+
+    @Then("The user confirms that they can change their {string}, {string}")
+    public void theUserConfirmsThatTheyCanChangeTheir(String name,String adress) {
+
+        PAGES.getMerchantUpdateProfilPage().setMerchantInfoNameAdress(name,adress);
+    }
+
+    @Then("Verifies that user edit account page information is displayed")
+    public void verifiesThatUserEditAccountPageInformationIsDisplayed() {
+
+        PAGES.getMerchantUpdateProfilPage().getVerifyProfileInformation();
+    }
 }

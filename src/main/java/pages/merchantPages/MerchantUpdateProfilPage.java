@@ -18,6 +18,15 @@ public class MerchantUpdateProfilPage extends BasePage {
     @FindBy(xpath = "(//input[@id='address'])[1]")
     private WebElement merchantAdress;
 
+    @FindBy(xpath = "(//input[@id='email'])[1]")
+    private WebElement merchantEmail;
+
+    @FindBy(xpath = "//input[@id='mobile']")
+    private WebElement merchantPhone;
+
+    @FindBy(xpath = "//input[@id='business_name']")
+    private WebElement merchantBusinessName;
+
     @FindBy(xpath = "(//input[@id='image_id'])[1]")
     private WebElement merchantImage;
 
@@ -29,6 +38,12 @@ public class MerchantUpdateProfilPage extends BasePage {
 
     @FindBy(xpath = "//div[@class='toast toast-error']")
     private WebElement suscessMessage;
+
+    @FindBy(xpath = "//small[normalize-space()='The Name field is required.']")
+    private WebElement merchantNameError;
+
+    @FindBy(xpath = "//small[normalize-space()='The Address field is required.']")
+    private WebElement merchantAdressError;
 
     public void getVerifyDisplayedMerchantInfo(){
         assertTrue(merchantName.isDisplayed());
@@ -51,6 +66,14 @@ public class MerchantUpdateProfilPage extends BasePage {
 
     }
 
+    public void setMerchantInfoNameAdress(String name,String adress){
+        merchantName.clear();
+        merchantName.sendKeys(name);
+
+        merchantAdress.clear();
+        merchantAdress.sendKeys(adress);
+    }
+
     public void getClickSaveChangeButton(){
 
         saveChangeButton.click();
@@ -59,10 +82,33 @@ public class MerchantUpdateProfilPage extends BasePage {
     public void getSuccessMessages(){
 
         try {
-            assertTrue("Hata mesajı bulunamadı.", suscessMessage.isDisplayed());
+            assertTrue(suscessMessage.isDisplayed());
         } catch (NoSuchElementException e) {
             fail();
         }
 
     }
+
+    public void getErrorMessages(){
+
+        merchantAdressError.isDisplayed();
+        ReusableMethods.hardWait(1);
+        merchantNameError.isDisplayed();
+
+
+    }
+
+    public void getVerifyProfileInformation() {
+        assertTrue(merchantName.isDisplayed());
+        assertTrue(merchantEmail.isDisplayed());
+        assertTrue(merchantPhone.isDisplayed());
+        assertTrue(merchantBusinessName.isDisplayed());
+        assertTrue(merchantAdress.isDisplayed());
+
+    }
+
+
+
+
+
 }
