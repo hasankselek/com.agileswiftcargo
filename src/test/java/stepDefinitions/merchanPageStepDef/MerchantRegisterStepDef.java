@@ -149,4 +149,16 @@ public class MerchantRegisterStepDef {
     }
 
 
+    @Then("Verifies Select Hub dropdown visibilty")
+    public void verifiesSelectHubDropdownVisibilty() {
+
+        assertTrue(merchantRegistrationPage.selectHubDropdown.isDisplayed());
+
+    }
+
+    @And("Verifies Register My Account button visibilty")
+    public void verifiesRegisterMyAccountButtonVisibilty() {
+
+        assertTrue(merchantRegistrationPage.registerMyAccButton.isDisplayed());
+    }
 }

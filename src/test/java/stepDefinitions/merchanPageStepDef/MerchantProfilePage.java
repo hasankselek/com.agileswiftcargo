@@ -12,4 +12,5 @@ public class MerchantProfilePage extends BaseStep {
         PAGES.getMerchantProfilePage().getDisplayedMerchantInformation(name,email,phone,businessName,adress);
     }
 
+
 }

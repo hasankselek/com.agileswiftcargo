@@ -5,9 +5,13 @@ testData=src/test/resources/testData/testData.xlsx
 trackingNo=AS726353160C464
 image1=/Users/hasan/Desktop/com.agileswiftcargo/src/test/resources/testData/picture1.jpeg
 image2=/Users/hasan/Desktop/com.agileswiftcargo/src/test/resources/testData/picture2.jpeg
+
+existingEmail=gulpembe.merchant@agileswiftcargo.com
+
 pricingUrl=https://qa.agileswiftcargo.com/#pricing
 trackingUrl=https://qa.agileswiftcargo.com/tracking
 blogsUrl=https://qa.agileswiftcargo.com/get-blogs
 aboutUrl=https://qa.agileswiftcargo.com/about-us
 faqUrl=https://qa.agileswiftcargo.com/faq-list
 contactUrl=https://qa.agileswiftcargo.com/contact-send
+
