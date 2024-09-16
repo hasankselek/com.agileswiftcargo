@@ -3,3 +3,5 @@ homepageUrl=https://qa.agileswiftcargo.com/
 loginpageUrl=https://qa.agileswiftcargo.com/login
 testData=src/test/resources/testData/testData.xlsx
 trackingNo=AS726353160C464
+image1=/Users/hasan/Desktop/com.agileswiftcargo/src/test/resources/testData/picture1.jpeg
+image2=/Users/hasan/Desktop/com.agileswiftcargo/src/test/resources/testData/picture2.jpeg

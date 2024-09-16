@@ -1,0 +1,37 @@
+package pages.merchantPages;
+
+import org.junit.Assert;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import pages.BasePage;
+import utilities.ReusableMethods;
+
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+
+public class MerchantDashboard extends BasePage {
+
+    @FindBy(xpath = "(//img[@class='user-avatar-md rounded-circle'])[9]")
+    private WebElement profileIcon;
+
+    @FindBy(xpath = "(//div[@class='dropdown-menu dropdown-menu-right nav-user-dropdown show'])/a[@class='dropdown-item']")
+    private List<WebElement> profileIconLinks;
+
+    public void getClickProfileIcon(){
+
+        ReusableMethods.hardWait(2);
+        profileIcon.click();
+    }
+
+    public void getVerifyProfileIconLinks(String Profile,String PaymentInformation,String ChangePassword,String Logout){
+
+        assertEquals(profileIconLinks.get(0).getText(),Profile);
+        assertEquals(profileIconLinks.get(1).getText(),PaymentInformation);
+        assertEquals(profileIconLinks.get(2).getText(),ChangePassword);
+        assertEquals(profileIconLinks.get(3).getText(),Logout);
+    }
+
+
+
+}

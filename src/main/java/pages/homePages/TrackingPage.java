@@ -17,6 +17,9 @@ public class TrackingPage extends BasePage {
     @FindBy(xpath = "//div[@class='cd-timeline__content js-cd-content']")
     private WebElement cargoInformation;
 
+    @FindBy(xpath = "(//div[@class='col-lg-6 m-auto'])[1]")
+    private WebElement parcelNotFoundPic;
+
     public String getParcelTrackingNo(){
 
         return parcelTrackingNo.getText();
@@ -31,5 +34,10 @@ public class TrackingPage extends BasePage {
     public boolean getVisibleCargoInfo(){
 
         return parcelTrackingNo.isDisplayed();
+    }
+
+    public void getParcelNotFoundPic(){
+
+        assertTrue(parcelNotFoundPic.isDisplayed());
     }
 }

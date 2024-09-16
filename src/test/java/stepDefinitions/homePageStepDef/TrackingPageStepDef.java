@@ -29,4 +29,10 @@ public class TrackingPageStepDef extends BaseStep {
 
         PAGES.getTrackingPage().getVisibleCargoInfo();
     }
+
+    @Then("Verifies that error messages")
+    public void verifiesThatErrorMessages() {
+
+        PAGES.getTrackingPage().getParcelNotFoundPic();
+    }
 }
