@@ -44,12 +44,13 @@ public class MerchantLoginPage extends BasePage {
         homePage.loginButton.click();
         loginAsMerchant(rowAccessInfo);
         ReusableMethods.hardWait(1);
-
-
-        public void clickEasyLinks (String linkText){
-            driver.findElement(By.xpath("//*[text()='" + linkText + "']")).click();
-        }
-
-
     }
+
+
+    public void clickEasyLinks(String linkText) {
+        driver.findElement(By.xpath("//*[text()='" + linkText + "']")).click();
+    }
+
+
 }
+
