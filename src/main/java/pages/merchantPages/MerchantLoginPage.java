@@ -1,4 +1,4 @@
-package pages.merchantPages;
+package pages.MerchantPages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

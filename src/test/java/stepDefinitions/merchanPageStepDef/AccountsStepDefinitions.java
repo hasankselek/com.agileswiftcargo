@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 import pages.MerchantPages.Accounts;
-import pages.merchantPages.MerchantLoginPage;
+import pages.MerchantPages.MerchantLoginPage;
 import utilities.ConfigLoader;
 import utilities.Driver;
 import utilities.ReusableMethods;
