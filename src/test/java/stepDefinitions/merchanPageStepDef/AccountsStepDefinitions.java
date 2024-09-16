@@ -71,6 +71,8 @@ public class AccountsStepDefinitions {
     @Given("Verify that the table headers {string}, {string}, {string}, {string}, {string} is displayed correctly.")
     public void verify_that_the_table_headers_is_displayed_correctly(String header1, String header2, String header3, String header4, String header5) {
 
+        // This will be method!!!
+
         List<String> expectedHeaders = Arrays.asList(header1, header2, header3, header4, header5);
 
         for (int i = 0; i < expectedHeaders.size(); i++) {
@@ -118,6 +120,7 @@ public class AccountsStepDefinitions {
 
     @Then("Enter valid data into the To Account and Amount fields on the Stripe Payout Details page.")
     public void enter_valid_data_into_the_to_account_and_amount_fields_on_the_stripe_payout_details_page() {
+        // This will be method!!!
         Select select = new Select(accounts.stripeToAccountBox);
         select.selectByIndex(0);
         accounts.stripeAmountBox.click();
@@ -142,6 +145,8 @@ public class AccountsStepDefinitions {
 
     @Then("Fill in the Email, Card number, MMYY, and CVC information, then click the Pay button.")
     public void fill_in_the_email_card_number_mmyy_and_cvc_information_then_click_the_pay_button() {
+
+        // This will be method!!!
 
         String email = "qweqe@gm.com";
         String cardNumber1 = "4242";
