@@ -36,6 +36,14 @@ public class HomePage extends BasePage {
 
     @FindBy(xpath = "//*[@class='text-primary']")
     private List<WebElement> navigationArrows;
+    @FindBy(xpath = "//*[text()='Subscribe Us']")
+   public WebElement SubscribeUsText;
+    @FindBy(xpath = "//*[@class='fa fa-paper-plane']")
+    public WebElement footerEnterMailButon;
+    @FindBy(xpath = "(//*[@class='form-control'])[2]")
+    public WebElement enterMailButtonu;
+    @FindBy(xpath = "//div[@class='toast toast-error']")
+   public WebElement werifyText;
 
     @FindBy(xpath = "//*[text()='Home']")
     public WebElement homeText;
