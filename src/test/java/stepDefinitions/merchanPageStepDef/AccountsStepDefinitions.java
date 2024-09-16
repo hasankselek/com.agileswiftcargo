@@ -125,31 +125,62 @@ public class AccountsStepDefinitions {
         accounts.stripePayNowButton.click();
 
     }
+
     @Then("Click the Pay Now button.")
     public void click_the_pay_now_button() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        accounts.stripePayNowButton.click();
+        ReusableMethods.hardWait(2);
+        Driver.getDriver().switchTo().frame(1);
     }
+
     @Then("Verify that the Merchant Payment window opens.")
     public void verify_that_the_merchant_payment_window_opens() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        Assert.assertTrue(accounts.merchantPaymentWindow.isDisplayed());
     }
-    @Then("Fill in the Email, Card number, MM\\/YY, and CVC information, then click the Pay button.")
-    public void fill_in_the_email_card_number_mm_yy_and_cvc_information_then_click_the_pay_button() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+
+    @Then("Fill in the Email, Card number, MMYY, and CVC information, then click the Pay button.")
+    public void fill_in_the_email_card_number_mmyy_and_cvc_information_then_click_the_pay_button() {
+
+        String email = "qweqe@gm.com";
+        String cardNumber1 = "4242";
+        String cardNumber2 = "4242";
+        String cardNumber3 = "4242";
+        String cardNumber4 = "4242";
+        String month = "12";
+        String year = "26";
+        String cvc = "123";
+
+        accounts.paymentEmailBox.sendKeys(email);
+        ReusableMethods.hardWait(2);
+        accounts.paymentCardNumberBox.click();
+        accounts.paymentCardNumberBox.sendKeys(cardNumber1);
+        ReusableMethods.hardWait(1);
+        accounts.paymentCardNumberBox.sendKeys(cardNumber2);
+        ReusableMethods.hardWait(1);
+        accounts.paymentCardNumberBox.sendKeys(cardNumber3);
+        ReusableMethods.hardWait(1);
+        accounts.paymentCardNumberBox.sendKeys(cardNumber4);
+        ReusableMethods.hardWait(1);
+        accounts.paymentMMYYBox.click();
+        accounts.paymentMMYYBox.sendKeys(month);
+        ReusableMethods.hardWait(1);
+        accounts.paymentMMYYBox.sendKeys(year);
+        ReusableMethods.hardWait(2);
+        accounts.paymentCVCBox.sendKeys(cvc);
+        ReusableMethods.hardWait(2);
+        accounts.paymentPayButton.click();
+        Driver.getDriver().switchTo().defaultContent();
     }
+
+
     @Then("Verify that the payment is processed successfully.")
     public void verify_that_the_payment_is_processed_successfully() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        Assert.assertTrue(ReusableMethods.paymentNotificationCatcher());
+
     }
-
-
-
-
-
 
 
     public String getPaymentLineDataText(int transactionLineNumber) {
@@ -166,7 +197,6 @@ public class AccountsStepDefinitions {
 
         return Driver.getDriver().findElement(By.xpath(xpath)).getText();
     }
-
 
 
 }

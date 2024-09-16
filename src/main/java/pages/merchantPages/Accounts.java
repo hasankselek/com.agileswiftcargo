@@ -45,5 +45,23 @@ public class Accounts extends BasePage {
     @FindBy(xpath = "//button[text()='Pay Now']")
     public WebElement stripePayNowButton;
 
+    @FindBy(xpath = "//*[text()='Merchant Payment']")
+    public WebElement merchantPaymentWindow;
+
+    @FindBy(xpath = "//*[@id='email']")
+    public WebElement paymentEmailBox;
+
+    @FindBy(xpath = "//*[@id='card_number']")
+    public WebElement paymentCardNumberBox;
+
+    @FindBy(xpath = "//*[@id='cc-exp']")
+    public WebElement paymentMMYYBox;
+
+    @FindBy(xpath = "//*[@id='cc-csc']")
+    public WebElement paymentCVCBox;
+
+    @FindBy(xpath = "//*[@class='iconTick']")
+    public WebElement paymentPayButton;
+
 
 }

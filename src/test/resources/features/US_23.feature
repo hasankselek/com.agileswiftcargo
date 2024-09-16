@@ -44,15 +44,15 @@ Feature: [US_023] As a merchant, I want to view expense data and make payments.
 
   Scenario: [TC2306] Pay Now Button Functionality
 
-   # Given Go to the "homepageUrl"
-   # Then Login as an merchant
-   # Then Click on the "Accounts" link in the left menu.
-   # Then Click on the "Payout" link in the left menu.
-   # Then Click on the Stripe link.
+    Given Go to the "homepageUrl"
+    Then Login as an merchant
+    Then Click on the "Accounts" link in the left menu.
+    Then Click on the "Payout" link in the left menu.
+    Then Click on the Stripe link.
     Then Enter valid data into the To Account and Amount fields on the Stripe Payout Details page.
     Then Click the Pay Now button.
     And Verify that the Merchant Payment window opens.
-    Then Fill in the Email, Card number, MM/YY, and CVC information, then click the Pay button.
+    Then Fill in the Email, Card number, MMYY, and CVC information, then click the Pay button.
     And Verify that the payment is processed successfully.
 
 

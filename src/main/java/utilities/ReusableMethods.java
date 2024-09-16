@@ -486,4 +486,19 @@ public class ReusableMethods {
 
     }
 
+    public static boolean paymentNotificationCatcher() {
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        String script = "return document.evaluate(\"//*[contains(text(), 'success')]\", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;";
+        WebElement notification = (WebElement) js.executeScript(script);
+        boolean flag = false;
+
+        if (notification != null) {
+
+            flag = true;
+
+        }
+
+        return flag;
+    }
+
 }
