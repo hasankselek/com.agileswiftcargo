@@ -15,11 +15,10 @@ import org.junit.runner.RunWith;
                 "json:target/reports/cucumber.json",
                 "junit:target/reports/Cucumber.xml",
         },
-        tags = "@log4",
+        tags = "@TC_004",
         dryRun = false,
         publish = true
 )
 
-public class GulpembeRunner {
-
+public class IlgarRunner {
 }

@@ -1,6 +1,5 @@
 package runner;
 
-
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
@@ -15,11 +14,13 @@ import org.junit.runner.RunWith;
                 "json:target/reports/cucumber.json",
                 "junit:target/reports/Cucumber.xml",
         },
-        tags = "@log4",
+        tags = "@US_002",
         dryRun = false,
         publish = true
 )
 
-public class GulpembeRunner {
+public class BugraRunner {
+
+
 
 }
