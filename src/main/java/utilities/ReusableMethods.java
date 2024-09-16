@@ -427,4 +427,26 @@ public class ReusableMethods {
 		select.selectByValue(value);
 	}
 
+	public static WebElement findElementByText(String text) {
+		try {
+			// XPath ile sayfadaki her türlü element içinde verilen metni arar
+			WebElement element = Driver.getDriver().findElement(By.xpath("//*[contains(text(), '" + text + "')]"));
+			return element;
+		} catch (Exception e) {
+			System.out.println("Element bulunamadı: " + text);
+			return null;
+		}
+	}
+
+	public static WebElement firstElementByText(String text) {
+		try {
+			// XPath ile sayfadaki her türlü element içinde verilen metni arar
+			WebElement element = Driver.getDriver().findElement(By.xpath("(//*[contains(text(), '" + text + "')])[1]"));
+			return element;
+		} catch (Exception e) {
+			System.out.println("Element bulunamadı: " + text);
+			return null;
+		}
+	}
+
 }

@@ -3,11 +3,18 @@ package stepDefinitions.homePageStepDef;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import pages.homePages.HomePage;
 import stepDefinitions.BaseStep;
+import utilities.Driver;
 import utilities.JSUtilities;
 import utilities.ReusableMethods;
+
+import java.time.Duration;
 
 import static org.junit.Assert.*;
 
@@ -195,6 +202,49 @@ public class HomePageStepDef  extends BaseStep {
 
 
     }
+    @Then("On the homepage, it goes all the way down to the footer section")
+    public void on_the_homepage_it_goes_all_the_way_down_to_the_footer_section() {
+        ReusableMethods.scrollToElement(homePage.SubscribeUsText);
+        ReusableMethods.hardWait(5);
+    }
+    @Then("Tests the visibility {string} text")
+    public void tests_the_visibility_and_functionality_of_the_textbox_in_the_menu(String istenenkelime) {
 
+        homePage.footerEnterMailButon.isDisplayed();
+
+    }
+    @Then("Enters {string} in the textbox")
+    public void enters_in_the_textbox(String email) {
+        homePage.enterMailButtonu.sendKeys(email);
+        homePage.footerEnterMailButon.click();
+        ReusableMethods.hardWait(5);
+
+    }
+    @Then("Confirms that registration has been done in a successful")
+    public void confirms_that_registration_has_been_done_in_a_successful() {
+
+        Assert.assertTrue(homePage.werifyText.isDisplayed());
+
+    }
+
+
+    @Then("In the upper section of the home page, the inscription {string} is verified.")
+    public void In_the_upper_section_of_the_home_page_the_inscription_is_verified(String arananKelime) {
+        ReusableMethods.firstElementByText(arananKelime);
+
+    }
+    @Then("Click on {string}")
+    public void click_on(String tiklanacakKelime) {
+        ReusableMethods.clickWithText(tiklanacakKelime);
+        ReusableMethods.hardWait(3);
+    }
+
+
+    @Then("The page that opens is verified as {string}")
+    public void the_page_that_opens_is_verified_as(String aranacakUrl) {
+
+        assertEquals(homePage.configLoader.getConfigValue(aranacakUrl),homePage.driver.getCurrentUrl());
+
+    }
 
 }

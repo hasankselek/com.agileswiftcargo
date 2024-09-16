@@ -1,5 +1,6 @@
 package runner;
 
+
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
@@ -10,15 +11,14 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = { "stepDefinitions" },
         plugin = { "pretty",
-                "html:target/HasanReports/cucumber-reports.html",
-                "json:target/HasanReports/cucumber.json",
-                "junit:target/HasanReports/Cucumber.xml",
+                "html:target/reports/cucumber-reports.html",
+                "json:target/reports/cucumber.json",
+                "junit:target/reports/Cucumber.xml",
         },
-        tags = " @US_018",
+        tags = "@TC_004",
         dryRun = false,
         publish = true
 )
 
-public class HasanRunner {
-
+public class IlgarRunner {
 }
