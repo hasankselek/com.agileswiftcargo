@@ -67,8 +67,6 @@ public class HomePage extends BasePage {
     public WebElement contactText;
 
 
-
-
     public void getWhyAgileSwiftCargoHeadings(){
 
         String expectedHeader = "Why Agile Swift Cargo";
@@ -111,7 +109,6 @@ public class HomePage extends BasePage {
 
         trackingIdTextBox.sendKeys(trackingID);
     }
-
 
     public void serviceHeadersVisibilty(String text){
 

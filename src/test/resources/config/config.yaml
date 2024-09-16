@@ -1,4 +1,4 @@
-browser=edge
+browser=chrome
 homepageUrl=https://qa.agileswiftcargo.com/
 loginpageUrl=https://qa.agileswiftcargo.com/login
 testData=src/test/resources/testData/testData.xlsx
