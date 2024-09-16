@@ -1,6 +1,7 @@
 package stepDefinitions.merchanPageStepDef;
 
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import pages.homePages.HomePage;
@@ -53,6 +54,21 @@ public class MerchantLoginStepDef {
         merchantLoginPage.passwordBox.sendKeys(password);
 
     }
+
+    @Then("Verifies that there is a {string} button in the header section of the page")
+    public void verifies_that_there_is_a_button_in_the_header_section_of_the_page(String istenenkelime) {
+
+
+    }
+    @Then("Clicks of the {string} button")
+    public void clicks_of_the_button(String string) {
+
+    }
+    @Then("When the login button is clicked, it tests that you are directed to the {string} page")
+    public void when_the_login_button_is_clicked_it_tests_that_you_are_directed_to_the_page(String string) {
+
+    }
+
 
 
     @Then("Verifies Merchant Dashboard page can't opens")
