@@ -1,5 +1,6 @@
 package pages.homePages;
 
+import org.checkerframework.checker.fenum.qual.Fenum;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,6 +9,7 @@ import utilities.ReusableMethods;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.XMLFormatter;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -34,6 +36,28 @@ public class HomePage extends BasePage {
 
     @FindBy(xpath = "//*[@class='text-primary']")
     private List<WebElement> navigationArrows;
+
+    @FindBy(xpath = "//*[text()='Home']")
+    public WebElement homeText;
+
+    @FindBy(xpath = "//*[text()='Pricing']")
+    public WebElement pricingText;
+
+    @FindBy(xpath = "//*[text()='Tracking']")
+    public WebElement trackingText;
+
+    @FindBy(xpath = "(//*[text()='Blogs'])[1]")
+    public WebElement blogsText;
+
+    @FindBy(xpath = "(//*[text()='About'])[1]")
+    public WebElement aboutText;
+
+    @FindBy(xpath = "//*[text()='FAQ']")
+    public WebElement faqText;
+
+    @FindBy(xpath = "//*[text()='Contact']")
+    public WebElement contactText;
+
 
 
 
