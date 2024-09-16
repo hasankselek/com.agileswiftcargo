@@ -36,5 +36,14 @@ public class Accounts extends BasePage {
     @FindBy(xpath = "(//*[@class='h3'])[2]")
     public WebElement stripeMenuLabel;
 
+    @FindBy(xpath = "//select[@id='accountId']")
+    public WebElement stripeToAccountBox;
+
+    @FindBy(xpath = "//input[@id='stripe_amount']")
+    public WebElement stripeAmountBox;
+
+    @FindBy(xpath = "//button[text()='Pay Now']")
+    public WebElement stripePayNowButton;
+
 
 }

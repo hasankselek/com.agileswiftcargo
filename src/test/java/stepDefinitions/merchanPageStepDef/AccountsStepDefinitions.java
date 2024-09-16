@@ -5,8 +5,10 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 import pages.MerchantPages.Accounts;
 import pages.merchantPages.MerchantLoginPage;
 import utilities.ConfigLoader;
@@ -108,6 +110,47 @@ public class AccountsStepDefinitions {
         Assert.assertEquals(expectedLabel, accounts.stripeMenuLabel.getText());
     }
 
+    @Then("Verify that the To Account and Amount fields are visible and allow data input.")
+    public void verify_that_the_to_account_and_amount_fields_are_visible_and_allow_data_input() {
+        Assert.assertTrue(accounts.stripeToAccountBox.isEnabled());
+        Assert.assertTrue(accounts.stripeAmountBox.isEnabled());
+    }
+
+    @Then("Enter valid data into the To Account and Amount fields on the Stripe Payout Details page.")
+    public void enter_valid_data_into_the_to_account_and_amount_fields_on_the_stripe_payout_details_page() {
+        Select select = new Select(accounts.stripeToAccountBox);
+        select.selectByIndex(0);
+        accounts.stripeAmountBox.click();
+        accounts.stripeAmountBox.sendKeys("500");
+        accounts.stripePayNowButton.click();
+
+    }
+    @Then("Click the Pay Now button.")
+    public void click_the_pay_now_button() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @Then("Verify that the Merchant Payment window opens.")
+    public void verify_that_the_merchant_payment_window_opens() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @Then("Fill in the Email, Card number, MM\\/YY, and CVC information, then click the Pay button.")
+    public void fill_in_the_email_card_number_mm_yy_and_cvc_information_then_click_the_pay_button() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+    @Then("Verify that the payment is processed successfully.")
+    public void verify_that_the_payment_is_processed_successfully() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+
+
+
+
+
 
     public String getPaymentLineDataText(int transactionLineNumber) {
 
@@ -123,6 +166,7 @@ public class AccountsStepDefinitions {
 
         return Driver.getDriver().findElement(By.xpath(xpath)).getText();
     }
+
 
 
 }
