@@ -1,6 +1,7 @@
 package utilities;
 
 import pages.BasePage;
+import pages.adminPages.AdminProfilPage;
 import pages.homePages.HomePage;
 import pages.homePages.TrackingPage;
 import pages.merchantPages.MerchantDashboard;
@@ -10,10 +11,16 @@ import pages.merchantPages.MerchantUpdateProfilPage;
 public class Pages extends BasePage {
 
 	private HomePage homePage;
+
 	private TrackingPage trackingPage;
+
 	private MerchantDashboard merchantDashboard;
+
 	private MerchantProfilePage merchantProfilePage;
+
 	private MerchantUpdateProfilPage merchantUpdateProfilPage;
+
+    private AdminProfilPage adminProfilPage;
 
 	public Pages() {
 
@@ -22,6 +29,7 @@ public class Pages extends BasePage {
 		this.merchantDashboard = new MerchantDashboard();
 		this.merchantProfilePage = new MerchantProfilePage();
 		this.merchantUpdateProfilPage = new MerchantUpdateProfilPage();
+		this.adminProfilPage =new AdminProfilPage();
 	}
 
 	public HomePage getHomePage() {
@@ -48,4 +56,10 @@ public class Pages extends BasePage {
 
 		return merchantUpdateProfilPage;
 	}
+
+	public AdminProfilPage getAdminProfilPage() {
+
+		return adminProfilPage;
+	}
+
 }

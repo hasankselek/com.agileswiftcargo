@@ -18,232 +18,238 @@ import java.time.Duration;
 
 import static org.junit.Assert.*;
 
-public class HomePageStepDef  extends BaseStep {
+public class HomePageStepDef extends BaseStep {
 
-    HomePage homePage = new HomePage();
+	HomePage homePage = new HomePage();
 
+	@Then("Enters the {string}")
+	public void enters_the(String configdenUrl) {
 
-    @Then("Enters the {string}")
-    public void enters_the(String configdenUrl) {
+		homePage.driver.get(homePage.configLoader.getConfigValue(configdenUrl));
 
-        homePage.driver.get(homePage.configLoader.getConfigValue(configdenUrl));
+	}
 
-    }
+	@Then("Verifies access to homepage")
+	public void verifies_access_to_homepage() {
 
-    @Then("Verifies access to homepage")
-    public void verifies_access_to_homepage() {
+		assertEquals(homePage.configLoader.getConfigValue("homepageUrl"), homePage.driver.getCurrentUrl());
+	}
 
-        assertEquals(homePage.configLoader.getConfigValue("homepageUrl"),homePage.driver.getCurrentUrl());
-    }
+	@Then("Verifies homepage load successfully")
+	public void verifies_homepage_load_successfully() {
 
-    @Then("Verifies homepage load successfully")
-    public void verifies_homepage_load_successfully() {
+		assertTrue(homePage.ourServicesHeader.isDisplayed());
 
-        assertTrue(homePage.ourServicesHeader.isDisplayed());
+	}
 
-    }
+	@Then("Verifies register button is displayed")
+	public void verifiesRegisterButtonIsDisplayed() {
 
-    @Then("Verifies register button is displayed")
-    public void verifiesRegisterButtonIsDisplayed() {
+		assertTrue(homePage.registerButton.isDisplayed());
 
-        assertTrue(homePage.registerButton.isDisplayed());
+	}
 
+	@Then("Clicks register button and verifies register page opens")
+	public void clicksRegisterButtonAndVerifiesRegisterPageOpens() {
 
-    }
+		homePage.registerButton.click();
+		ReusableMethods.waitForPageToLoad(1);
+	}
 
-    @Then("Clicks register button and verifies register page opens")
-    public void clicksRegisterButtonAndVerifiesRegisterPageOpens() {
+	@When("The user goes to the Why Agile Swift Cargo title")
+	public void user_goes_to_the_why_agile_swift_cargo_title() {
 
-        homePage.registerButton.click();
-        ReusableMethods.waitForPageToLoad(1);
-    }
+		JSUtilities.scrollToElement(DRIVER, PAGES.getHomePage().getWhyAgileSwiftCargoText());
+	}
 
-    @When("The user goes to the Why Agile Swift Cargo title")
-    public void user_goes_to_the_why_agile_swift_cargo_title() {
+	@Then("The user verifies that the headers are displayed")
+	public void user_verifies_that_the_headers_are_displayed() {
 
-        JSUtilities.scrollToElement(DRIVER,PAGES.getHomePage().getWhyAgileSwiftCargoText());
-    }
+		PAGES.getHomePage().getWhyAgileSwiftCargoHeadings();
+	}
 
-    @Then("The user verifies that the headers are displayed")
-    public void user_verifies_that_the_headers_are_displayed() {
+	@Then("The user verifies that the images are displayed")
+	public void userVerifiesThatTheImagesAreDisplayed() {
 
-        PAGES.getHomePage().getWhyAgileSwiftCargoHeadings();
-    }
+		PAGES.getHomePage().getWhyAgileSwiftCargoImages();
 
-    @Then("The user verifies that the images are displayed")
-    public void userVerifiesThatTheImagesAreDisplayed() {
+	}
 
-        PAGES.getHomePage().getWhyAgileSwiftCargoImages();
+	@Then("Verifies that the text box labelled Enter tracking id is displayed")
+	public void verifiesThatTheTextBoxLabelledEnterTrackingIdIsDisplayed() {
 
-    }
+		PAGES.getHomePage().getTrackingIdBoxIsDisplayed();
 
-    @Then("Verifies that the text box labelled Enter tracking id is displayed")
-    public void verifiesThatTheTextBoxLabelledEnterTrackingIdIsDisplayed() {
+	}
 
-        PAGES.getHomePage().getTrackingIdBoxIsDisplayed();
+	@Then("Verifies that data can be entered in the Text Box")
+	public void verifiesThatDataCanBeEnteredInTheTextBox() {
 
-    }
+		PAGES.getHomePage().getTrackingIdBoxIsEnabled();
+	}
 
-    @Then("Verifies that data can be entered in the Text Box")
-    public void verifiesThatDataCanBeEnteredInTheTextBox() {
+	@When("Enter tracking id {string} in the Enter tracking id box")
+	public void enterTrackingIdInTheEnterTrackingIdBox(String trackingID) {
 
-        PAGES.getHomePage().getTrackingIdBoxIsEnabled();
-    }
+		PAGES.getHomePage().enterTrackingID(trackingID);
+	}
 
-    @When("Enter tracking id {string} in the Enter tracking id box")
-    public void enterTrackingIdInTheEnterTrackingIdBox(String trackingID) {
+	@And("Clicks {string} button")
+	public void clicksButton(String text) {
 
-        PAGES.getHomePage().enterTrackingID(trackingID);
-    }
+		ReusableMethods.clickWithText(text);
+	}
 
-    @And("Clicks {string} button")
-    public void clicksButton(String text) {
+	@Then("Verifies Our Service header visibilty")
+	public void verifiesOurServiceHeaderVisibilty() {
 
-        ReusableMethods.clickWithText(text);
-    }
+		assertTrue(homePage.ourServicesHeader.isDisplayed());
 
+	}
 
+	@Then("Verifies {string}, {string}, {string}, {string} headers visibility")
+	public void verifiesECommerceDeliveryPickDropPackageingWarehousingHeadersVisibility(String header1, String header2,
+			String header3, String header4) {
 
-    @Then("Verifies Our Service header visibilty")
-    public void verifiesOurServiceHeaderVisibilty() {
+		if (homePage.driver.getCurrentUrl().equals("https://qa.agileswiftcargo.com/")) {
 
-        assertTrue(homePage.ourServicesHeader.isDisplayed());
+			ReusableMethods.scrollToElement(homePage.ourServicesHeader);
 
-    }
+			homePage.serviceHeadersVisibilty(header1);
+			homePage.serviceHeadersVisibilty(header2);
+			homePage.serviceHeadersVisibilty(header3);
+			homePage.serviceHeadersVisibilty(header4);
+		}
+		else {
 
-    @Then("Verifies {string}, {string}, {string}, {string} headers visibility")
-    public void verifiesECommerceDeliveryPickDropPackageingWarehousingHeadersVisibility(String header1 , String header2 , String header3 , String header4) {
+			homePage.serviceHeadersVisibilty(header1);
+			homePage.serviceHeadersVisibilty(header2);
+			homePage.serviceHeadersVisibilty(header3);
+			homePage.serviceHeadersVisibilty(header4);
 
-        if (homePage.driver.getCurrentUrl().equals("https://qa.agileswiftcargo.com/")){
+		}
 
-           ReusableMethods.scrollToElement(homePage.ourServicesHeader);
+	}
 
-            homePage.serviceHeadersVisibilty(header1);
-            homePage.serviceHeadersVisibilty(header2);
-            homePage.serviceHeadersVisibilty(header3);
-            homePage.serviceHeadersVisibilty(header4);
-        } else {
+	@And("Verifies an arrow visible under the services and is clickable")
+	public void verifiesAnArrowVisibleUnderTheServicesAndIsClickable() {
 
-            homePage.serviceHeadersVisibilty(header1);
-            homePage.serviceHeadersVisibilty(header2);
-            homePage.serviceHeadersVisibilty(header3);
-            homePage.serviceHeadersVisibilty(header4);
+		homePage.navigationArrowsVisibility();
+		homePage.clickNavigationArrow(1);
 
-        }
+	}
 
+	@Then("Clicks arrow under the {string}")
+	public void clicksArrowUnderThe(String serviceHeader) {
 
+		if (homePage.driver.getCurrentUrl().equals("https://qa.agileswiftcargo.com/")) {
+			ReusableMethods.scrollToElement(homePage.ourServicesHeader);
+			ReusableMethods.hardWait(2);
 
-    }
+			if (serviceHeader.equals("E-Commerce delivery")) {
 
-    @And("Verifies an arrow visible under the services and is clickable")
-    public void verifiesAnArrowVisibleUnderTheServicesAndIsClickable() {
+				homePage.clickNavigationArrow(1);
 
-        homePage.navigationArrowsVisibility();
-        homePage.clickNavigationArrow(1);
+			}
+			else if (serviceHeader.equals("Pick & Drop")) {
 
+				homePage.clickNavigationArrow(2);
 
+			}
+			else if (serviceHeader.equals("Packageing")) {
 
+				homePage.clickNavigationArrow(3);
 
-    }
+			}
+			else if (serviceHeader.equals("Warehousing")) {
 
-    @Then("Clicks arrow under the {string}")
-    public void clicksArrowUnderThe(String serviceHeader) {
+				homePage.clickNavigationArrow(4);
 
-       if (homePage.driver.getCurrentUrl().equals("https://qa.agileswiftcargo.com/")){
-           ReusableMethods.scrollToElement(homePage.ourServicesHeader);
-           ReusableMethods.hardWait(2);
+			}
+			else {
+				System.out.println("Sorry,there is no such a service");
+			}
+		}
+		else {
 
-           if (serviceHeader.equals("E-Commerce delivery")){
+			if (serviceHeader.equals("E-Commerce delivery")) {
 
-               homePage.clickNavigationArrow(1);
+				homePage.clickNavigationArrow(1);
 
-           } else if (serviceHeader.equals("Pick & Drop")) {
+			}
+			else if (serviceHeader.equals("Pick & Drop")) {
 
-               homePage.clickNavigationArrow(2);
+				homePage.clickNavigationArrow(2);
 
-           } else if (serviceHeader.equals("Packageing")) {
+			}
+			else if (serviceHeader.equals("Packageing")) {
 
-               homePage.clickNavigationArrow(3);
+				homePage.clickNavigationArrow(3);
 
+			}
+			else if (serviceHeader.equals("Warehousing")) {
 
-           } else if (serviceHeader.equals("Warehousing")) {
+				homePage.clickNavigationArrow(4);
 
-               homePage.clickNavigationArrow(4);
+			}
+			else {
+				System.out.println("Sorry,there is no such a service");
+			}
 
-           } else {
-               System.out.println("Sorry,there is no such a service");
-           }
-       } else {
+		}
 
-           if (serviceHeader.equals("E-Commerce delivery")){
+	}
 
-               homePage.clickNavigationArrow(1);
+	@Then("On the homepage, it goes all the way down to the footer section")
+	public void on_the_homepage_it_goes_all_the_way_down_to_the_footer_section() {
+		ReusableMethods.scrollToElement(homePage.SubscribeUsText);
+		ReusableMethods.hardWait(5);
+	}
 
-           } else if (serviceHeader.equals("Pick & Drop")) {
+	@Then("Tests the visibility {string} text")
+	public void tests_the_visibility_and_functionality_of_the_textbox_in_the_menu(String istenenkelime) {
 
-               homePage.clickNavigationArrow(2);
+		homePage.footerEnterMailButon.isDisplayed();
 
-           } else if (serviceHeader.equals("Packageing")) {
+	}
 
-               homePage.clickNavigationArrow(3);
+	@Then("Enters {string} in the textbox")
+	public void enters_in_the_textbox(String email) {
+		homePage.enterMailButtonu.sendKeys(email);
+		homePage.footerEnterMailButon.click();
+		ReusableMethods.hardWait(5);
 
+	}
 
-           } else if (serviceHeader.equals("Warehousing")) {
+	@Then("Confirms that registration has been done in a successful")
+	public void confirms_that_registration_has_been_done_in_a_successful() {
 
-               homePage.clickNavigationArrow(4);
+		Assert.assertTrue(homePage.werifyText.isDisplayed());
 
-           } else {
-               System.out.println("Sorry,there is no such a service");
-           }
+	}
 
+	@Then("In the upper section of the home page, the inscription {string} is verified.")
+	public void In_the_upper_section_of_the_home_page_the_inscription_is_verified(String arananKelime) {
+		ReusableMethods.findElementByText(arananKelime);
 
-       }
+	}
 
+	@Then("Click on {string}")
+	public void click_on(String tiklanacakKelime) {
+		ReusableMethods.clickWithText(tiklanacakKelime);
+		ReusableMethods.hardWait(3);
+	}
 
+	@Then("The page that opens is verified as {string}")
+	public void the_page_that_opens_is_verified_as(String aranacakUrl) {
 
-    }
-    @Then("On the homepage, it goes all the way down to the footer section")
-    public void on_the_homepage_it_goes_all_the_way_down_to_the_footer_section() {
-        ReusableMethods.scrollToElement(homePage.SubscribeUsText);
-        ReusableMethods.hardWait(5);
-    }
-    @Then("Tests the visibility {string} text")
-    public void tests_the_visibility_and_functionality_of_the_textbox_in_the_menu(String istenenkelime) {
+		assertEquals(homePage.configLoader.getConfigValue(aranacakUrl), homePage.driver.getCurrentUrl());
+	}
 
-        homePage.footerEnterMailButon.isDisplayed();
-
-    }
-    @Then("Enters {string} in the textbox")
-    public void enters_in_the_textbox(String email) {
-        homePage.enterMailButtonu.sendKeys(email);
-        homePage.footerEnterMailButon.click();
-        ReusableMethods.hardWait(5);
-
-    }
-    @Then("Confirms that registration has been done in a successful")
-    public void confirms_that_registration_has_been_done_in_a_successful() {
-
-        Assert.assertTrue(homePage.werifyText.isDisplayed());
-
-    }
-
-
-    @Then("In the upper section of the home page, the inscription {string} is verified.")
-    public void In_the_upper_section_of_the_home_page_the_inscription_is_verified(String arananKelime) {
-        ReusableMethods.firstElementByText(arananKelime);
-
-    }
-    @Then("Click on {string}")
-    public void click_on(String tiklanacakKelime) {
-        ReusableMethods.clickWithText(tiklanacakKelime);
+    @Then("It is verified that {string} is visible in the Body section of the Home Page")
+    public void It_is_verified_that_is_visible_in_the_body_section_of_the_home_page(String aranacakText) {
+        ReusableMethods.scrollToText(Driver.getDriver(),aranacakText);
         ReusableMethods.hardWait(3);
-    }
-
-
-    @Then("The page that opens is verified as {string}")
-    public void the_page_that_opens_is_verified_as(String aranacakUrl) {
-
-        assertEquals(homePage.configLoader.getConfigValue(aranacakUrl),homePage.driver.getCurrentUrl());
 
     }
 
