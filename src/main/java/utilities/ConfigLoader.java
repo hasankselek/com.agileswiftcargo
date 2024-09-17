@@ -6,7 +6,7 @@ import java.util.Properties;
 
 public class ConfigLoader {
 
-	private Properties properties;
+	private static Properties properties;
 
 	public ConfigLoader() {
 		try {
@@ -20,7 +20,7 @@ public class ConfigLoader {
 	}
 
 	// Config dosyasındaki değeri döndürür
-	public String getConfigValue(String key) {
+	public static String getConfigValue(String key) {
 		return properties.getProperty(key);
 	}
 
