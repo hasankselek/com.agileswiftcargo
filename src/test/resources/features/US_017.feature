@@ -12,6 +12,7 @@ Feature: As a merchant, I would like to have an administration panel available t
 
   @log2
   Scenario: TC_1702 Social Media icons visibility and redirection test
+    #this test runned by manual
 
     Given Enters the "loginpageUrl"
     Then  Verifies "Facebook" button is visible and redirect to "Facebook".
