@@ -1,5 +1,5 @@
 @US_002
-Feature:
+Feature: Testing the existence of Homepage menu titles
 
   Background: Common Steps
     Given Enters the "homepageUrl"

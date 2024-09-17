@@ -247,4 +247,11 @@ public class HomePageStepDef extends BaseStep {
 
 	}
 
+    @Then("It is verified that {string} is visible in the Body section of the Home Page")
+    public void It_is_verified_that_is_visible_in_the_body_section_of_the_home_page(String aranacakText) {
+        ReusableMethods.scrollToText(Driver.getDriver(),aranacakText);
+        ReusableMethods.hardWait(3);
+
+    }
+
 }
