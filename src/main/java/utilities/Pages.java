@@ -19,7 +19,9 @@ public class Pages extends BasePage {
 	private MerchantProfilePage merchantProfilePage;
 
 	private MerchantUpdateProfilPage merchantUpdateProfilPage;
+
     private AdminProfilPage adminProfilPage;
+
 	public Pages() {
 
 		this.homePage = new HomePage();
@@ -54,12 +56,10 @@ public class Pages extends BasePage {
 
 		return merchantUpdateProfilPage;
 	}
-<<<<<<< hasan
 
-=======
 	public AdminProfilPage getAdminProfilPage() {
 
 		return adminProfilPage;
 	}
->>>>>>> main
+
 }
