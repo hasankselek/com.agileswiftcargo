@@ -21,6 +21,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Driver {
 
+
 	private static ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
 
 	private static ConfigLoader configLoader = new ConfigLoader();
@@ -59,6 +60,7 @@ public class Driver {
 					// gelen isteklere izin verir, özellikle uzaktan WebDriver kullanımı
 					// ya da çapraz kökenli kaynakları test ederken işe yarar.
 					opt.addArguments("--remote-allow-origins=*");
+					opt.addArguments("--disable-search-engine-choice-screen");
 					opt.setAcceptInsecureCerts(true);
 					driverPool.set(new ChromeDriver(opt));
 					break;
