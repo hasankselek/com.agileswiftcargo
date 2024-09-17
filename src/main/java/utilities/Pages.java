@@ -10,9 +10,13 @@ import pages.merchantPages.MerchantUpdateProfilPage;
 public class Pages extends BasePage {
 
 	private HomePage homePage;
+
 	private TrackingPage trackingPage;
+
 	private MerchantDashboard merchantDashboard;
+
 	private MerchantProfilePage merchantProfilePage;
+
 	private MerchantUpdateProfilPage merchantUpdateProfilPage;
 
 	public Pages() {
@@ -48,4 +52,5 @@ public class Pages extends BasePage {
 
 		return merchantUpdateProfilPage;
 	}
+
 }
