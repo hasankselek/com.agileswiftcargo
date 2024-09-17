@@ -20,22 +20,21 @@ import static org.junit.Assert.assertEquals;
 public class MerchantDashboardStepDef extends BaseStep {
 
     MerchantDashboard merchantDashboard=new MerchantDashboard();
-
     MerchantLoginPage merchantLoginPage = new MerchantLoginPage();
     HomePage homePage = new HomePage();
     ExcelDataReader reader = new ExcelDataReader(merchantLoginPage.configLoader.getConfigValue("testData"),"merchantLogin");
 
-    @Then("Click profile icon")
+  @Then("Click profile icon")
     public void click_profile_icon() {
-        PAGES.getMerchantDashboard().getClickProfileIcon();
+    PAGES.getMerchantDashboard().getClickProfileIcon();
+	}
 
-    }
+	@Then("Verifies {string} {string} {string} {string} links are displayed")
+	public void verifies_links_are_displayed(String Profile, String PaymentInformation, String ChangePassword,
+			String Logout) {
 
-    @Then("Verifies {string} {string} {string} {string} links are displayed")
-    public void verifies_links_are_displayed(String Profile, String PaymentInformation, String ChangePassword, String Logout) {
-
-        PAGES.getMerchantDashboard().getVerifyProfileIconLinks(Profile,PaymentInformation,ChangePassword,Logout);
-    }
+		PAGES.getMerchantDashboard().getVerifyProfileIconLinks(Profile, PaymentInformation, ChangePassword, Logout);
+	}
 
     @Then("the {string} link should be visible in the dashboard menu")
     public void the_link_should_be_visible_in_the_dashboard_menu(String text) {

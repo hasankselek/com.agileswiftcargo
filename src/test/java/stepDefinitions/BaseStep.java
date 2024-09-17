@@ -5,12 +5,14 @@ import utilities.Driver;
 import utilities.Pages;
 
 public abstract class BaseStep {
-    protected final WebDriver DRIVER;
 
-    protected static Pages PAGES;
+	protected final WebDriver DRIVER;
 
-    public BaseStep() {
-        DRIVER = Driver.getDriver();
-        PAGES = new Pages();
-    }
+	protected static Pages PAGES;
+
+	public BaseStep() {
+		DRIVER = Driver.getDriver();
+		PAGES = new Pages();
+	}
+
 }

@@ -6,45 +6,40 @@ import pages.BasePage;
 
 public class MerchantRegistrationPage extends BasePage {
 
-    @FindBy(xpath = "//*[text()='Register']")
-    public WebElement registerButton;
+	@FindBy(xpath = "//*[text()='Register']")
+	public WebElement registerButton;
 
-    @FindBy(id = "business_name")
-    public WebElement businessNameBox;
+	@FindBy(id = "business_name")
+	public WebElement businessNameBox;
 
-    @FindBy(id = "full_name")
-    public WebElement fullNameBox;
+	@FindBy(id = "full_name")
+	public WebElement fullNameBox;
 
-    @FindBy(id = "mobile")
-    public WebElement mobileBox;
+	@FindBy(id = "mobile")
+	public WebElement mobileBox;
 
-    @FindBy(id = "password")
-    public WebElement passwordBox;
+	@FindBy(id = "password")
+	public WebElement passwordBox;
 
-    @FindBy(id = "address")
-    public WebElement addressBox;
+	@FindBy(id = "address")
+	public WebElement addressBox;
 
-    @FindBy(id = "merchant_registration_checkbox")
-    public WebElement privacyPolicyCheckbox;
+	@FindBy(id = "merchant_registration_checkbox")
+	public WebElement privacyPolicyCheckbox;
 
-    @FindBy(xpath = "//*[text()='Agile Swift Cargo']")
-    public WebElement privacyPolicyLink;
+	@FindBy(xpath = "//*[text()='Agile Swift Cargo']")
+	public WebElement privacyPolicyLink;
 
-    @FindBy(id = "select2-hub_id-container")
-    public WebElement selectHubDropdown;
+	@FindBy(id = "select2-hub_id-container")
+	public WebElement selectHubDropdown;
 
-    @FindBy(xpath ="//*[text()='New York City']")
-    public WebElement newYorkHub;
+	@FindBy(xpath = "//*[text()='New York City']")
+	public WebElement newYorkHub;
 
-    @FindBy(xpath = "//*[text()='Register My Account']")
-    public WebElement registerMyAccButton;
+	@FindBy(xpath = "//*[text()='Register My Account']")
+	public WebElement registerMyAccButton;
 
-    @FindBy(xpath = "//*[@class='invalid-feedback']")
-    public WebElement warningMessage;
-
-
-
-
-
+	@FindBy(xpath = "//*[@class='invalid-feedback']")
+	public WebElement warningMessage;
 
 }
