@@ -35,7 +35,22 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//*[@class='text-primary']")
     private List<WebElement> navigationArrows;
 
-
+    @FindBy(xpath = "//*[@class='nav-link   active  ']")
+    private WebElement HomeLink;
+    @FindBy(xpath = "(//*[@class='nav-link  '])[2]")
+    private WebElement BlogsLink;
+    @FindBy(xpath ="//*[@class='font-size-1-5rem display-6 font-weight-bold text-start my-4  ']")
+    private WebElement blogsTitle;
+    @FindBy(xpath = "//*[@class='col-lg-4']")
+    private List<WebElement> blogsImageCollection;
+    @FindBy(xpath = "//*[@class='text-decoration-none']")
+    private List<WebElement> blogsTextCollection;
+    @FindBy(xpath = "//*[@class='page-content']")
+    private WebElement largeTextAfterClick;
+    @FindBy(xpath = "//*[@class='font-size-1-5rem display-6 font-weight-bold text-start my-4  ']")
+    private WebElement blockTextAfterClick;
+    @FindBy(xpath = "//*[@class='card mt-3 mb-3 latest-blog-item']")
+    private List<WebElement> latestBlogsArea;
 
     public void getWhyAgileSwiftCargoHeadings(){
 
@@ -99,11 +114,21 @@ public class HomePage extends BasePage {
         for (int i = 0; i < navigationArrows.size(); i++) {
             assertTrue(navigationArrows.get(i).isDisplayed());
         }
-
-
     }
 
 
+public WebElement getHomeLink(){
+        return HomeLink;
+}
+public WebElement getBlogsLink(){
+        return BlogsLink;
+}
+public WebElement getBlogsTitle(){return blogsTitle;}
+public List<WebElement> getBlogsImageCollection(){return blogsImageCollection;}
+public List<WebElement> getBlogsTextCollection(){return blogsTextCollection;}
+public WebElement getBlockTextAfterClick(){return blockTextAfterClick;}
+public WebElement getlargeTextAfterClick(){return largeTextAfterClick;}
+public List<WebElement> getLatestBlogsArea(){return latestBlogsArea;}
 
 
 
