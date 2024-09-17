@@ -57,7 +57,7 @@ public class ReusableMethods {
 			}
 		}
 		Driver.getDriver().switchTo().window(currentWindow); // switch back if title not
-																// found
+		// found
 	}
 
 	// ========================= Hover and Interactions =========================//
@@ -112,7 +112,7 @@ public class ReusableMethods {
 	public static void uploadFile(String filePath, WebElement uploadElement) {
 
 		uploadElement.sendKeys(filePath); // Directly sends the file path to the input
-											// element
+		// element
 	}
 
 	// ========================= Text Retrieval Methods =========================//
@@ -429,12 +429,36 @@ public class ReusableMethods {
 		select.selectByValue(value);
 	}
 
+	public static WebElement findMenuItemByTextMerchant(WebDriver driver, String menuText) {
+		// <li> elementlerini bul class="navbar-nav" içinde
+		List<WebElement> menuItems = driver.findElements(By.xpath("//*[@class='navbar-nav']//li"));
+
+		// Metni içeren WebElement'i bulmak için bir değişken oluştur
+		WebElement foundElement = null;
+
+		// Her bir menü öğesini kontrol et
+		for (WebElement item : menuItems) {
+			// Metni al ve başındaki/sonundaki boşlukları temizle
+			String normalizedText = item.getText().trim();
+
+			// Eğer normalize edilmiş text beklenen text ile eşleşiyorsa
+			if (normalizedText.equals(menuText)) {
+				foundElement = item; // Metni içeren WebElement'i bul
+				break; // Döngüden çık
+			}
+		}
+
+		// WebElement'i döndür (null olabilir, bu nedenle null kontrolü yapılmalı)
+		return foundElement;
+	}
+
 	public static WebElement findElementByText(String text) {
 		try {
 			// XPath ile sayfadaki her türlü element içinde verilen metni arar ancak asagi yukari kaydirma yapmaz
 			WebElement element = Driver.getDriver().findElement(By.xpath("//*[contains(text(), '" + text + "')]"));
 			return element;
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			System.out.println("Element bulunamadı: " + text);
 			return null;
 		}
@@ -445,11 +469,29 @@ public class ReusableMethods {
 			// XPath ile element birden fazla ise sayi girilerek aranir
 			WebElement element = Driver.getDriver().findElement(By.xpath("(//*[contains(text(), '" + text + "')])["+sayi+"]"));
 			return element;
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			System.out.println("Element bulunamadı: " + text);
 			return null;
 		}
+
 	}
+
+	public static boolean paymentNotificationCatcher() {
+		JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+		String script = "return document.evaluate(\"//*[contains(text(), 'success')]\", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;";
+		WebElement notification = (WebElement) js.executeScript(script);
+		boolean flag = false;
+
+		if (notification != null) {
+
+			flag = true;
+
+		}
+
+		return flag;
+	}
+
 
 
 		// Metne göre elementi bulup sayfayı o elemente kaydıran fonksiyon
@@ -463,5 +505,7 @@ public class ReusableMethods {
 			assertTrue(driver.findElement(By.xpath("//*[text()='"+text+"']")).isDisplayed());
 		}
 
+
+}
 
 }

@@ -12,57 +12,99 @@ import static org.junit.Assert.*;
 
 public class MerchantUpdateProfilPage extends BasePage {
 
-    @FindBy(xpath = "(//input[@id='name'])[1]")
-    private WebElement merchantName;
+	@FindBy(xpath = "(//input[@id='name'])[1]")
+	private WebElement merchantName;
 
-    @FindBy(xpath = "(//input[@id='address'])[1]")
-    private WebElement merchantAdress;
+	@FindBy(xpath = "(//input[@id='address'])[1]")
+	private WebElement merchantAdress;
 
-    @FindBy(xpath = "(//input[@id='image_id'])[1]")
-    private WebElement merchantImage;
+	@FindBy(xpath = "(//input[@id='email'])[1]")
+	private WebElement merchantEmail;
 
-    @FindBy(xpath = "(//img[@alt='user'])[1]")
-    private WebElement merchantUserImage;
+	@FindBy(xpath = "//input[@id='mobile']")
+	private WebElement merchantPhone;
 
-    @FindBy(css = "button[class='btn btn-space btn-primary']")
-    private WebElement saveChangeButton;
+	@FindBy(xpath = "//input[@id='business_name']")
+	private WebElement merchantBusinessName;
 
-    @FindBy(xpath = "//div[@class='toast toast-error']")
-    private WebElement suscessMessage;
+	@FindBy(xpath = "(//input[@id='image_id'])[1]")
+	private WebElement merchantImage;
 
-    public void getVerifyDisplayedMerchantInfo(){
-        assertTrue(merchantName.isDisplayed());
-        assertTrue(merchantAdress.isDisplayed());
-        assertTrue(merchantUserImage.isDisplayed());
+	@FindBy(xpath = "(//img[@alt='user'])[1]")
+	private WebElement merchantUserImage;
 
-    }
+	@FindBy(css = "button[class='btn btn-space btn-primary']")
+	private WebElement saveChangeButton;
 
-    public void setMerchantInfo(String name,String adress,String picture){
+	@FindBy(xpath = "//div[@class='toast toast-error']")
+	private WebElement suscessMessage;
 
-        merchantName.clear();
-        merchantName.sendKeys(name);
+	@FindBy(xpath = "//small[normalize-space()='The Name field is required.']")
+	private WebElement merchantNameError;
 
-        merchantAdress.clear();
-        merchantAdress.sendKeys(adress);
-        ReusableMethods.hardWait(2);
+	@FindBy(xpath = "//small[normalize-space()='The Address field is required.']")
+	private WebElement merchantAdressError;
 
-        ReusableMethods.uploadFile(configLoader.getConfigValue(picture),merchantImage);
-        ReusableMethods.hardWait(3);
+	public void getVerifyDisplayedMerchantInfo() {
+		assertTrue(merchantName.isDisplayed());
+		assertTrue(merchantAdress.isDisplayed());
+		assertTrue(merchantUserImage.isDisplayed());
 
-    }
+	}
 
-    public void getClickSaveChangeButton(){
+	public void setMerchantInfo(String name, String adress, String picture) {
 
-        saveChangeButton.click();
-    }
+		merchantName.clear();
+		merchantName.sendKeys(name);
 
-    public void getSuccessMessages(){
+		merchantAdress.clear();
+		merchantAdress.sendKeys(adress);
+		ReusableMethods.hardWait(2);
 
-        try {
-            assertTrue("Hata mesajı bulunamadı.", suscessMessage.isDisplayed());
-        } catch (NoSuchElementException e) {
-            fail();
-        }
+		ReusableMethods.uploadFile(configLoader.getConfigValue(picture), merchantImage);
+		ReusableMethods.hardWait(3);
 
-    }
+	}
+
+	public void setMerchantInfoNameAdress(String name, String adress) {
+		merchantName.clear();
+		merchantName.sendKeys(name);
+
+		merchantAdress.clear();
+		merchantAdress.sendKeys(adress);
+	}
+
+	public void getClickSaveChangeButton() {
+
+		saveChangeButton.click();
+	}
+
+	public void getSuccessMessages() {
+
+		try {
+			assertTrue(suscessMessage.isDisplayed());
+		}
+		catch (NoSuchElementException e) {
+			fail();
+		}
+
+	}
+
+	public void getErrorMessages() {
+
+		merchantAdressError.isDisplayed();
+		ReusableMethods.hardWait(1);
+		merchantAdressError.isDisplayed();
+
+	}
+
+	public void getVerifyProfileInformation() {
+		assertTrue(merchantName.isDisplayed());
+		assertTrue(merchantEmail.isDisplayed());
+		assertTrue(merchantPhone.isDisplayed());
+		assertTrue(merchantBusinessName.isDisplayed());
+		assertTrue(merchantAdress.isDisplayed());
+
+	}
+
 }

@@ -16,92 +16,104 @@ import static org.junit.Assert.assertTrue;
 
 public class HomePage extends BasePage {
 
-    @FindBy(xpath = "//*[text()='Our Services']")
-    public WebElement ourServicesHeader;
+	@FindBy(xpath = "//*[text()='Our Services']")
+	public WebElement ourServicesHeader;
 
-    @FindBy(xpath = "//*[text()='Register']")
-    public WebElement registerButton;
+	@FindBy(xpath = "//*[text()='Register']")
+	public WebElement registerButton;
 
-    @FindBy(xpath = "//span[normalize-space()='Why Agile Swift Cargo']")
-    private WebElement whyAgileSwiftCargoText;
+	@FindBy(xpath = "//span[normalize-space()='Why Agile Swift Cargo']")
+	private WebElement whyAgileSwiftCargoText;
 
-    @FindBy(xpath = "//h5[@class='my-3 font-weight-bold']")
-    private List<WebElement> whyAgileSwiftCargoHeadings;
+	@FindBy(xpath = "//h5[@class='my-3 font-weight-bold']")
+	private List<WebElement> whyAgileSwiftCargoHeadings;
 
-    @FindBy(xpath = "//div[@class='text-center whycourier-box mb-0']")
-    private List<WebElement> whyAgileSwiftCargoImages;
+	@FindBy(xpath = "//div[@class='text-center whycourier-box mb-0']")
+	private List<WebElement> whyAgileSwiftCargoImages;
 
-    @FindBy(xpath = "//input[@placeholder='Enter tracking id']")
-    private WebElement trackingIdTextBox;
+	@FindBy(xpath = "//input[@placeholder='Enter tracking id']")
+	private WebElement trackingIdTextBox;
 
-    @FindBy(xpath = "//*[@class='text-primary']")
-    private List<WebElement> navigationArrows;
+	@FindBy(xpath = "//*[@class='text-primary']")
+	private List<WebElement> navigationArrows;
 
-    @FindBy(xpath = "//*[text()='Home']")
-    public WebElement homeText;
+	@FindBy(xpath = "//*[text()='Subscribe Us']")
+	public WebElement SubscribeUsText;
 
-    @FindBy(xpath = "//*[text()='Pricing']")
-    public WebElement pricingText;
+	@FindBy(xpath = "//*[@class='fa fa-paper-plane']")
+	public WebElement footerEnterMailButon;
 
-    @FindBy(xpath = "//*[text()='Tracking']")
-    public WebElement trackingText;
+	@FindBy(xpath = "(//*[@class='form-control'])[2]")
+	public WebElement enterMailButtonu;
 
-    @FindBy(xpath = "(//*[text()='Blogs'])[1]")
-    public WebElement blogsText;
+	@FindBy(xpath = "//div[@class='toast toast-error']")
+	public WebElement werifyText;
 
-    @FindBy(xpath = "(//*[text()='About'])[1]")
-    public WebElement aboutText;
+	@FindBy(xpath = "//*[text()='Login']")
+	public WebElement loginButton;
 
-    @FindBy(xpath = "//*[text()='FAQ']")
-    public WebElement faqText;
+	@FindBy(xpath = "//*[text()='Home']")
+	public WebElement homeText;
 
-    @FindBy(xpath = "//*[text()='Contact']")
-    public WebElement contactText;
+	@FindBy(xpath = "//*[text()='Pricing']")
+	public WebElement pricingText;
+
+	@FindBy(xpath = "//*[text()='Tracking']")
+	public WebElement trackingText;
+
+	@FindBy(xpath = "(//*[text()='Blogs'])[1]")
+	public WebElement blogsText;
+
+	@FindBy(xpath = "(//*[text()='About'])[1]")
+	public WebElement aboutText;
+
+	@FindBy(xpath = "//*[text()='FAQ']")
+	public WebElement faqText;
 
 
+	@FindBy(xpath = "//*[text()='Contact']")
+	public WebElement contactText;
 
-    public void getWhyAgileSwiftCargoHeadings(){
+	public void getWhyAgileSwiftCargoHeadings() {
 
-        String expectedHeader = "Why Agile Swift Cargo";
-        assertEquals(expectedHeader,whyAgileSwiftCargoText.getText());
-        ReusableMethods.hardWait(3);
+		String expectedHeader = "Why Agile Swift Cargo";
+		assertEquals(expectedHeader, whyAgileSwiftCargoText.getText());
+		ReusableMethods.hardWait(3);
 
-        List<String> expectedHeadings = Arrays.asList("Timely Delivery", "Limitless Pickup", "Cash on delivery (COD)", "Get Payment Any Time", "Secure Handling", "Live Tracking Update");
+		List<String> expectedHeadings = Arrays.asList("Timely Delivery", "Limitless Pickup", "Cash on delivery (COD)",
+				"Get Payment Any Time", "Secure Handling", "Live Tracking Update");
 
-        for (int i = 0; i < expectedHeadings.size(); i++) {
-            assertEquals(whyAgileSwiftCargoHeadings.get(i).getText(), expectedHeadings.get(i));
-        }
+		for (int i = 0; i < expectedHeadings.size(); i++) {
+			assertEquals(whyAgileSwiftCargoHeadings.get(i).getText(), expectedHeadings.get(i));
+		}
 
-    }
+	}
 
-    public void getWhyAgileSwiftCargoImages(){
+	public void getWhyAgileSwiftCargoImages() {
 
-        ReusableMethods.hardWait(3);
-        for (int i = 0; i < whyAgileSwiftCargoImages.size(); i++) {
-            assertTrue(whyAgileSwiftCargoImages.get(i).isDisplayed());
-        }
+		ReusableMethods.hardWait(3);
+		for (int i = 0; i < whyAgileSwiftCargoImages.size(); i++) {
+			assertTrue(whyAgileSwiftCargoImages.get(i).isDisplayed());
+		}
 
-    }
+	}
 
-    public WebElement getWhyAgileSwiftCargoText(){
+	public WebElement getWhyAgileSwiftCargoText() {
 
-        return whyAgileSwiftCargoText;
-    }
+		return whyAgileSwiftCargoText;
+	}
 
-    public void getTrackingIdBoxIsDisplayed(){
+	public void getTrackingIdBoxIsDisplayed() {
 
-        assertTrue(trackingIdTextBox.isDisplayed());
-    }
+		assertTrue(trackingIdTextBox.isDisplayed());
+	}
 
-    public void getTrackingIdBoxIsEnabled(){
+	public void getTrackingIdBoxIsEnabled() {
 
-        assertTrue(trackingIdTextBox.isEnabled());
-    }
+		assertTrue(trackingIdTextBox.isEnabled());
+	}
 
-    public void enterTrackingID(String trackingID){
-
-        trackingIdTextBox.sendKeys(trackingID);
-    }
+	public void enterTrackingID(String trackingID) {
 
 
     public void serviceHeadersVisibilty(String text){
@@ -125,8 +137,31 @@ public class HomePage extends BasePage {
 
     }
 
+		trackingIdTextBox.sendKeys(trackingID);
+	}
 
 
+	public void serviceHeadersVisibilty(String text) {
+
+		assertTrue(driver.findElement(By.xpath("(//*[text()='" + text + "'])[1]")).isDisplayed());
+
+	}
+
+	public void clickNavigationArrow(int servisNo) {
+
+
+
+		navigationArrows.get(servisNo - 1).click();
+
+	}
+
+	public void navigationArrowsVisibility() {
+
+		for (int i = 0; i < navigationArrows.size(); i++) {
+			assertTrue(navigationArrows.get(i).isDisplayed());
+		}
+
+	}
 
 
 }
