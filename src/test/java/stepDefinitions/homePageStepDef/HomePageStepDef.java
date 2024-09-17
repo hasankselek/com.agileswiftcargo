@@ -3,9 +3,11 @@ package stepDefinitions.homePageStepDef;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import pages.homePages.HomePage;
 import stepDefinitions.BaseStep;
+import utilities.Driver;
 import utilities.JSUtilities;
 import utilities.ReusableMethods;
 
@@ -212,6 +214,13 @@ public class HomePageStepDef  extends BaseStep {
     public void the_page_that_opens_is_verified_as(String aranacakUrl) {
 
         assertEquals(homePage.configLoader.getConfigValue(aranacakUrl),homePage.driver.getCurrentUrl());
+
+    }
+
+    @Then("It is verified that {string} is visible in the Body section of the Home Page")
+    public void It_is_verified_that_is_visible_in_the_body_section_of_the_home_page(String aranacakText) {
+        ReusableMethods.scrollToText(Driver.getDriver(),aranacakText);
+        ReusableMethods.hardWait(3);
 
     }
 

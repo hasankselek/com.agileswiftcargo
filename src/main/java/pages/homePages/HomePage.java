@@ -60,7 +60,6 @@ public class HomePage extends BasePage {
 
 
 
-
     public void getWhyAgileSwiftCargoHeadings(){
 
         String expectedHeader = "Why Agile Swift Cargo";
@@ -109,7 +108,6 @@ public class HomePage extends BasePage {
 
         assertTrue(driver.findElement(By.xpath("(//*[text()='"+text+"'])[1]")).isDisplayed());
 
-
     }
 
     public void clickNavigationArrow(int servisNo){
@@ -126,11 +124,6 @@ public class HomePage extends BasePage {
 
 
     }
-
-
-
-
-
 
 
 
