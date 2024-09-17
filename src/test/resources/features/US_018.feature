@@ -14,14 +14,20 @@ Feature:As a merchant, I want to view and update my profile information.
 
     Then Verifies "Profile" "Payment Information" "Change password" "Logout" links are displayed
 
-
   @TC_1802
   Scenario: Account information visibility test
 
     And Clicks "Profile" button
-    Then Verifies that user "hasan kucukselek" "hasan.merchant@agileswiftcargo.com" "75396548963" "hasan kucukselek" "New York City" information is displayed
+    Then Verifies that user "Hasan Kucukselek" "hasan.merchant@agileswiftcargo.com" "75396548963" "hasan kucukselek" "New York City" information is displayed
 
-  @TC_1803 @positive
+  @TC_1803
+  Scenario: Edit Account page account information visibility test
+
+    And Clicks "Profile" button
+    Then Clicks " Edit" button
+    Then Verifies that user edit account page information is displayed
+
+  @TC_1804
   Scenario Outline: Edit Account Correct information test
 
     And Clicks "Profile" button
@@ -35,6 +41,21 @@ Feature:As a merchant, I want to view and update my profile information.
       | name             | adress        | image  |
       | Hasan Kselek     | Izmir         | image1 |
       | Hasan Kucukselek | New York City | image2 |
+
+
+  @TC_1805
+  Scenario Outline: Edit Account Incorrect information test
+
+    And Clicks "Profile" button
+    Then Clicks " Edit" button
+    Then Verifies that user name, address and profile photo are displayed
+    Then The user confirms that they can change their "<name>", "<adress>"
+    And Clicks Save Change button
+    Then Verifies that the error message is displayed
+
+    Examples:
+      | name             | adress        |
+      |                  |               |
 
 
 
