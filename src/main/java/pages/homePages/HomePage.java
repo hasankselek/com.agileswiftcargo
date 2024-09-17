@@ -70,6 +70,7 @@ public class HomePage extends BasePage {
 	@FindBy(xpath = "//*[text()='FAQ']")
 	public WebElement faqText;
 
+
 	@FindBy(xpath = "//*[text()='Contact']")
 	public WebElement contactText;
 
@@ -114,8 +115,31 @@ public class HomePage extends BasePage {
 
 	public void enterTrackingID(String trackingID) {
 
+
+    public void serviceHeadersVisibilty(String text){
+
+        assertTrue(driver.findElement(By.xpath("(//*[text()='"+text+"'])[1]")).isDisplayed());
+
+    }
+
+    public void clickNavigationArrow(int servisNo){
+
+        navigationArrows.get(servisNo-1).click();
+
+    }
+
+    public void navigationArrowsVisibility(){
+
+        for (int i = 0; i < navigationArrows.size(); i++) {
+            assertTrue(navigationArrows.get(i).isDisplayed());
+        }
+
+
+    }
+
 		trackingIdTextBox.sendKeys(trackingID);
 	}
+
 
 	public void serviceHeadersVisibilty(String text) {
 
@@ -124,6 +148,8 @@ public class HomePage extends BasePage {
 	}
 
 	public void clickNavigationArrow(int servisNo) {
+
+
 
 		navigationArrows.get(servisNo - 1).click();
 
@@ -136,5 +162,6 @@ public class HomePage extends BasePage {
 		}
 
 	}
+
 
 }
