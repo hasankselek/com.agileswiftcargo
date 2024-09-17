@@ -51,13 +51,6 @@ public class MerchantDashboard extends BasePage {
     }
 
 
-	public void getVerifyProfileIconLinks(String Profile, String PaymentInformation, String ChangePassword,
-			String Logout) {
 
-		assertEquals(profileIconLinks.get(0).getText(), Profile);
-		assertEquals(profileIconLinks.get(1).getText(), PaymentInformation);
-		assertEquals(profileIconLinks.get(2).getText(), ChangePassword);
-		assertEquals(profileIconLinks.get(3).getText(), Logout);
-	}
 
 }
