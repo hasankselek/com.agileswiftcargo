@@ -108,4 +108,5 @@ public class AdminRegisterStepDef extends BaseStep {
         assertTrue(adminRegistrationPage.driver.getCurrentUrl().contains("login"));
     }
 
+
 }

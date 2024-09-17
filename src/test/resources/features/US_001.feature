@@ -1,5 +1,5 @@
 @access
-Feature: US_001 As a visitor, I should be able to access the website in order to use it.
+Feature: As a visitor, I should be able to access the website in order to use it.
 
   Scenario: TC_0101 Access test to the homepage with URL
 

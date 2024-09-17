@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 		features = "src/test/resources/features", glue = { "stepDefinitions" },
 		plugin = { "pretty", "html:target/reports/cucumber-reports.html", "json:target/reports/cucumber.json",
 				"junit:target/reports/Cucumber.xml", },
-		tags = "@log4", dryRun = false, publish = true)
+		tags = "@br1", dryRun = false, publish = true)
 
 public class GulpembeRunner {
 
