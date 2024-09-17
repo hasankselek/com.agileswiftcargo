@@ -15,3 +15,6 @@ aboutUrl=https://qa.agileswiftcargo.com/about-us
 faqUrl=https://qa.agileswiftcargo.com/faq-list
 contactUrl=https://qa.agileswiftcargo.com/contact-send
 
+dashboardUrl=https://qa.agileswiftcargo.com/dashboard
+parcelUrl=https://qa.agileswiftcargo.com/merchant/parcel/index
+

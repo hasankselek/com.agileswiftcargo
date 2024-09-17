@@ -11,33 +11,34 @@ import static org.junit.Assert.assertTrue;
 
 public class TrackingPage extends BasePage {
 
-    @FindBy(xpath = "//span[@class='text-primary']")
-    private WebElement parcelTrackingNo;
+	@FindBy(xpath = "//span[@class='text-primary']")
+	private WebElement parcelTrackingNo;
 
-    @FindBy(xpath = "//div[@class='cd-timeline__content js-cd-content']")
-    private WebElement cargoInformation;
+	@FindBy(xpath = "//div[@class='cd-timeline__content js-cd-content']")
+	private WebElement cargoInformation;
 
-    @FindBy(xpath = "(//div[@class='col-lg-6 m-auto'])[1]")
-    private WebElement parcelNotFoundPic;
+	@FindBy(xpath = "(//div[@class='col-lg-6 m-auto'])[1]")
+	private WebElement parcelNotFoundPic;
 
-    public String getParcelTrackingNo(){
+	public String getParcelTrackingNo() {
 
-        return parcelTrackingNo.getText();
-    }
+		return parcelTrackingNo.getText();
+	}
 
-    public void verifiesTrackingPage(){
-        ReusableMethods.hardWait(2);
-        String expectedTrackingPage = "Parcel Tracking";
-        assertTrue(Driver.getDriver().getTitle().contains(expectedTrackingPage));
-    }
+	public void verifiesTrackingPage() {
+		ReusableMethods.hardWait(2);
+		String expectedTrackingPage = "Parcel Tracking";
+		assertTrue(Driver.getDriver().getTitle().contains(expectedTrackingPage));
+	}
 
-    public boolean getVisibleCargoInfo(){
+	public boolean getVisibleCargoInfo() {
 
-        return parcelTrackingNo.isDisplayed();
-    }
+		return parcelTrackingNo.isDisplayed();
+	}
 
-    public void getParcelNotFoundPic(){
+	public void getParcelNotFoundPic() {
 
-        assertTrue(parcelNotFoundPic.isDisplayed());
-    }
+		assertTrue(parcelNotFoundPic.isDisplayed());
+	}
+
 }

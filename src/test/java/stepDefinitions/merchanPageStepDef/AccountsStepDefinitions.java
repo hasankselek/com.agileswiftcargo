@@ -6,8 +6,8 @@ import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
-import pages.MerchantPages.Accounts;
-import pages.MerchantPages.MerchantLoginPage;
+import pages.merchantPages.Accounts;
+import pages.merchantPages.MerchantLoginPage;
 import utilities.ConfigLoader;
 import utilities.Driver;
 import utilities.ReusableMethods;
@@ -19,9 +19,10 @@ import java.util.List;
 public class AccountsStepDefinitions {
 
     ConfigLoader configLoader = new ConfigLoader();
-    Accounts accounts = new Accounts();
-    MerchantLoginPage merchantLoginPage = new MerchantLoginPage();
 
+    Accounts accounts = new Accounts();
+
+    MerchantLoginPage merchantLoginPage = new MerchantLoginPage();
 
     @Given("Go to the {string}")
     public void go_to_the(String string) {
@@ -67,7 +68,8 @@ public class AccountsStepDefinitions {
     }
 
     @Given("Verify that the table headers {string}, {string}, {string}, {string}, {string} is displayed correctly.")
-    public void verify_that_the_table_headers_is_displayed_correctly(String header1, String header2, String header3, String header4, String header5) {
+    public void verify_that_the_table_headers_is_displayed_correctly(String header1, String header2, String header3,
+                                                                     String header4, String header5) {
 
         // This will be method!!!
 
@@ -76,7 +78,6 @@ public class AccountsStepDefinitions {
         for (int i = 0; i < expectedHeaders.size(); i++) {
             Assert.assertEquals(expectedHeaders.get(i), accounts.paymentRLTHeader.get(i).getText());
         }
-
 
     }
 
@@ -140,7 +141,6 @@ public class AccountsStepDefinitions {
         Assert.assertTrue(accounts.merchantPaymentWindow.isDisplayed());
     }
 
-
     @Then("Fill in the Email, Card number, MMYY, and CVC information, then click the Pay button.")
     public void fill_in_the_email_card_number_mmyy_and_cvc_information_then_click_the_pay_button() {
 
@@ -177,7 +177,6 @@ public class AccountsStepDefinitions {
         Driver.getDriver().switchTo().defaultContent();
     }
 
-
     @Then("Verify that the payment is processed successfully.")
     public void verify_that_the_payment_is_processed_successfully() {
 
@@ -188,22 +187,24 @@ public class AccountsStepDefinitions {
     @Then("Enter valid data into the To Account but do not enter any data into the Amount field.")
     public void enter_valid_data_into_the_to_account_but_do_not_enter_any_data_into_the_amount_field() {
 
-            Select select = new Select(accounts.stripeToAccountBox);
-            select.selectByIndex(0);
+        Select select = new Select(accounts.stripeToAccountBox);
+        select.selectByIndex(0);
     }
 
     @Then("Verify that the {string} notification is displayed.")
     public void verify_that_the_notification_is_displayed(String string) {
+        Assert.assertTrue(ReusableMethods.paymentNotificationCatcher());
 
 
     }
-
 
     public String getPaymentLineDataText(int transactionLineNumber) {
 
         String xpath = "//tbody//tr[" + transactionLineNumber + "]";
 
+
         return Driver.getDriver().findElement(By.xpath(xpath)).getText();
+
 
     }
 
@@ -213,6 +214,5 @@ public class AccountsStepDefinitions {
 
         return Driver.getDriver().findElement(By.xpath(xpath)).getText();
     }
-
 
 }

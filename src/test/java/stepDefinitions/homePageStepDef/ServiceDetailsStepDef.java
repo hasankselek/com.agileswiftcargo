@@ -10,56 +10,57 @@ import static org.junit.Assert.*;
 
 public class ServiceDetailsStepDef {
 
-    ServiceDetailsPage serviceDetailsPage = new ServiceDetailsPage();
+	ServiceDetailsPage serviceDetailsPage = new ServiceDetailsPage();
 
-    @Then("Verifies service details page opens")
-    public void verifiesServiceDetailsPageOpens() {
+	@Then("Verifies service details page opens")
+	public void verifiesServiceDetailsPageOpens() {
 
-        assertTrue(serviceDetailsPage.driver.getCurrentUrl().contains("service"));
+		assertTrue(serviceDetailsPage.driver.getCurrentUrl().contains("service"));
 
+	}
 
-    }
+	@And("Verifies arrows redirect to {string} page")
+	public void verifiesArrowsRedirectToPage(String servicePage) {
 
-    @And("Verifies arrows redirect to {string} page")
-    public void verifiesArrowsRedirectToPage(String servicePage) {
+		ReusableMethods.hardWait(2);
+		serviceDetailsPage.headerTextEqualTo(servicePage);
 
-        ReusableMethods.hardWait(2);
-        serviceDetailsPage.headerTextEqualTo(servicePage);
+	}
 
-    }
+	@And("Verifies an arrow visible under the last services and is clickable")
+	public void verifiesAnArrowVisibleUnderTheLastServicesAndIsClickable() {
 
-    @And("Verifies an arrow visible under the last services and is clickable")
-    public void verifiesAnArrowVisibleUnderTheLastServicesAndIsClickable() {
+		serviceDetailsPage.navigationArrowsVisibility();
 
-        serviceDetailsPage.navigationArrowsVisibility();
+	}
 
+	@Then("Clicks arrow under the last service {string}")
+	public void clicksArrowUnderTheLastService(String serviceHeader) {
 
-    }
+		if (serviceHeader.equals("E-Commerce delivery")) {
 
-    @Then("Clicks arrow under the last service {string}")
-    public void clicksArrowUnderTheLastService(String serviceHeader) {
+			serviceDetailsPage.clickNavigationArrow(4);
 
-        if (serviceHeader.equals("E-Commerce delivery")){
+		}
+		else if (serviceHeader.equals("Pick & Drop")) {
 
-            serviceDetailsPage.clickNavigationArrow(4);
+			serviceDetailsPage.clickNavigationArrow(3);
 
-        } else if (serviceHeader.equals("Pick & Drop")) {
+		}
+		else if (serviceHeader.equals("Packageing")) {
 
-            serviceDetailsPage.clickNavigationArrow(3);
+			serviceDetailsPage.clickNavigationArrow(2);
 
-        } else if (serviceHeader.equals("Packageing")) {
+		}
+		else if (serviceHeader.equals("Warehousing")) {
 
-            serviceDetailsPage.clickNavigationArrow(2);
+			serviceDetailsPage.clickNavigationArrow(1);
 
+		}
+		else {
+			System.out.println("Sorry,there is no such a service");
+		}
 
-        } else if (serviceHeader.equals("Warehousing")) {
+	}
 
-            serviceDetailsPage.clickNavigationArrow(1);
-
-        } else {
-            System.out.println("Sorry,there is no such a service");
-        }
-
-
-    }
 }
