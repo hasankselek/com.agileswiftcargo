@@ -230,7 +230,7 @@ public class HomePageStepDef extends BaseStep {
 
 	@Then("In the upper section of the home page, the inscription {string} is verified.")
 	public void In_the_upper_section_of_the_home_page_the_inscription_is_verified(String arananKelime) {
-		ReusableMethods.firstElementByText(arananKelime);
+		ReusableMethods.findElementByText(arananKelime);
 
 	}
 
