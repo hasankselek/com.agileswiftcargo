@@ -440,13 +440,13 @@ public class ReusableMethods {
 		}
 	}
 
-	public static WebElement firstElementByText(String text,int sayi) {
+	public static WebElement firstElementByTextandNumber(String text,int sayi) {
 		try {
 			// XPath ile element birden fazla ise sayi girilerek aranir
 			WebElement element = Driver.getDriver().findElement(By.xpath("(//*[contains(text(), '" + text + "')])["+sayi+"]"));
 			return element;
 		} catch (Exception e) {
-			System.out.println("Element bulunamadı: " + text);
+			System.out.println("Element bulunamadı: " + text + sayi);
 			return null;
 		}
 	}
