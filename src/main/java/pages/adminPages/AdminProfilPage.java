@@ -7,7 +7,6 @@ import utilities.ConfigLoader;
 import utilities.ExcelDataReader;
 
 public class AdminProfilPage extends BasePage {
-    public utilities.ConfigLoader ConfigLoader;
     ExcelDataReader reader = new ExcelDataReader(configLoader.getConfigValue("testData"),"adminLogin");
 
     @FindBy(id = "email")

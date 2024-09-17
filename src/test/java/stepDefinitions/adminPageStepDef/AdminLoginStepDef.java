@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 public class AdminLoginStepDef extends BaseStep {
 
     AdminProfilPage adminLoginPage = new AdminProfilPage();
-    ExcelDataReader reader = new ExcelDataReader(adminLoginPage.ConfigLoader.getConfigValue("testData"),"adminLogin");
+    ExcelDataReader reader = new ExcelDataReader(adminLoginPage.configLoader.getConfigValue("testData"),"adminLogin");
 
 
     @Given("Enters home page {string}")
@@ -55,7 +55,7 @@ public class AdminLoginStepDef extends BaseStep {
 
     @Then("User is redirected to the homepage")
     public void userIsRedirectedToTheHomepage() {
-        assertEquals(ConfigLoader.getConfigValue("homepageUrl"),adminLoginPage.driver.getCurrentUrl());
+        assertEquals(adminLoginPage.configLoader.getConfigValue("homepageUrl"),adminLoginPage.driver.getCurrentUrl());
     }
 
 
