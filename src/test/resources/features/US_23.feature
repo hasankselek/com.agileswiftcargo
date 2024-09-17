@@ -42,7 +42,7 @@ Feature: [US_023] As a merchant, I want to view expense data and make payments.
     Then Click on the Stripe link.
     And Verify that the To Account and Amount fields are visible and allow data input.
 
-  Scenario: [TC2306] Pay Now Button Functionality
+  Scenario: [TC_2306] Pay Now Button Functionality
 
     Given Go to the "homepageUrl"
     Then Login as an merchant
@@ -54,6 +54,19 @@ Feature: [US_023] As a merchant, I want to view expense data and make payments.
     And Verify that the Merchant Payment window opens.
     Then Fill in the Email, Card number, MMYY, and CVC information, then click the Pay button.
     And Verify that the payment is processed successfully.
+
+
+  Scenario: [TC_2307] Empty Data Negative Pay Now Button Functionality
+  # miswritten notification-last step
+    Given Go to the "homepageUrl"
+    Then Login as an merchant
+    Then Click on the "Accounts" link in the left menu.
+    Then Click on the "Payout" link in the left menu.
+    Then Click on the Stripe link.
+    Then Enter valid data into the To Account but do not enter any data into the Amount field.
+    Then Click the Pay Now button.
+    And Verify that the "Amount feild is required." notification is displayed.
+
 
 
 

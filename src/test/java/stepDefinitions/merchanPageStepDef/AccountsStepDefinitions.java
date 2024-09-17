@@ -4,16 +4,14 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 import pages.MerchantPages.Accounts;
 import pages.MerchantPages.MerchantLoginPage;
 import utilities.ConfigLoader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+import org.openqa.selenium.UnhandledAlertException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -184,6 +182,19 @@ public class AccountsStepDefinitions {
     public void verify_that_the_payment_is_processed_successfully() {
 
         Assert.assertTrue(ReusableMethods.paymentNotificationCatcher());
+
+    }
+
+    @Then("Enter valid data into the To Account but do not enter any data into the Amount field.")
+    public void enter_valid_data_into_the_to_account_but_do_not_enter_any_data_into_the_amount_field() {
+
+            Select select = new Select(accounts.stripeToAccountBox);
+            select.selectByIndex(0);
+    }
+
+    @Then("Verify that the {string} notification is displayed.")
+    public void verify_that_the_notification_is_displayed(String string) {
+
 
     }
 
