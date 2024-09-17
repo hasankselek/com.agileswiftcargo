@@ -1,5 +1,5 @@
 @register
-Feature: US_003 As a user, I want to be able to register on the page in order to perform faster transactions on the site and access more features.
+Feature: As a user, I want to be able to register on the page in order to perform faster transactions on the site and access more features.
 
   @reg1
   Scenario: TC_0301 'Register' button visibility and functionality test
