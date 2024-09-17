@@ -9,6 +9,4 @@ public class AdminDashboard extends BasePage {
     @FindBy(xpath = ("//*[@class='nav-link nav-user-img']"))
     public WebElement AdminProfilButton;
 
-
-
 }
