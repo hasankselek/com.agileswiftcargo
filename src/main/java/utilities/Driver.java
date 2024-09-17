@@ -59,6 +59,7 @@ public class Driver {
 					// gelen isteklere izin verir, özellikle uzaktan WebDriver kullanımı
 					// ya da çapraz kökenli kaynakları test ederken işe yarar.
 					opt.addArguments("--remote-allow-origins=*");
+					opt.addArguments("--disable-search-engine-choice-screen");
 					opt.setAcceptInsecureCerts(true);
 					driverPool.set(new ChromeDriver(opt));
 					break;

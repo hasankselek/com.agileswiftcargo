@@ -3,10 +3,18 @@ Feature:As an administrator, I want to access, update, add and delete 'Merchant'
   Background: Common Steps
 
     Given Enters the "loginpageUrl"
-    Then Enters row 1 in Email Address textbox
-    Then Enters row 1 in Password textbox
+    And Enters row 1 in Email
+    And Enters row 1 in Password
+    Then Clicks the login button
 
-  Scenario:
+  Scenario:Merchant Manage/Merchants Search Box Tests
+
+    And Click on "Merchant Manage"
+    And Click on "Merchant"
+    Then Verifies that the search box is displayed
+
+
+
 
 
 
