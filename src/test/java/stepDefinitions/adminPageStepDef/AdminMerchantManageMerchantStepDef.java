@@ -15,7 +15,7 @@ public class AdminMerchantManageMerchantStepDef extends BaseStep {
     @Then("Verifies that the search box is functional")
     public void verifies_that_the_search_box_is_functional() {
 
-        PAGES.getAdminMerchantManageMerchantPage().getVerifiesSearcBoxEnable();
+        PAGES.getAdminMerchantManageMerchantPage().getVerifiesSearchBoxEnable();
     }
 
     @Then("Inputs {string} data to the search box")
@@ -26,6 +26,8 @@ public class AdminMerchantManageMerchantStepDef extends BaseStep {
 
     @Then("Verifies that the correct data is displayed")
     public void verifies_that_the_correct_data_is_displayed() {
+
+        PAGES.getAdminMerchantManageMerchantPage().getCheckMerchantList();
 
     }
 }
