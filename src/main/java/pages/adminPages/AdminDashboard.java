@@ -11,6 +11,7 @@ public class AdminDashboard extends BasePage {
     public WebElement AdminDashboardProfileBildButton;
     @FindBy(xpath = ("//*[@class='fas fa-user mr-2']"))
     public WebElement AdminProfileButton;
+
     @FindBy(xpath = ("(//a[contains(@class,'dropdown-item')][normalize-space()='Change password'])[2]"))
     public WebElement AdminChangePasswordButton;
     @FindBy(xpath = ("//*[@class='fas fa-power-off mr-2']"))
