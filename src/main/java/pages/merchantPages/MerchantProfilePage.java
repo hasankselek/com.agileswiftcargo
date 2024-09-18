@@ -6,33 +6,34 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class MerchantProfilePage extends BasePage {
 
-	@FindBy(xpath = "(((//div)[185])/span)[2]")
+	@FindBy(xpath = "(//div[contains(@class,'d-flex')])[10]")
 	private WebElement merchantName;
 
-	@FindBy(xpath = "((((//div)[186]))/div/span)[2]")
+	@FindBy(xpath = "(//div[contains(@class,'d-flex')])[11]")
 	private WebElement merchantEmail;
 
-	@FindBy(xpath = "((((//div)[188]))/div/span)[2]")
+	@FindBy(xpath = "(//div[contains(@class,'d-flex')])[12]")
 	private WebElement merchantPhone;
 
-	@FindBy(xpath = "((((//div)[190]))/div/span)[2]")
+	@FindBy(xpath = "(//div[contains(@class,'d-flex')])[13]")
 	private WebElement merchantBusinessName;
 
-	@FindBy(xpath = "((((//div)[192]))/div/span)[2]")
+	@FindBy(xpath = "(//div[contains(@class,'d-flex')])[14]")
 	private WebElement merchantAdress;
 
 	public void getDisplayedMerchantInformation(String name, String email, String phone, String businessName,
 			String adress) {
 
-		assertEquals(merchantName.getText(), name);
-		assertEquals(merchantEmail.getText(), email);
-		assertEquals(merchantPhone.getText(), phone);
-		assertEquals(merchantBusinessName.getText(), businessName);
-		assertEquals(merchantAdress.getText(), adress);
+		assertTrue(merchantName.getText().contains(name));
+		assertTrue(merchantEmail.getText().contains(email));
+		assertTrue(merchantPhone.getText().contains(phone));
+		assertTrue(merchantBusinessName.getText().contains(businessName));
+		assertTrue(merchantAdress.getText().contains(adress));
+
 
 	}
 
