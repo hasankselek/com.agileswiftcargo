@@ -17,13 +17,18 @@ import org.openqa.selenium.safari.SafariDriver;
 
 import java.net.URL;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class Driver {
 
+
 	private static ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
 
 	private static ConfigLoader configLoader = new ConfigLoader();
+
+	private static Map<String, Object> prefs = new HashMap<String, Object>();
 
 	private Driver() {
 
@@ -59,6 +64,10 @@ public class Driver {
 					// gelen isteklere izin verir, özellikle uzaktan WebDriver kullanımı
 					// ya da çapraz kökenli kaynakları test ederken işe yarar.
 					opt.addArguments("--remote-allow-origins=*");
+					opt.addArguments("--disable-search-engine-choice-screen");
+					prefs.put("credentials_enable_service", false);
+					prefs.put("profile.password_manager_enabled", false);
+					opt.setExperimentalOption("prefs", prefs);
 					opt.setAcceptInsecureCerts(true);
 					driverPool.set(new ChromeDriver(opt));
 					break;

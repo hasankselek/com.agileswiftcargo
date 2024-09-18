@@ -3,8 +3,10 @@ package stepDefinitions.merchanPageStepDef;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 import pages.homePages.HomePage;
+import pages.merchantPages.MerchantDashboard;
 import pages.merchantPages.MerchantLoginPage;
 import utilities.ConfigLoader;
 import utilities.ExcelDataReader;
@@ -13,6 +15,7 @@ import utilities.ReusableMethods;
 import static org.junit.Assert.*;
 
 public class MerchantLoginStepDef {
+    MerchantDashboard merchantDashboard=new MerchantDashboard();
 
 	MerchantLoginPage merchantLoginPage = new MerchantLoginPage();
 
@@ -54,27 +57,28 @@ public class MerchantLoginStepDef {
 
 	}
 
-	@Then("Verifies that there is a {string} button in the header section of the page")
-	public void verifies_that_there_is_a_button_in_the_header_section_of_the_page(String istenenkelime) {
+  @Then("Verifies that there is a {string} button in the header section of the page")
+  public void verifies_that_there_is_a_button_in_the_header_section_of_the_page(String aranankelime) {
+        ReusableMethods.findElementByText(aranankelime);
+	}
+ 
+    @Then("Clicks of the {string} button")
+    public void clicks_of_the_button(String istenenkelime) {
+        ReusableMethods.clickWithText(istenenkelime);
 
 	}
-
-	@Then("Clicks of the {string} button")
-	public void clicks_of_the_button(String string) {
-
-	}
-
 	@Then("When the login button is clicked, it tests that you are directed to the {string} page")
 	public void when_the_login_button_is_clicked_it_tests_that_you_are_directed_to_the_page(String string) {
 
+        assertEquals(homePage.configLoader.getConfigValue("loginpageUrl"),homePage.driver.getCurrentUrl());
+        ReusableMethods.hardWait(5);
 	}
+
 
 	@Then("Verifies Merchant Dashboard page can't opens")
 	public void verifiesMerchantDashboardPageCanTOpens() {
-
 		ReusableMethods.hardWait(1);
 		assertTrue(merchantLoginPage.warningMessage.isDisplayed());
-
 	}
 
 	@Then("Verifies logo visibility")
@@ -118,9 +122,16 @@ public class MerchantLoginStepDef {
 
 	}
 
+  @And("the user should see the message {string}")
+  public void the_user_should_see_the_message(String textyazisi) {
+        ReusableMethods.findElementByText(textyazisi);
+
+    }
+  
 	@And("Verifies Forgot Password link visiblity")
 	public void verifiesForgotPasswordLinkVisiblity() {
 		assertTrue(merchantLoginPage.forgotPasswordLink.isDisplayed());
 	}
+
 
 }

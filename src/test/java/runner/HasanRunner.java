@@ -10,11 +10,8 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = { "stepDefinitions" },
         plugin = { "pretty",
-                "html:target/HasanReports/cucumber-reports.html",
-                "json:target/HasanReports/cucumber.json",
-                "junit:target/HasanReports/Cucumber.xml",
-        },
-        tags = " @US_018",
+                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"},
+        tags = " @TC_3801",
         dryRun = false,
         publish = true
 )
