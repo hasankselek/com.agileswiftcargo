@@ -1,10 +1,11 @@
-package pages.adminPages.merchantManage;
+package pages.adminPages;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
 
-public class Merchants extends BasePage {
+public class AdminMerchantManageMerchantPage extends BasePage {
 
     @FindBy(xpath = "(//input[@id='Psearch'])[1]")
     private WebElement searchBox;
@@ -59,6 +60,21 @@ public class Merchants extends BasePage {
 
     @FindBy(xpath ="//small[normalize-space()='The Address field is required.']")
     private WebElement adressError;
+
+    public void getVerifiesSearchBoxDisplay(){
+
+        Assert.assertTrue(searchBox.isDisplayed());
+    }
+
+    public void getVerifiesSearcBoxEnable(){
+
+        Assert.assertTrue(searchBox.isEnabled());
+    }
+
+    public void getFillSearchBox(String searchText){
+
+        searchBox.sendKeys(searchText);
+    }
 
 
 

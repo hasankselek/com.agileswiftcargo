@@ -10,9 +10,8 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = { "stepDefinitions" },
         plugin = { "pretty",
-                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
-        },
-        tags = " @TC_1801",
+                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"},
+        tags = " @TC_3801",
         dryRun = false,
         publish = true
 )
