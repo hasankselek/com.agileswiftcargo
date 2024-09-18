@@ -430,6 +430,8 @@ public class ReusableMethods {
 	}
 
 	public static WebElement findMenuItemByTextMerchant(WebDriver driver, String menuText) {
+		//!!!!!!!FYİ:KONTROL ETTİM ADMİN'DE DE ÇALIŞIYOR.
+
 		// <li> elementlerini bul class="navbar-nav" içinde
 		List<WebElement> menuItems = driver.findElements(By.xpath("//*[@class='navbar-nav']//li"));
 
