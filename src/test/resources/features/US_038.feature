@@ -17,6 +17,11 @@ Feature:As an administrator, I want to access, update, add and delete 'Merchant'
     And Inputs "Hasan Kucukselek" data to the search box
     Then Verifies that the correct data is displayed
 
+    Scenario: asjdnasda
+
+
+
+
 
 
 
