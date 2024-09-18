@@ -34,7 +34,12 @@ public class AdminLoginStepDef extends BaseStep {
     public void entersRowColumnInPassword(int rowNo) {
         String password = reader.getCellData(rowNo,2);
         adminLoginPage.password.sendKeys(password);
+    }
 
+    @And("Clicks Sign In Button Admin")
+    public void clicksSignInButton() {
+        adminLoginPage.signInButton.click();
+        ReusableMethods.waitForPageToLoad(2);
     }
     @And("Clicks the login button")
     public void clicksLoginButton() {
@@ -63,7 +68,10 @@ public class AdminLoginStepDef extends BaseStep {
     public void clickOnSignUpHere() {
         adminLoginPage.signUpHere.click();
         ReusableMethods.waitForPageToLoad( 5);
+
     }
+
+
 
 
 }
