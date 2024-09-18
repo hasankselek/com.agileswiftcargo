@@ -8,6 +8,7 @@ import static org.junit.Assert.assertTrue;
 
 public class AdminDashboard extends BasePage {
 
+
     @FindBy(xpath = ("//*[@id='navbarDropdownMenuLink2']"))
     public WebElement AdminDashboardProfileBildButton;
 
@@ -34,4 +35,5 @@ public class AdminDashboard extends BasePage {
     public WebElement AdminChangePasswordSaveChange;
     @FindBy(xpath = ("//*[@class='btn btn-space btn-secondary']"))
     public WebElement AdminChangePasswordCanselButton;
+
 }

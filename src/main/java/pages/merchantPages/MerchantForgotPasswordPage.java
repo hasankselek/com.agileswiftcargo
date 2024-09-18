@@ -6,16 +6,13 @@ import pages.BasePage;
 
 public class MerchantForgotPasswordPage extends BasePage {
 
-    @FindBy(xpath = "//*[@class='form-control form-control-lg ']")
-    public WebElement emailTextBox;
+	@FindBy(xpath = "//*[@class='form-control form-control-lg ']")
+	public WebElement emailTextBox;
 
-    @FindBy(xpath = "//*[@type='submit']")
-    public WebElement sendPassResetButton;
+	@FindBy(xpath = "//*[@type='submit']")
+	public WebElement sendPassResetButton;
 
-    @FindBy(xpath = "//*[@class='alert alert-success']")
-    public WebElement succesAlert;
-
-
-
+	@FindBy(xpath = "//*[@class='alert alert-success']")
+	public WebElement succesAlert;
 
 }
