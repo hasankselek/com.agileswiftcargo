@@ -18,6 +18,71 @@ public class MerchantDashboard extends BasePage {
 	@FindBy(xpath = "(//div[@class='dropdown-menu dropdown-menu-right nav-user-dropdown show'])/a[@class='dropdown-item']")
 	private List<WebElement> profileIconLinks;
 
+	@FindBy(xpath = "(//*[text()='Ticket'])[3]")
+	public WebElement navBarTicketText;
+
+	@FindBy(xpath = "(//*[text()='Ticket'])[3]")
+	public WebElement ticketText;
+
+	@FindBy(xpath = "//*[@class='active']")
+	public WebElement userInfoName;
+
+	@FindBy(xpath = "//*[@aria-label='Ticket Add']")
+	public WebElement ticketAddButton;
+
+	@FindBy(xpath = "//*[text()='Ticket Add']")
+	public WebElement ticketAddText;
+
+	@FindBy(xpath = "//*[@name='service']")
+	public WebElement selectServiceButton;
+
+	@FindBy(xpath = "//*[text()='Pick Up']")
+	public WebElement selectPickUp;
+
+	@FindBy(xpath = "//*[@name='priority']")
+	public WebElement selectPriorityButton;
+
+	@FindBy(xpath = "//*[text()='Low']")
+	public WebElement selectPriorityLow;
+
+	@FindBy(xpath = "//*[@name='department_id']")
+	public WebElement departmanButton;
+
+	@FindBy(xpath = "//*[text()='Finance']")
+	public WebElement financeText;
+
+	@FindBy(xpath = "//*[@name='subject']")
+	public WebElement subjectBox;
+
+	@FindBy(xpath = "//*[@role='textbox']")
+	public WebElement descriptionBox;
+
+	@FindBy(xpath = "//*[text()='Save']")
+	public WebElement saveButton;
+
+	@FindBy(xpath = "//*[text()='Save Change']")
+	public WebElement saveChangeButton;
+
+	@FindBy(xpath = "(//*[@class='sr-only'])[1]")
+	public WebElement actionDropdownButton;
+
+	@FindBy(xpath = "(//*[text()=' Edit'])[1]")
+	public WebElement editButton;
+
+	@FindBy(xpath = "//*[text()='Parcel']")
+	public WebElement viewPageParcelText;
+
+	@FindBy(xpath = "(//*[text()=' View'])[1]")
+	public WebElement ticketDropdownViewButton;
+
+	@FindBy(xpath = "(//*[text()=' Delete'])[1]")
+	public WebElement ticketDropdownDeleteButton;
+
+	@FindBy(xpath = "//*[text()='Yes']")
+	public WebElement deleteYesButton;
+
+
+
 	public void getClickProfileIcon() {
 
 		ReusableMethods.hardWait(2);

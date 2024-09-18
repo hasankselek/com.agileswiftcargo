@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.merchantPages.MerchantDashboard;
 
 import java.io.File;
 import java.io.IOException;
@@ -503,6 +504,23 @@ public class ReusableMethods {
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 			// Bulunan elementin varligini kontrol eder
 			assertTrue(driver.findElement(By.xpath("//*[text()='"+text+"']")).isDisplayed());
+		}
+
+		public static void ticketAdd(String subjectText, String description){
+
+			MerchantDashboard merchantDashboard=new MerchantDashboard();
+			merchantDashboard.selectServiceButton.click();
+			ReusableMethods.hardWait(2);
+			merchantDashboard.selectPickUp.click();
+			merchantDashboard.selectPriorityButton.click();
+			merchantDashboard.selectPriorityLow.click();
+			ReusableMethods.hardWait(2);
+			merchantDashboard.departmanButton.click();
+			merchantDashboard.financeText.click();
+			merchantDashboard.subjectBox.sendKeys(subjectText);
+			merchantDashboard.descriptionBox.sendKeys(description);
+			ReusableMethods.hardWait(3);
+
 		}
 
 
