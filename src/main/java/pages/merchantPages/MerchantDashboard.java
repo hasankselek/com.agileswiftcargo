@@ -16,7 +16,7 @@ public class MerchantDashboard extends BasePage {
 	private WebElement profileIcon;
 
     @FindBy(xpath = "(//div[@class='dropdown-menu dropdown-menu-right nav-user-dropdown show'])/a[@class='dropdown-item']")
-	private List<WebElement> profileIconLinks;
+    private List<WebElement> profileIconLinks;
   
   @FindBy(xpath = "(//*[@class='fa fa-dolly'])[2]")
   public WebElement parcelsButton;
