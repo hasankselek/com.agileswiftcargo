@@ -500,6 +500,15 @@ public class ReusableMethods {
 
         return flag;
     }
+    // -----------------Gül
+    public static boolean isElementVisible(WebElement element) {
+        try {
+            return element.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    //--------------------------------
 }
 
 
