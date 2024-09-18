@@ -5,7 +5,9 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.merchantPages.Accounts;
 import pages.merchantPages.MerchantLoginPage;
 import utilities.ConfigLoader;
@@ -13,6 +15,7 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 import org.openqa.selenium.UnhandledAlertException;
 
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 
@@ -131,8 +134,31 @@ public class AccountsStepDefinitions {
     @Then("Click the Pay Now button.")
     public void click_the_pay_now_button() {
         accounts.stripePayNowButton.click();
-        ReusableMethods.hardWait(2);
+        ReusableMethods.hardWait(2); // Sabit bekleme yerine explicit wait kullanabilirsiniz
+
+        try {
+            // Kısa süreli bekleme ile alert olup olmadığını kontrol et
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(2));
+            wait.until(ExpectedConditions.alertIsPresent());
+
+            // Eğer alert varsa yakala ve kabul et
+            Alert alert = Driver.getDriver().switchTo().alert();
+            System.out.println("Alert text: " + alert.getText());
+            alert.accept();
+
+            // Eğer alert varsa burada işlemi sonlandırabiliriz çünkü amount boş bırakılmış
+            System.out.println("Alert was handled, transaction cannot proceed.");
+            return; // Alert yakalandıysa işlemi burada durduruyoruz
+
+        } catch (TimeoutException e) {
+            // Eğer alert yoksa işlemlere devam et
+            System.out.println("No alert, continuing to process the transaction.");
+        }
+
+
+        // Alerti yönettikten sonra iframe'e geçiş yap
         Driver.getDriver().switchTo().frame(1);
+
     }
 
     @Then("Verify that the Merchant Payment window opens.")
@@ -195,7 +221,14 @@ public class AccountsStepDefinitions {
     public void verify_that_the_notification_is_displayed(String string) {
         Assert.assertTrue(ReusableMethods.paymentNotificationCatcher());
 
+    }
 
+    @Then("On the Stripe Payout Details page, enter non-numeric data into the Amount field while leaving the To Account field valid.")
+    public void onTheStripePayoutDetailsPageEnterNonNumericDataIntoTheAmountFieldWhileLeavingTheToAccountFieldValid() {
+        Select select = new Select(accounts.stripeToAccountBox);
+        select.selectByIndex(0);
+        accounts.stripeAmountBox.click();
+        accounts.stripeAmountBox.sendKeys("abc");
     }
 
     public String getPaymentLineDataText(int transactionLineNumber) {
