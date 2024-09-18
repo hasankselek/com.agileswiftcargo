@@ -17,6 +17,8 @@ import java.time.Duration;
 import java.util.*;
 import java.util.function.Function;
 
+import static org.junit.Assert.assertTrue;
+
 public class ReusableMethods {
 
     private static final int TIMEOUT = 10;
@@ -287,7 +289,7 @@ public class ReusableMethods {
 
     public static void verifyElementDisplayed(WebElement element) {
         try {
-            Assert.assertTrue(element.isDisplayed());
+            assertTrue(element.isDisplayed());
         } catch (NoSuchElementException e) {
             e.printStackTrace();
             Assert.fail("Element not found: " + element);
@@ -499,6 +501,16 @@ public class ReusableMethods {
         }
 
         return flag;
+    }
+    // Metne göre elementi bulup sayfayı o elemente kaydıran fonksiyon
+    public static void scrollToText(WebDriver driver, String text) {
+        // Metni içeren elementin XPath ile bulunması
+        WebElement element = driver.findElement(By.xpath("//[contains(text(), '" + text + "')]"));
+
+        // Bulunan elemente scroll yapma işlemi
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+        // Bulunan elementin varligini kontrol eder
+        assertTrue(driver.findElement(By.xpath("//[text()='"+text+"']")).isDisplayed());
     }
     // -----------------Gül
     public static boolean isElementVisible(WebElement element) {
