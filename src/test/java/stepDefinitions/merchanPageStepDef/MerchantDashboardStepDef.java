@@ -66,7 +66,7 @@ public class MerchantDashboardStepDef extends BaseStep {
 	}
 	@Then("Blank fields in the form are filled in")
 	public void blank_fields_in_the_form_are_filled_in() {
-		ReusableMethods.ticketAdd("Kargo gonderimi","Kargom teslim edilemedi");
+		MerchantDashboardStepDef.ticketAdd("Kargo gonderimi","Kargom teslim edilemedi");
 
 	}
 	@Then("Click on the Save button")
@@ -168,6 +168,22 @@ public class MerchantDashboardStepDef extends BaseStep {
 
     }
 
+	public static void ticketAdd(String subjectText, String description){
+
+		MerchantDashboard merchantDashboard=new MerchantDashboard();
+		merchantDashboard.selectServiceButton.click();
+		ReusableMethods.hardWait(2);
+		merchantDashboard.selectPickUp.click();
+		merchantDashboard.selectPriorityButton.click();
+		merchantDashboard.selectPriorityLow.click();
+		ReusableMethods.hardWait(2);
+		merchantDashboard.departmanButton.click();
+		merchantDashboard.financeText.click();
+		merchantDashboard.subjectBox.sendKeys(subjectText);
+		merchantDashboard.descriptionBox.sendKeys(description);
+		ReusableMethods.hardWait(3);
+
+	}
 
 
 }
