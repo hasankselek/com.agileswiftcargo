@@ -95,5 +95,6 @@ public class AdminDashboardChangePasswordStepDef extends BaseStep {
 
     @Then("test whether the old password and the new password have changed")
     public void testWhetherTheOldPasswordAndTheNewPasswordHaveChanged() {
+
     }
 }

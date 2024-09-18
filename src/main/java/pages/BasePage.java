@@ -7,7 +7,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.ConfigLoader;
 import utilities.Driver;
 
-
 import java.time.Duration;
 
 public abstract class BasePage {

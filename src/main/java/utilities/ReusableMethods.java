@@ -500,10 +500,6 @@ public class ReusableMethods {
 
         return flag;
     }
-
-
-
-
    // -----------------Gül
     public static boolean isElementVisible(WebElement element) {
             try {
@@ -512,9 +508,7 @@ public class ReusableMethods {
                 return false;
             }
         }
-
         //--------------------------------
-
     }
 
 

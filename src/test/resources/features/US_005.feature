@@ -1,5 +1,5 @@
 @services
-Feature: US_005 As a user I want to view information in the 'Our Sevices' field.
+Feature: As a user I want to view information in the 'Our Sevices' field.
 
   @ser1
   Scenario: TC_0501 'Our Service' panel visibility test
