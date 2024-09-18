@@ -81,12 +81,8 @@ public class MerchantUpdateProfilPage extends BasePage {
 
 	public void getSuccessMessages() {
 
-		try {
-			assertTrue(suscessMessage.isDisplayed());
-		}
-		catch (NoSuchElementException e) {
-			fail();
-		}
+		ReusableMethods.hardWait(1);
+		ReusableMethods.paymentNotificationCatcher();
 
 	}
 
