@@ -10,30 +10,30 @@ public class AdminDashboard extends BasePage {
 
 
     @FindBy(xpath = ("//*[@id='navbarDropdownMenuLink2']"))
-    public WebElement AdminDashboardProfileBildButton;
+    public WebElement adminDashboardProfileBildButton;
 
     @FindBy(xpath = ("//*[@class='fas fa-user mr-2']"))
-    public WebElement AdminProfileButton;
-    @FindBy(xpath = ("(//a[contains(@class,'dropdown-item')][normalize-space()='Change password'])[2]"))
-    public WebElement AdminChangePasswordButton;
+    public WebElement adminProfileButton;
+    @FindBy(xpath = "//a[@class='dropdown-item' and contains(text(), 'Change password')]")
+    public WebElement adminChangePasswordButton;
     @FindBy(xpath = ("//*[@class='fas fa-power-off mr-2']"))
-    public WebElement AdminLogoutButton;
+    public WebElement adminLogoutButton;
     public void getvisibilityoftheAdminBildProfileicons() {
 
-        assertTrue(AdminProfileButton.isDisplayed());
-        assertTrue(AdminChangePasswordButton.isDisplayed());
-        assertTrue(AdminLogoutButton.isDisplayed());
+        assertTrue(adminProfileButton.isDisplayed());
+        assertTrue(adminChangePasswordButton.isDisplayed());
+        assertTrue(adminLogoutButton.isDisplayed());
 
     }
     @FindBy(xpath = ("//*[@id='old_password']"))
-    public WebElement  AdminChangePasswordOldButton;
+    public WebElement adminChangePasswordOldButton;
     @FindBy(xpath = ("//*[@id='new_password']"))
-    public WebElement AdminChangePasswordNewButton;
+    public WebElement adminChangePasswordNewButton;
     @FindBy(xpath = ("//*[@id='confirm_password']"))
-    public WebElement AdminChangePasswordConfirmButton;
+    public WebElement adminChangePasswordConfirmButton;
     @FindBy(xpath = ("//*[@class='btn btn-space btn-primary']"))
-    public WebElement AdminChangePasswordSaveChange;
+    public WebElement adminChangePasswordSaveChange;
     @FindBy(xpath = ("//*[@class='btn btn-space btn-secondary']"))
-    public WebElement AdminChangePasswordCanselButton;
+    public WebElement adminChangePasswordCanselButton;
 
 }
