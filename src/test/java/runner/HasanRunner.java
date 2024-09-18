@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
         glue = { "stepDefinitions" },
         plugin = { "pretty",
                 "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"},
-        tags = " @US_018",
+        tags = " @US_038",
         dryRun = false,
         publish = true
 )
