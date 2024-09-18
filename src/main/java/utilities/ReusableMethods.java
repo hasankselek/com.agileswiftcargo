@@ -22,7 +22,6 @@ import static org.junit.Assert.assertTrue;
 
 public class ReusableMethods {
 
-
     private static final int TIMEOUT = 10;
 
     private static Actions actions = new Actions(Driver.getDriver());
@@ -291,7 +290,7 @@ public class ReusableMethods {
 
     public static void verifyElementDisplayed(WebElement element) {
         try {
-            assertTrue(element.isDisplayed());
+            Assert.assertTrue(element.isDisplayed());
         } catch (NoSuchElementException e) {
             e.printStackTrace();
             Assert.fail("Element not found: " + element);
@@ -443,8 +442,9 @@ public class ReusableMethods {
         select.selectByValue(value);
     }
 
-
     public static WebElement findMenuItemByTextMerchant(WebDriver driver, String menuText) {
+        //!!!!!!!FYİ:KONTROL ETTİM ADMİN'DE DE ÇALIŞIYOR.
+
         // <li> elementlerini bul class="navbar-nav" içinde
         List<WebElement> menuItems = driver.findElements(By.xpath("//*[@class='navbar-nav']//li"));
 
@@ -458,8 +458,8 @@ public class ReusableMethods {
 
             // Eğer normalize edilmiş text beklenen text ile eşleşiyorsa
             if (normalizedText.equals(menuText)) {
-                foundElement = item;  // Metni içeren WebElement'i bul
-                break;  // Döngüden çık
+                foundElement = item; // Metni içeren WebElement'i bul
+                break; // Döngüden çık
             }
         }
 
@@ -469,7 +469,7 @@ public class ReusableMethods {
 
     public static WebElement findElementByText(String text) {
         try {
-            // XPath ile sayfadaki her türlü element içinde verilen metni arar
+            // XPath ile sayfadaki her türlü element içinde verilen metni arar ancak asagi yukari kaydirma yapmaz
             WebElement element = Driver.getDriver().findElement(By.xpath("//*[contains(text(), '" + text + "')]"));
             return element;
         } catch (Exception e) {
@@ -478,15 +478,16 @@ public class ReusableMethods {
         }
     }
 
-    public static WebElement firstElementByText(String text) {
+    public static WebElement firstElementByTextandNumber(String text, int sayi) {
         try {
-            // XPath ile sayfadaki her türlü element içinde verilen metni arar
-            WebElement element = Driver.getDriver().findElement(By.xpath("(//*[contains(text(), '" + text + "')])[1]"));
+            // XPath ile element birden fazla ise sayi girilerek aranir
+            WebElement element = Driver.getDriver().findElement(By.xpath("(//*[contains(text(), '" + text + "')])[" + sayi + "]"));
             return element;
+
         } catch (Exception e) {
-            System.out.println("Element bulunamadı: " + text);
-            return null;
+            System.out.println("Element bulunamadı: " + text + sayi);
         }
+        return null;
 
     }
 
@@ -504,16 +505,19 @@ public class ReusableMethods {
 
         return flag;
     }
+
+
     // Metne göre elementi bulup sayfayı o elemente kaydıran fonksiyon
     public static void scrollToText(WebDriver driver, String text) {
         // Metni içeren elementin XPath ile bulunması
-        WebElement element = driver.findElement(By.xpath("//[contains(text(), '" + text + "')]"));
+        WebElement element = driver.findElement(By.xpath("//*[contains(text(), '" + text + "')]"));
 
         // Bulunan elemente scroll yapma işlemi
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
         // Bulunan elementin varligini kontrol eder
-        assertTrue(driver.findElement(By.xpath("//[text()='"+text+"']")).isDisplayed());
+        assertTrue(driver.findElement(By.xpath("//*[text()='" + text + "']")).isDisplayed());
     }
+
     // -----------------Gül
     public static boolean isElementVisible(WebElement element) {
         try {

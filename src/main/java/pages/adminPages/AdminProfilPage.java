@@ -5,9 +5,10 @@ import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
 import utilities.ConfigLoader;
 import utilities.ExcelDataReader;
+import utilities.ReusableMethods;
 
 public class AdminProfilPage extends BasePage {
-    ExcelDataReader reader = new ExcelDataReader(configLoader.getConfigValue("testData"),"adminLogin");
+    ExcelDataReader reader = new ExcelDataReader(configLoader.getConfigValue("testData"), "adminLogin");
 
     @FindBy(id = "email")
     public WebElement email;
@@ -24,12 +25,19 @@ public class AdminProfilPage extends BasePage {
 
     @FindBy(xpath = ("//*[@class='nav-item login-button']"))
     public WebElement loginButton;
+
     public void loginAsAdmin(int rowAccessInfo) {
 
-        email.sendKeys(reader.getCellData(rowAccessInfo,1));
-        password.sendKeys(reader.getCellData(rowAccessInfo,2));
+        email.sendKeys(reader.getCellData(rowAccessInfo, 1));
+        password.sendKeys(reader.getCellData(rowAccessInfo, 2));
         signInButton.click();
 
+    }
+
+    public void directlyLoginAsAdmin(int rowAccessInfo) {
+        loginButton.click();
+        loginAsAdmin(rowAccessInfo);
+        ReusableMethods.hardWait(1);
     }
 
 }
