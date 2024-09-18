@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import pages.adminPages.AdminBranchManagePage;
+import utilities.ReusableMethods;
 
 import static org.junit.Assert.*;
 
@@ -24,7 +25,6 @@ public class AdminBranchManageStepDef {
     public void verifiesFilterButtonVisibility() {
 
         assertTrue(adminBranchManagePage.filterButton.isDisplayed());
-
 
 
     }
@@ -52,9 +52,7 @@ public class AdminBranchManageStepDef {
 
         String actualBranch = adminBranchManagePage.branchNameOnTable.getText();
 
-        assertEquals(gonderilenHubName,actualBranch);
-
-
+        assertEquals(gonderilenHubName, actualBranch);
 
 
     }
@@ -68,5 +66,84 @@ public class AdminBranchManageStepDef {
     }
 
 
+    @Then("Verifies plus sign to the right of the branch list")
+    public void verifiesPlusSignToTheRightOfTheBranchList() {
 
+        assertTrue(adminBranchManagePage.plusSign.isDisplayed());
+    }
+
+    @Then("Clicks plus sign")
+    public void clicksPlusSign() {
+
+        adminBranchManagePage.plusSign.click();
+
+    }
+
+    @And("Verifies Create Branch page opens")
+    public void verifiesCreateBranchPageOpens() {
+
+        String expectedUrl = "https://qa.agileswiftcargo.com/admin/hubs/create";
+        String actualUrl = adminBranchManagePage.driver.getCurrentUrl();
+
+        assertEquals(expectedUrl,actualUrl);
+
+
+    }
+
+    @Then("Clicks actions dropdown menu")
+    public void clicksActionsDropdownMenu() {
+
+        adminBranchManagePage.actionsDropdowns.get(1).click();
+    }
+
+    @Then("Verifies {string} option displayed")
+    public void verifiesOptionDisplayed(String menuName) {
+
+
+        assertEquals(adminBranchManagePage.getDropdownItem(menuName).getText(),menuName.trim());
+
+
+    }
+
+    @Then("Verifies that the View option redirects to the relevant page")
+    public void verifiesThatTheViewOptionRedirectsToTheRelevantPage() {
+
+        adminBranchManagePage.getDropdownItem(" View").click();
+        assertTrue(adminBranchManagePage.driver.getCurrentUrl().contains("view"));
+
+
+    }
+
+    @Then("Verifies that the Edit option redirects to the relevant page")
+    public void verifiesThatTheEditOptionRedirectsToTheRelevantPage() {
+
+        adminBranchManagePage.getDropdownItem(" Edit").click();
+        assertTrue(adminBranchManagePage.driver.getCurrentUrl().contains("edit"));
+
+    }
+
+    @Then("Verifies that the Mange In-Charge option redirects to the relevant page")
+    public void verifiesThatTheMangeInChargeOptionRedirectsToTheRelevantPage() {
+
+        adminBranchManagePage.getDropdownItem(" Mange In-Charge").click();
+        assertTrue(adminBranchManagePage.driver.getCurrentUrl().contains("incharge"));
+
+
+    }
+
+    @And("Verifies delete the branch")
+    public void verifiesDeleteTheBranch() {
+
+        adminBranchManagePage.getDropdownItem(" Delete").click();
+        adminBranchManagePage.yesButtonOnDelete.click();
+        ReusableMethods.hardWait(1);
+        assertTrue(ReusableMethods.paymentNotificationCatcher());
+
+    }
+
+    @Then("Returns to branch page")
+    public void returnsToBranchPage() {
+
+        adminBranchManagePage.driver.navigate().back();
+    }
 }
