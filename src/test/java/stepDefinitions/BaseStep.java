@@ -8,6 +8,7 @@ import pages.merchantPages.MerchantDashboard;
 import pages.merchantPages.MerchantLoginPage;
 import pages.merchantPages.MerchantRegistrationPage;
 import stepDefinitions.adminPageStepDef.AdminMerchantManageMerchantStepDef;
+import utilities.ConfigLoader;
 import utilities.Driver;
 import utilities.ExcelDataReader;
 import utilities.Pages;
@@ -18,6 +19,8 @@ public abstract class BaseStep {
 
 	protected static Pages PAGES;
 
+	protected static ConfigLoader configLoader;
+
 	protected static AdminMerchantManageMerchantPage adminMerchantManageMerchantPage;
 
 	protected static Faker faker;
@@ -26,6 +29,8 @@ public abstract class BaseStep {
 		DRIVER = Driver.getDriver();
 
 		PAGES = new Pages();
+
+		configLoader = new ConfigLoader();
 
 		adminMerchantManageMerchantPage = new AdminMerchantManageMerchantPage();
 
