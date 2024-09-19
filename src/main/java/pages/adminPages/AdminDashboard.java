@@ -62,6 +62,17 @@ public class AdminDashboard extends BasePage {
     public WebElement  dateofdays;
     @FindBy(xpath = "(//th[@title='Select Month'])")
     public WebElement  dateofmonths;
+    @FindBy(xpath = "(//*[text()='Save'])[2]")
+    public WebElement ticketSaveButton;
+    @FindBy(xpath = "(//*[@class='sr-only'])[2]")
+    public WebElement ticketEditButton;
+    @FindBy(xpath = "//*[text()='Save Change']")
+    public WebElement ticketSaveChangeButton;
+    @FindBy(xpath = "//*[text()='Name']")
+    public WebElement nameText;
+
+
+
 
 
     public void getvisibilityoftheAdminBildProfileicons() {
