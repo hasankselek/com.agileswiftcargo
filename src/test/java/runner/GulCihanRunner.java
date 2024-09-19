@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
                     "json:target/reports/cucumber.json",
                     "junit:target/reports/Cucumber.xml",
             },
-            tags = " @TC_3304",
+            tags = " @TC_3403",
             dryRun = false,
             publish = true
     )

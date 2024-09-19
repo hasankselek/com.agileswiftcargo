@@ -4,6 +4,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
 
+import java.util.List;
+
 import static org.junit.Assert.assertTrue;
 
 public class AdminDashboard extends BasePage {
@@ -18,13 +20,6 @@ public class AdminDashboard extends BasePage {
     public WebElement adminChangePasswordButton;
     @FindBy(xpath = ("//*[@class='fas fa-power-off mr-2']"))
     public WebElement adminLogoutButton;
-    public void getvisibilityoftheAdminBildProfileicons() {
-
-        assertTrue(adminProfileButton.isDisplayed());
-        assertTrue(adminChangePasswordButton.isDisplayed());
-        assertTrue(adminLogoutButton.isDisplayed());
-
-    }
     @FindBy(xpath = ("//*[@id='old_password']"))
     public WebElement adminChangePasswordOldButton;
     @FindBy(xpath = ("//*[@id='new_password']"))
@@ -35,5 +30,46 @@ public class AdminDashboard extends BasePage {
     public WebElement adminChangePasswordSaveChange;
     @FindBy(xpath = ("//*[@class='btn btn-space btn-secondary']"))
     public WebElement adminChangePasswordCanselButton;
+    @FindBy(xpath = "//*[@class='text-muted' and contains(text(), 'Total Parcel')]")
+    public WebElement totalParcel;
+    @FindBy(xpath = "//*[@class='text-muted' and contains(text(), 'Total User')]")
+    public WebElement totalUser;
+    @FindBy(xpath = "//*[@class='text-muted' and contains(text(), 'Total Merchant')]")
+    public WebElement totalMerchant;
+    @FindBy(xpath = "//*[@class='text-muted' and contains(text(), 'Total Delivery Man')]")
+    public WebElement totalDeliveryMan;
+    @FindBy(xpath = "//*[@class='text-muted' and contains(text(), 'Total Branch')]")
+    public WebElement totalBranch;
+    @FindBy(xpath = "//*[@class='text-muted' and contains(text(), 'Total Accounts')]")
+    public WebElement totalAccounts;
+    @FindBy(xpath = "//*[@class='text-muted' and contains(text(), 'Total Partial Delivered')]")
+    public WebElement totalPartialDelivered;
+    @FindBy(xpath = "//*[@class='text-muted' and contains(text(), 'Total parcels deliverd')]")
+    public WebElement totalParcelsDeliverd;
+    @FindBy(xpath = "(//*[@class='col-md-4'])[1]")
+    public List<WebElement> deliveryManStatements;
+    @FindBy(xpath = "(//*[@class='col-md-4'])[2]")
+    public WebElement  merchantStatements;
+    @FindBy(xpath = "(//*[@class='col-md-4'])[3]")
+    public WebElement  branchStatements;
+    @FindBy(xpath = ("//*[@id='apexincomeexpense']"))
+    public WebElement  graphApexIncomeExpense;
+    @FindBy(xpath = ("//*[@id='apexpiecourierrevenue']"))
+    public WebElement  graphApexpieCourierRevenue;
+    @FindBy(xpath = ("//*[@id='datetimepicker12']"))
+    public WebElement  dateTimePicker;
+    @FindBy(xpath = "(//*td[contains(@class, 'today') and contains(@class, 'active')])")
+    public WebElement  dateofdays;
+    @FindBy(xpath = "(//*th[@class='picker-switch' and @data-action='pickerSwitch' and @title='Select Month')")
+    public WebElement  dateofmonths;
+
+
+    public void getvisibilityoftheAdminBildProfileicons() {
+
+        assertTrue(adminProfileButton.isDisplayed());
+        assertTrue(adminChangePasswordButton.isDisplayed());
+        assertTrue(adminLogoutButton.isDisplayed());
+
+    }
 
 }
