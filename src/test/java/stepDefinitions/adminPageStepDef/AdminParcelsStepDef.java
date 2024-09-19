@@ -2,15 +2,19 @@ package stepDefinitions.adminPageStepDef;
 
 import java.util.ArrayList;
 
+import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import pages.adminPages.AdminParcelsPage;
 import pages.adminPages.AdminProfilPage;
 import utilities.ConfigLoader;
+import utilities.Driver;
 import utilities.JSUtilities;
 import utilities.ReusableMethods;
 
@@ -22,7 +26,13 @@ public class AdminParcelsStepDef {
     AdminProfilPage adminProfilPage = new AdminProfilPage();
     AdminParcelsPage adminParcelsPage = new AdminParcelsPage();
 
-    public static String aranacakMetin;
+    ConfigLoader configLoader = new ConfigLoader();
+
+    private static String aranacakMetin;
+    private static String expectedParcelDetail;
+
+    private static String editedCustomerName;
+
 
     @Then("Login as an admin")
     public void login_as_an_admin() {
@@ -163,6 +173,94 @@ public class AdminParcelsStepDef {
 
         }
 
+    }
+
+    @Then("Click on the ... menu.")
+    public void click_on_the_menu() {
+        expectedParcelDetail = specificParcelWebElement(1, 4).getText();
+        specificParcelWebElement(1, 2).click();
+    }
+
+    @Then("Select the {string} option.")
+    public void select_the_option(String menuName) {
+        specificParcel3DotMenu(1, 2, menuName).click();
+        ReusableMethods.hardWait(2);
+    }
+
+    @Then("Verify that parcel details should be displayed successfully.")
+    public void verify_that_parcel_details_should_be_displayed_successfully() {
+
+        int counter = 0;
+        for (int i = 0; i < adminParcelsPage.parcelsViewMenuRecipentInfo.size(); i++) {
+            if (expectedParcelDetail.contains(adminParcelsPage.parcelsViewMenuRecipentInfo.get(i).getText())) {
+                counter++;
+            }
+        }
+        if (counter == adminParcelsPage.parcelsViewMenuRecipentInfo.size()) {
+            Assert.assertTrue(true);
+        }
+    }
+
+    @Then("Verify that the {string} option redirects to the correct page")
+    public void verify_that_the_option_redirects_to_the_correct_page(String optionName) {
+        String expected = configLoader.getConfigValue(optionName.replace(" ", ""));
+        int lastIndex = (adminParcelsPage.navigatorSubUrl.size()) - 1;
+        Assert.assertEquals(expected, adminParcelsPage.navigatorSubUrl.get(lastIndex).getText());
+    }
+
+    @Then("Click on the {string} button after editing.")
+    public void click_on_the_button_after_editing(String string) {
+        Faker faker = new Faker();
+        editedCustomerName = faker.name().fullName();
+        adminParcelsPage.parcelEditCustomerNameBox.click();
+        adminParcelsPage.parcelEditCustomerNameBox.clear();
+        adminParcelsPage.parcelEditCustomerNameBox.sendKeys(editedCustomerName);
+        JSUtilities.scrollToBottom(Driver.getDriver());
+        JSUtilities.clickWithJS(Driver.getDriver(), ReusableMethods.findElementByText(string));
+
+    }
+
+    @Then("Verify that a new parcel copy should be created with the same information.")
+    public void verify_that_a_new_parcel_copy_should_be_created_with_the_same_information() {
+
+        Assert.assertTrue(specificParcelWebElement(1, 4).getText().contains(editedCustomerName));
+    }
+
+    @And("Verify that the {string} option opens printing page")
+    public void verifyThatTheOptionOpensPrintingPage(String menuName) {
+
+        expectedParcelDetail = specificParcelWebElement(1, 4).getText();// for last step
+
+        Assert.assertTrue(specificParcel3DotMenu(1, 2, menuName).isEnabled());
+
+    }
+
+    @Then("Confirm the deletion.")
+    public void confirmTheDeletion() {
+
+        JSUtilities.clickWithJS(Driver.getDriver(), ReusableMethods.findElementByText("Yes"));
+    }
+
+    @And("Verify that the parcel should be deleted successfully.")
+    public void verifyThatTheParcelShouldBeDeletedSuccessfully() {
+        Assert.assertFalse(adminParcelsPage.parcelsTableListByLines.contains(expectedParcelDetail));
+
+    }
+
+
+    public WebElement specificParcelWebElement(int satırNo, int sutunNo) {
+
+        String xpath = "//*[@id='table']//tbody//tr[" + satırNo + "]//td[" + sutunNo + "]";
+
+
+        return Driver.getDriver().findElement(By.xpath(xpath));
+    }
+
+    public WebElement specificParcel3DotMenu(int satırNo, int sutunNo, String menuName) {
+
+        String xpath = "//*[@id='table']//tbody//tr[" + satırNo + "]//td[" + sutunNo + "]//a[contains(text(), '" + menuName + "')] | //*[@id='table']//tbody//tr[" + satırNo + "]//td[" + sutunNo + "]//form//button[contains(text(), '" + menuName + "')]";
+
+        return Driver.getDriver().findElement(By.xpath(xpath));
     }
 
 

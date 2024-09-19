@@ -1,3 +1,4 @@
+@US23
 Feature: [US_023] As a merchant, I want to view expense data and make payments.
 
   Scenario: [TC_2301] Payout Menu Visibility

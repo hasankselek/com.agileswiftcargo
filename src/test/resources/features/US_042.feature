@@ -20,7 +20,7 @@ Feature: [US_042] As an administrator, I want to view, update, add and delete in
     Then Click on the Filter button.
     And Verify that all filters should filter the list with correct results.
 
-  @abc
+
   Scenario: [TC_4203] Search Functionality
     Given Go to the "homepageUrl"
     Then Login as an admin
@@ -29,10 +29,71 @@ Feature: [US_042] As an administrator, I want to view, update, add and delete in
     Then Press the search button.
     And Verify that results should be displayed correctly based on the entered information.
 
+  @abc
   Scenario: [TC_4204] View Parcel Details
     Given Go to the "homepageUrl"
     Then Login as an admin
     Then Click on the "Parcels" link in the left menu.
-    Then Click on the '###' menu.
-    Then Select the 'View' option.
+    Then Click on the ... menu.
+    Then Select the "View" option.
     And Verify that parcel details should be displayed successfully.
+
+  Scenario: [TC_4205] View Parcel Logs
+
+    Given Go to the "homepageUrl"
+    Then Login as an admin
+    Then Click on the "Parcels" link in the left menu.
+    Then Click on the ... menu.
+    Then Select the "Parcel Logs" option.
+    And Verify that the "Parcel Logs" option redirects to the correct page
+
+  @abc
+  Scenario: [TC_4206] Clone Parcel
+    Given Go to the "homepageUrl"
+    Then Login as an admin
+    Then Click on the "Parcels" link in the left menu.
+    Then Click on the ... menu.
+    Then Select the "Clone" option.
+    Then Click on the 'Submit' button after editing.
+    And Verify that a new parcel copy should be created with the same information.
+
+  Scenario: [TC_4207] Print Parcel
+    Given Go to the "homepageUrl"
+    Then Login as an admin
+    Then Click on the "Parcels" link in the left menu.
+    Then Click on the ... menu.
+    Then Select the "Print" option.
+    And Verify that the "Print" option redirects to the correct page
+
+  Scenario: [TC_4208] Print Label
+    Given Go to the "homepageUrl"
+    Then Login as an admin
+    Then Click on the "Parcels" link in the left menu.
+    Then Click on the ... menu.
+    Then Select the "Print Label" option.
+    And Verify that the "Print Label" option opens printing page
+
+  Scenario: [TC_4209] Edit Parcel
+    Given Go to the "homepageUrl"
+    Then Login as an admin
+    Then Click on the "Parcels" link in the left menu.
+    Then Click on the ... menu.
+    Then Select the "Edit" option.
+    Then Click on the "Save Change" button after editing.
+    And Verify that a new parcel copy should be created with the same information.
+
+  Scenario: [TC_4210] Delete Parcel
+    Given Go to the "homepageUrl"
+    Then Login as an admin
+    Then Click on the "Parcels" link in the left menu.
+    Then Click on the ... menu.
+    Then Select the "Delete" option.
+    Then Confirm the deletion.
+    And Verify that the parcel should be deleted successfully.
+
+
+
+
+
+
+

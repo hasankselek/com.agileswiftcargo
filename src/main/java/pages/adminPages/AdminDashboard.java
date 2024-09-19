@@ -58,10 +58,21 @@ public class AdminDashboard extends BasePage {
     public WebElement  graphApexpieCourierRevenue;
     @FindBy(xpath = ("//*[@id='datetimepicker12']"))
     public WebElement  dateTimePicker;
-    @FindBy(xpath = "(//*td[contains(@class, 'today') and contains(@class, 'active')])")
+    @FindBy(xpath = "(//td[@class='day active today'])")
     public WebElement  dateofdays;
-    @FindBy(xpath = "(//*th[@class='picker-switch' and @data-action='pickerSwitch' and @title='Select Month')")
+    @FindBy(xpath = "(//th[@title='Select Month'])")
     public WebElement  dateofmonths;
+    @FindBy(xpath = "(//*[text()='Save'])[2]")
+    public WebElement ticketSaveButton;
+    @FindBy(xpath = "(//*[@class='sr-only'])[2]")
+    public WebElement ticketEditButton;
+    @FindBy(xpath = "//*[text()='Save Change']")
+    public WebElement ticketSaveChangeButton;
+    @FindBy(xpath = "//*[text()='Name']")
+    public WebElement nameText;
+
+
+
 
 
     public void getvisibilityoftheAdminBildProfileicons() {
