@@ -9,15 +9,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.merchantPages.MerchantDashboard;
-
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.*;
 import java.util.function.Function;
-
 import static org.junit.Assert.assertTrue;
 
 public class ReusableMethods {
@@ -522,7 +519,31 @@ public class ReusableMethods {
             return false;
         }
     }
-    //--------------------------------
+
+    public static void sendKeysWithActions(WebElement element, String text) {
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(element).click().sendKeys(text).build().perform();
+    }
+    // Dropdown'dan seçim yap ve text alana metin gir
+    public static void selectFromDropdownAndEnterText(WebElement dropdown, String optionText, WebElement textbox, String text) {
+        Actions actions = new Actions(Driver.getDriver());
+
+        // 1. Dropdown'u aç
+        actions.moveToElement(dropdown).click().perform();
+
+        // 2. Dinamik olarak verilen metin ile dropdown seçeneğini bul
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        WebElement option = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//li[normalize-space(text())='" + optionText + "']")
+        ));
+
+        // 3. Bulunan dropdown seçeneğine tıkla
+        actions.moveToElement(option).click().perform();
+
+        // 4. Textbox'a tıklayıp, verilen metni gir
+        actions.moveToElement(textbox).click().sendKeys(text).perform();
+    }
+
 
 }
 

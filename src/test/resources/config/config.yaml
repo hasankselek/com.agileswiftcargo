@@ -17,4 +17,5 @@ contactUrl=https://qa.agileswiftcargo.com/contact-send
 
 dashboardUrl=https://qa.agileswiftcargo.com/dashboard
 parcelUrl=https://qa.agileswiftcargo.com/merchant/parcel/index
+createMerchantUrl=https://qa.agileswiftcargo.com/admin/merchant/create
 

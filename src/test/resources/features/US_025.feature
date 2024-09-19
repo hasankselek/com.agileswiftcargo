@@ -62,3 +62,45 @@ Feature: A test of access to the Agileswiftcargo homepage
     Examples:
       |Enter Date | Customer Name|
       |17/09/2024 |Sultan        |
+    @TC_2507
+  Scenario: User logs in and validates the Parcels page
+      Given Enters the "homepageUrl"
+      When Clicks of the "Login" button
+      Then Enters row 4 in Email Address textbox
+      Then Enters row 4 in Password textbox
+      Then Clicks Sign In button
+      And   the user clicks on the "Parcels" link
+      Then the parcels table should be visible under the parcels heading
+      And the "Excel" and "CSV" buttons should be visible on the parcels list
+      And the "Excel" and "CSV" buttons should be functional
+    @TC_2508
+  Scenario: User logs in and navigates to Create Parcel page
+    Given Enters the "homepageUrl"
+    When Clicks of the "Login" button
+    Then Enters row 4 in Email Address textbox
+    Then Enters row 4 in Password textbox
+    Then Clicks Sign In button
+    And   the user clicks on the "Parcels" link
+    And the user clicks on the "Add" button on the parcels page
+    Then the user should be redirected to the Create Parcel page
+  @TC_2509
+  Scenario: User logs in, creates a parcel and verifies it in the parcels list
+    Given Enters the "homepageUrl"
+    When Clicks of the "Login" button
+    Then Enters row 4 in Email Address textbox
+    Then Enters row 4 in Password textbox
+    Then Clicks Sign In button
+    And   the user clicks on the "Parcels" link
+    And the user clicks on the "Add" button on the parcels page
+    Then Fill in the cargo creation form under the text Creat parcels
+    Then the user clicks on the "Save" button
+    @TC_2510
+  Scenario: User logs in and imports parcels
+    Given Enters the "homepageUrl"
+    When Clicks of the "Login" button
+    Then Enters row 4 in Email Address textbox
+    Then Enters row 4 in Password textbox
+    Then Clicks Sign In button
+    And   the user clicks on the "Parcels" link
+    And the user clicks on the "Import" button on the parcels page
+    Then the user should be redirected to the import page

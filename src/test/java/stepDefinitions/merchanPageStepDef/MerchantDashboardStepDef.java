@@ -6,18 +6,16 @@ import pages.merchantPages.MerchantDashboard;
 import stepDefinitions.BaseStep;
 import utilities.JSUtilities;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+
 import pages.homePages.HomePage;
-import pages.merchantPages.MerchantDashboard;
+
 import pages.merchantPages.MerchantLoginPage;
-import stepDefinitions.BaseStep;
+
 import utilities.Driver;
 import utilities.ExcelDataReader;
 import utilities.ReusableMethods;
 
-import java.util.List;
-import java.util.Map;
+
 
 import static org.junit.Assert.assertEquals;
 
