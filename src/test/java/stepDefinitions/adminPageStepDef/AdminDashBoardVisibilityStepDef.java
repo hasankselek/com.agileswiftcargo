@@ -106,10 +106,10 @@ public class AdminDashBoardVisibilityStepDef extends BaseStep {
 
     @And("the calendar is tested for timeliness")
     public void theCalendarIsTestedForTimeliness() {
-        String dateStr = adminDashboard.dateofdays+" "+adminDashboard.dateofmonths;
+        String dateStr = adminDashboard.dateofdays.getText()+" "+adminDashboard.dateofmonths.getText();
         System.out.println(dateStr);
         // DateTimeFormatter ile tarihi belirli bir formata göre ayarlıyoruz
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMMM yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMMM yyyy",Locale.ENGLISH);
         LocalDate today = LocalDate.now();
         String expectedDate = today.format(formatter);
         Assert.assertEquals("the calendar is not actual",dateStr,expectedDate);
