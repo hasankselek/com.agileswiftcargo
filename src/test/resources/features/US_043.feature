@@ -8,7 +8,7 @@ Feature: [US_043] As an administrator, I want to view, update, add and delete in
     And Verify that the "Offers" page loads correctly by checking the page title and URL.
 
 
-  Scenario: [TC_4301] Add New Offer
+  Scenario: [TC_4302] Add New Offer
     Given Go to the "homepageUrl"
     Then Login as an admin
     Then Click on the "Offers" link in the left menu.
@@ -19,7 +19,7 @@ Feature: [US_043] As an administrator, I want to view, update, add and delete in
     # And Verify that new offer is displayed successfully.
 
 
-  Scenario: [TC_4302] Update Offer Details
+  Scenario: [TC_4303] Update Offer Details
     Given Go to the "homepageUrl"
     Then Login as an admin
     Then Click on the "Offers" link in the left menu.
