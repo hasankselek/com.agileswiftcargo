@@ -56,4 +56,25 @@ public class AdminParcelsPage extends BasePage {
     @FindBy(xpath = "//*[@id='table']//tbody//tr[1]//td[2]")
     public WebElement firstCustomer3Dot;
 
+    //---3DOT ACTION MENU
+
+    @FindBy(xpath = "//*[@class='breadcrumb-item']")
+    public List<WebElement> navigatorSubUrl;
+
+    @FindBy(xpath = "//*[@class='table table-sm']//td[2]")
+    public List<WebElement> parcelsViewMenuRecipentInfo;
+
+    @FindBy(xpath = "//li[@class=' active ']")
+    public List<WebElement> parcelsLogsMenuLogBar;
+
+    @FindBy(xpath = "//input[@id='customer_name']")
+    public WebElement parcelEditCustomerNameBox;
+
+    @FindBy(xpath = "//button[text()='Submit']")
+    public WebElement parcelEditSubmitButton;
+
+    @FindBy(xpath = "//button[text()='Save Change']")
+    public WebElement parcelEditSaveChangeButton;
+
+
 }

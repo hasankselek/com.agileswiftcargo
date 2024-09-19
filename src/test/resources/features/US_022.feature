@@ -1,3 +1,4 @@
+@US22
 Feature: [US_022] As a merchant, I want to view revenue data
 
   Scenario: [TC_2201] Payment Received Menu Visibility
