@@ -66,7 +66,7 @@ public class MerchantDashboardStepDef extends BaseStep {
 	}
 	@Then("Blank fields in the form are filled in")
 	public void blank_fields_in_the_form_are_filled_in() {
-		MerchantDashboardStepDef.ticketAdd("Kargo gonderimi","Kargom teslim edilemedi");
+		MerchantDashboardStepDef.ticketAdd("Cargo shipping","Kargom teslim edilemedi");
 
 	}
 	@Then("Click on the Save button")
