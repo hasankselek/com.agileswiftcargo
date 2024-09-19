@@ -5,7 +5,9 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.merchantPages.Accounts;
 import pages.merchantPages.MerchantLoginPage;
 import utilities.ConfigLoader;
@@ -13,6 +15,7 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 import org.openqa.selenium.UnhandledAlertException;
 
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 
@@ -71,13 +74,7 @@ public class AccountsStepDefinitions {
     public void verify_that_the_table_headers_is_displayed_correctly(String header1, String header2, String header3,
                                                                      String header4, String header5) {
 
-        // This will be method!!!
-
-        List<String> expectedHeaders = Arrays.asList(header1, header2, header3, header4, header5);
-
-        for (int i = 0; i < expectedHeaders.size(); i++) {
-            Assert.assertEquals(expectedHeaders.get(i), accounts.paymentRLTHeader.get(i).getText());
-        }
+        verifyTableHeaders(header1, header2, header3, header4, header5);
 
     }
 
@@ -119,20 +116,13 @@ public class AccountsStepDefinitions {
 
     @Then("Enter valid data into the To Account and Amount fields on the Stripe Payout Details page.")
     public void enter_valid_data_into_the_to_account_and_amount_fields_on_the_stripe_payout_details_page() {
-        // This will be method!!!
-        Select select = new Select(accounts.stripeToAccountBox);
-        select.selectByIndex(0);
-        accounts.stripeAmountBox.click();
-        accounts.stripeAmountBox.sendKeys("500");
-        accounts.stripePayNowButton.click();
-
+        selectToAccount();
+        enterAmount();
     }
 
     @Then("Click the Pay Now button.")
     public void click_the_pay_now_button() {
-        accounts.stripePayNowButton.click();
-        ReusableMethods.hardWait(2);
-        Driver.getDriver().switchTo().frame(1);
+        clickPayNow();
     }
 
     @Then("Verify that the Merchant Payment window opens.")
@@ -144,37 +134,7 @@ public class AccountsStepDefinitions {
     @Then("Fill in the Email, Card number, MMYY, and CVC information, then click the Pay button.")
     public void fill_in_the_email_card_number_mmyy_and_cvc_information_then_click_the_pay_button() {
 
-        // This will be method!!!
-
-        String email = "qweqe@gm.com";
-        String cardNumber1 = "4242";
-        String cardNumber2 = "4242";
-        String cardNumber3 = "4242";
-        String cardNumber4 = "4242";
-        String month = "12";
-        String year = "26";
-        String cvc = "123";
-
-        accounts.paymentEmailBox.sendKeys(email);
-        ReusableMethods.hardWait(2);
-        accounts.paymentCardNumberBox.click();
-        accounts.paymentCardNumberBox.sendKeys(cardNumber1);
-        ReusableMethods.hardWait(1);
-        accounts.paymentCardNumberBox.sendKeys(cardNumber2);
-        ReusableMethods.hardWait(1);
-        accounts.paymentCardNumberBox.sendKeys(cardNumber3);
-        ReusableMethods.hardWait(1);
-        accounts.paymentCardNumberBox.sendKeys(cardNumber4);
-        ReusableMethods.hardWait(1);
-        accounts.paymentMMYYBox.click();
-        accounts.paymentMMYYBox.sendKeys(month);
-        ReusableMethods.hardWait(1);
-        accounts.paymentMMYYBox.sendKeys(year);
-        ReusableMethods.hardWait(2);
-        accounts.paymentCVCBox.sendKeys(cvc);
-        ReusableMethods.hardWait(2);
-        accounts.paymentPayButton.click();
-        Driver.getDriver().switchTo().defaultContent();
+        enterCardInformation();
     }
 
     @Then("Verify that the payment is processed successfully.")
@@ -187,15 +147,19 @@ public class AccountsStepDefinitions {
     @Then("Enter valid data into the To Account but do not enter any data into the Amount field.")
     public void enter_valid_data_into_the_to_account_but_do_not_enter_any_data_into_the_amount_field() {
 
-        Select select = new Select(accounts.stripeToAccountBox);
-        select.selectByIndex(0);
+        selectToAccount();
     }
 
     @Then("Verify that the {string} notification is displayed.")
     public void verify_that_the_notification_is_displayed(String string) {
         Assert.assertTrue(ReusableMethods.paymentNotificationCatcher());
 
+    }
 
+    @Then("On the Stripe Payout Details page, enter non-numeric data into the Amount field while leaving the To Account field valid.")
+    public void onTheStripePayoutDetailsPageEnterNonNumericDataIntoTheAmountFieldWhileLeavingTheToAccountFieldValid() {
+        selectToAccount();
+        enterNonNumbericAmount();
     }
 
     public String getPaymentLineDataText(int transactionLineNumber) {
@@ -215,4 +179,87 @@ public class AccountsStepDefinitions {
         return Driver.getDriver().findElement(By.xpath(xpath)).getText();
     }
 
+    public void clickPayNow() {
+        accounts.stripePayNowButton.click();
+        ReusableMethods.hardWait(2); // Sabit bekleme yerine explicit wait kullanabilirsiniz
+
+        try {
+            // Kısa süreli bekleme ile alert olup olmadığını kontrol et
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(2));
+            wait.until(ExpectedConditions.alertIsPresent());
+
+            // Eğer alert varsa yakala ve kabul et
+            Alert alert = Driver.getDriver().switchTo().alert();
+            System.out.println("Alert text: " + alert.getText());
+            alert.accept();
+
+            // Eğer alert varsa burada işlemi sonlandırabiliriz çünkü amount boş bırakılmış
+            System.out.println("Alert was handled, transaction cannot proceed.");
+            return; // Alert yakalandıysa işlemi burada durduruyoruz
+
+        } catch (TimeoutException e) {
+            // Eğer alert yoksa işlemlere devam et
+            System.out.println("No alert, continuing to process the transaction.");
+        }
+
+
+        // Alerti yönettikten sonra iframe'e geçiş yap
+        Driver.getDriver().switchTo().frame(1);
+
+    }
+
+    public void enterCardInformation() {
+        // This will be method!!!
+
+        String email = "qweqe@gm.com";
+        String cardNumber = "4242";
+        String month = "12";
+        String year = "26";
+        String cvc = "123";
+
+        accounts.paymentEmailBox.sendKeys(email);
+        ReusableMethods.hardWait(2);
+        accounts.paymentCardNumberBox.click();
+
+        for (int i = 0; i < 4; i++) {
+            accounts.paymentCardNumberBox.sendKeys(cardNumber);
+            ReusableMethods.hardWait(1);
+        }
+
+        accounts.paymentMMYYBox.click();
+        accounts.paymentMMYYBox.sendKeys(month);
+        ReusableMethods.hardWait(1);
+        accounts.paymentMMYYBox.sendKeys(year);
+        ReusableMethods.hardWait(2);
+        accounts.paymentCVCBox.sendKeys(cvc);
+        ReusableMethods.hardWait(2);
+        accounts.paymentPayButton.click();
+        Driver.getDriver().switchTo().defaultContent();
+    }
+
+    public void selectToAccount() {
+        Select select = new Select(accounts.stripeToAccountBox);
+        select.selectByIndex(0);
+
+    }
+
+    public void enterAmount() {
+        accounts.stripeAmountBox.click();
+        accounts.stripeAmountBox.sendKeys("500");
+        accounts.stripePayNowButton.click();
+    }
+
+    public void enterNonNumbericAmount() {
+        accounts.stripeAmountBox.click();
+        accounts.stripeAmountBox.sendKeys("abc");
+    }
+
+    public void verifyTableHeaders(String header1, String header2, String header3, String header4, String header5) {
+        List<String> expectedHeaders = Arrays.asList(header1, header2, header3, header4, header5);
+
+        for (int i = 0; i < expectedHeaders.size(); i++) {
+            Assert.assertEquals(expectedHeaders.get(i), accounts.paymentRLTHeader.get(i).getText());
+        }
+
+    }
 }

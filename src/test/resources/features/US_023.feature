@@ -1,3 +1,4 @@
+@US23
 Feature: [US_023] As a merchant, I want to view expense data and make payments.
 
   Scenario: [TC_2301] Payout Menu Visibility
@@ -66,6 +67,18 @@ Feature: [US_023] As a merchant, I want to view expense data and make payments.
     Then Enter valid data into the To Account but do not enter any data into the Amount field.
     Then Click the Pay Now button.
     And Verify that the "Amount feild is required." notification is displayed.
+
+
+  Scenario: [TC_2308] Incorrect Data Negative Pay Now Button Functionality
+
+    Given Go to the "homepageUrl"
+    Then Login as an merchant
+    Then Click on the "Accounts" link in the left menu.
+    Then Click on the "Payout" link in the left menu.
+    Then Click on the Stripe link.
+    Then On the Stripe Payout Details page, enter non-numeric data into the Amount field while leaving the To Account field valid.
+    Then Click the Pay Now button.
+    And Verify that the "Oops! Something went wrong." notification is displayed.
 
 
 
