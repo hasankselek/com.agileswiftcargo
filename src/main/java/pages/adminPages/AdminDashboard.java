@@ -58,9 +58,9 @@ public class AdminDashboard extends BasePage {
     public WebElement  graphApexpieCourierRevenue;
     @FindBy(xpath = ("//*[@id='datetimepicker12']"))
     public WebElement  dateTimePicker;
-    @FindBy(xpath = "(//*td[contains(@class, 'today') and contains(@class, 'active')])")
+    @FindBy(xpath = "(//td[@class='day active today'])")
     public WebElement  dateofdays;
-    @FindBy(xpath = "(//*th[@class='picker-switch' and @data-action='pickerSwitch' and @title='Select Month')")
+    @FindBy(xpath = "(//th[@title='Select Month'])")
     public WebElement  dateofmonths;
 
 
