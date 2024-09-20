@@ -19,6 +19,24 @@ public class MerchantDashboard extends BasePage {
 
     @FindBy(xpath = "(//*[@class='fa fa-dolly'])[2]")
     public WebElement parcelsButton;
+  
+    @FindBy(xpath = "//*[@class='breadcrumb-link active']")
+    public WebElement listyazisi;
+  
+    @FindBy(xpath = "(//*[@class='card-body'])[1]")
+    public WebElement textboxses;
+  
+    @FindBy(xpath = "//*[@name='parcel_date']")
+    public WebElement dateButton;
+  
+    @FindBy(xpath = "//*[@class='active']")
+    public WebElement todayButton;
+  
+    @FindBy(xpath="//*[@id='parcel_customer']")
+   public  WebElement custumerButton;
+
+    @FindBy(xpath = "(//*[@class='fa fa-dolly'])[2]")
+    public WebElement parcelsButton;
 
     @FindBy(xpath = "//*[@class='breadcrumb-link active']")
     public WebElement listyazisi;
@@ -102,8 +120,8 @@ public class MerchantDashboard extends BasePage {
     public void getClickProfileIcon() {
         ReusableMethods.hardWait(2);
         profileIcon.click();
+      
     }
-
 
     public void getVerifyProfileIconLinks(String Profile, String PaymentInformation, String ChangePassword, String Logout) {
 

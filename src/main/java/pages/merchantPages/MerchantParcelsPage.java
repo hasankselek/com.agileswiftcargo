@@ -101,6 +101,8 @@ public class MerchantParcelsPage extends BasePage {
 
     @FindBy(xpath = "//button[normalize-space()='Import']")
     public WebElement importButton2;
+    @FindBy(xpath = "(//tr/td[3])[1]")
+    public WebElement trackingID;
 
     @FindBy(xpath = "(//tr/td[3])[1]")
     public WebElement trackingID;
