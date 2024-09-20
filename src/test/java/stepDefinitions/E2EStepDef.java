@@ -6,7 +6,6 @@ import utilities.ReusableMethods;
 
 public class E2EStepDef extends BaseStep {
 
-
     @When("Enter tracking id trackID in the Enter tracking id box")
     public void enterTrackingIdInTheEnterTrackingIdBox() {
 
