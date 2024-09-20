@@ -11,9 +11,9 @@ public class AdminSalaryGeneratePage extends BasePage {
     public WebElement salary;
     @FindBy(xpath = "//*[@aria-controls='salarygenerate']")
     public WebElement payRoll;
-    @FindBy(xpath = "//*[text()='Salary Generate']")
+    @FindBy(xpath = "(//p[@class='h3'])[1]")
     public WebElement salaryTitle;
-@FindBy(xpath = "(//*[@class='table-responsive'])[1]")
+    @FindBy(xpath = "(//*[@class='table-responsive'])[1]")
     public WebElement salaryList;
 
 

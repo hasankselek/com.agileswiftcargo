@@ -1,9 +1,10 @@
+@US_030
 Feature:As a merchant, I want to view, update, add, and delete pickup points
   Background: Common Step
     Given Go to the "dashboardUrl"
     When Login as a merchant
     Then Click on the Setting button
-  @t365
+
   Scenario:[TC_3001]Verifying visibility of 'Pickup Point' link in Setting dropdown
     Then Assert visibility and activity of Pickup Point link
 
@@ -22,13 +23,14 @@ Feature:As a merchant, I want to view, update, add, and delete pickup points
     Then Click on the Setting button
     Then Click on the Pickup Point link
     When Assert visibility and activity of Plus button
-    And Click on the Plus button
+    And Click Plus button
     Then Assert the directed page title is equal to Create Pickup Point
 
+    @5
   Scenario: [TC_3005]Verifying visibility of added row
     Then Click on the Setting button
     Then Click on the Pickup Point link
-    And Click on the Plus button
+    And Click Plus button
     When Fills parameters of Nme, Contact, Address and Status
     And Clicks on save button
     Then Assert increasing the row size of table
@@ -56,5 +58,5 @@ Feature:As a merchant, I want to view, update, add, and delete pickup points
     When Assert visibility and activity of Delete link
     And Click on Delete link
     When Assert displayed popup contains Delete
-    When Click on Yes button
+    When Clicks "Yes" button
     Then Assert displayed message contains Pickup Point successfully deleted

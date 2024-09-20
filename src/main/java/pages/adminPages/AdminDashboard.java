@@ -49,19 +49,19 @@ public class AdminDashboard extends BasePage {
     @FindBy(xpath = "(//*[@class='col-md-4'])[1]")
     public List<WebElement> deliveryManStatements;
     @FindBy(xpath = "(//*[@class='col-md-4'])[2]")
-    public WebElement  merchantStatements;
+    public WebElement merchantStatements;
     @FindBy(xpath = "(//*[@class='col-md-4'])[3]")
-    public WebElement  branchStatements;
+    public WebElement branchStatements;
     @FindBy(xpath = ("//*[@id='apexincomeexpense']"))
-    public WebElement  graphApexIncomeExpense;
+    public WebElement graphApexIncomeExpense;
     @FindBy(xpath = ("//*[@id='apexpiecourierrevenue']"))
-    public WebElement  graphApexpieCourierRevenue;
+    public WebElement graphApexpieCourierRevenue;
     @FindBy(xpath = ("//*[@id='datetimepicker12']"))
-    public WebElement  dateTimePicker;
+    public WebElement dateTimePicker;
     @FindBy(xpath = "(//td[@class='day active today'])")
-    public WebElement  dateofdays;
+    public WebElement dateofdays;
     @FindBy(xpath = "(//th[@title='Select Month'])")
-    public WebElement  dateofmonths;
+    public WebElement dateofmonths;
     @FindBy(xpath = "(//*[text()='Save'])[2]")
     public WebElement ticketSaveButton;
     @FindBy(xpath = "(//*[@class='sr-only'])[2]")
@@ -70,9 +70,10 @@ public class AdminDashboard extends BasePage {
     public WebElement ticketSaveChangeButton;
     @FindBy(xpath = "//*[text()='Name']")
     public WebElement nameText;
-
-
-
+    @FindBy(xpath = "//a[contains(text(),'Payroll')]")
+    public WebElement payrollText;
+    @FindBy(xpath = "//a[contains(@class,'nav-link')][normalize-space()='Salary Generate']")
+    public WebElement salaryGenerateText;
 
 
     public void getvisibilityoftheAdminBildProfileicons() {
@@ -82,7 +83,6 @@ public class AdminDashboard extends BasePage {
         assertTrue(adminLogoutButton.isDisplayed());
 
     }
-
 
 
 }

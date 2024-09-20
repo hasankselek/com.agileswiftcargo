@@ -6,6 +6,8 @@ import io.cucumber.java.en.Then;
 import stepDefinitions.BaseStep;
 import utilities.ReusableMethods;
 
+import static org.junit.Assert.fail;
+
 public class AdminMerchantManageMerchantStepDef extends BaseStep {
 
     @Then("Verifies that the search box is visible")

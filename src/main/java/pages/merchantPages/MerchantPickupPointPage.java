@@ -10,7 +10,7 @@ public class MerchantPickupPointPage extends BasePage {
 
 @FindBy(xpath = "//*[@data-target='#settings']")
     public WebElement setting;
-@FindBy(xpath = "(//*[@class='nav-link active'])[2]")
+@FindBy(xpath = "//a[contains(@class,'nav-link')][normalize-space()='Pickup Points']")
     public WebElement pickup;
 @FindBy(xpath = "//*[text()='Pickup Point List']")
     public WebElement pickuptitle;
@@ -18,7 +18,7 @@ public class MerchantPickupPointPage extends BasePage {
     public WebElement pickuptitleAds;
 @FindBy(xpath = "(//*[@class='col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12'])[2]")
     public WebElement pickupTable;
-@FindBy(xpath = "(//*[@class='fa fa-plus'])[3]")
+@FindBy(xpath = "//a[@aria-label='Add']")
     public WebElement plusButton;
 @FindBy(xpath = "//*[@class='pageheader-title']")
     public WebElement plusTitle;
@@ -36,9 +36,9 @@ public class MerchantPickupPointPage extends BasePage {
     public List<WebElement> tableRows;
 @FindBy(xpath = "(//*[@class='btn btn-primary dropdown-toggle dropdown-toggle-split'])[1]")
     public WebElement actionButton;
-@FindBy(xpath = "(//*[@class='fas fa-edit'])[1]")
+@FindBy(xpath = "//a[normalize-space()='Edit']")
     public WebElement editButton;
-@FindBy(xpath = "((//*[@id='delete'])[1]")
+@FindBy(xpath = "//button[normalize-space()='Delete']")
     public WebElement deleteButton;
 @FindBy(xpath = "//*[@class='swal2-popup swal2-modal swal2-show']")
     public WebElement popUp;
