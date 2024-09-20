@@ -505,7 +505,18 @@ public class ReusableMethods {
 			assertTrue(driver.findElement(By.xpath("//*[text()='"+text+"']")).isDisplayed());
 		}
 
-
+	public static void switchToWindowWithTitleContains(String targetWord) {
+		String currentWindow = Driver.getDriver().getWindowHandle();
+		for (String windowHandle : Driver.getDriver().getWindowHandles()) {
+			Driver.getDriver().switchTo().window(windowHandle);
+			ReusableMethods.hardWait(1);
+			if (Driver.getDriver().getTitle().contains(targetWord)) {
+				return;
+			}
+		}
+		Driver.getDriver().switchTo().window(currentWindow); // switch back if title not
+		// contains the word
+	}
 }
 
 

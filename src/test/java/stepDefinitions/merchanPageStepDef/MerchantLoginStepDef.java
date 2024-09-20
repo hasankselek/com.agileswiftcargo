@@ -23,9 +23,8 @@ public class MerchantLoginStepDef {
 
 	@And("Clicks Sign In button")
 	public void clicksSignInButton() {
-
 		merchantLoginPage.signInButton.click();
-
+		ReusableMethods.hardWait(1);
 	}
 
 	@Then("Verifies Merchant Dashboard page opens")
