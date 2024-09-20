@@ -29,7 +29,7 @@ public class AccountsStepDefinitions {
 
     @Given("Go to the {string}")
     public void go_to_the(String string) {
-        Driver.getDriver().get(configLoader.getConfigValue("homepageUrl"));
+        Driver.getDriver().get(configLoader.getConfigValue(string));
 
     }
 
