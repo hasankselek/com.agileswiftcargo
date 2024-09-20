@@ -36,4 +36,6 @@ public class AdminDashboard extends BasePage {
     @FindBy(xpath = ("//*[@class='btn btn-space btn-secondary']"))
     public WebElement adminChangePasswordCanselButton;
 
+
+
 }
