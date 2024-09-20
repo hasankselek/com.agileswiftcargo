@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import pages.homePages.HomePage;
 import stepDefinitions.BaseStep;
+import stepDefinitions.merchanPageStepDef.MerchantParcelsStepDefinitions;
 import utilities.Driver;
 import utilities.JSUtilities;
 import utilities.ReusableMethods;
@@ -31,6 +32,8 @@ public class HomePageStepDef extends BaseStep {
 
 
     List<WebElement> textBlogBeforClick;
+
+    MerchantParcelsStepDefinitions pgs = new MerchantParcelsStepDefinitions();
 
 
     @Then("Enters the {string}")
@@ -105,9 +108,12 @@ public class HomePageStepDef extends BaseStep {
         PAGES.getHomePage().enterTrackingID(trackingID);
     }
 
+
+
     @And("Clicks {string} button")
     public void clicksButton(String text) {
 
+        ReusableMethods.hardWait(3);
         ReusableMethods.clickWithText(text);
     }
 

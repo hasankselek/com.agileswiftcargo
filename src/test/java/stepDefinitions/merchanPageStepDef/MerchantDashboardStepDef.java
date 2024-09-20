@@ -1,5 +1,6 @@
 package stepDefinitions.merchanPageStepDef;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import pages.merchantPages.MerchantDashboard;
@@ -184,4 +185,10 @@ public class MerchantDashboardStepDef extends BaseStep {
 	}
 
 
+	@And("Clicks Logout button")
+	public void clicksLogoutButton() {
+
+	  ReusableMethods.hardWait(1);
+	  merchantDashboard.profileIconLinks.get(2).click();
+	}
 }
