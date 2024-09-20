@@ -235,6 +235,7 @@ public class HomePageStepDef extends BaseStep {
 
     }
 
+
     @Then("Click on {string}")
     public void click_on(String tiklanacakKelime) {
         ReusableMethods.clickWithText(tiklanacakKelime);

@@ -15,8 +15,17 @@ Scenario: Visibility and functionality of email, password fields, and sign in bu
     And Enters row 9 in Password
     And Clicks Sign In button
     Then Verifies Admin Dashboard page opens
-
   @TC_3103
+    Scenario: Verification that there is a 'Facebook' button and when
+              clicked it redirects to the Facebook page
+    #this test runned by manual
+    And Als Admin,Verifies "Facebook" button is visible and redirect to "Facebook".
+  @TC_3104
+    Scenario:Google button and redirecting to Google page when clicked
+    And Als Admin,Verifies "Google" button is visible and redirect to "Google".
+
+
+  @TC_3105
   Scenario:Visibility and Functionality Test of the Sing Up here link and icons on the page
 
     Given Click on Sign Up Here Icon
@@ -30,6 +39,17 @@ Scenario: Visibility and functionality of email, password fields, and sign in bu
     And Click on the Address box and enter the info
     And Clicks Privacy Policy & Terms.
     And Clicks Register Account button
+    @TC_3106
+    Scenario: Clicking on the 'Forgot Password' link opens a page with an 'Email Address' text box
+              and a 'Send Password Reset Link' button, and these are visible and functional
+      And test the visibility of the Forgot Password icon on the opened page
+      And Click on the Forgot Password icon
+      And test the visibility of the Email Address text box
+      And Test the visibility of the `Send Password Reset Link` Icon
+      And enter a new Email Address and click on the link
 
-
-
+@TC_3107
+      Scenario: verifying that an email was sent to the entered email address
+      And Click on the Forgot Password icon
+      And enter a new Email Address and click on the link
+      And Test that Verifies email has been sent to the entered email address

@@ -6,18 +6,16 @@ import pages.merchantPages.MerchantDashboard;
 import stepDefinitions.BaseStep;
 import utilities.JSUtilities;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+
 import pages.homePages.HomePage;
-import pages.merchantPages.MerchantDashboard;
+
 import pages.merchantPages.MerchantLoginPage;
-import stepDefinitions.BaseStep;
+
 import utilities.Driver;
 import utilities.ExcelDataReader;
 import utilities.ReusableMethods;
 
-import java.util.List;
-import java.util.Map;
+
 
 import static org.junit.Assert.assertEquals;
 
@@ -66,7 +64,7 @@ public class MerchantDashboardStepDef extends BaseStep {
 	}
 	@Then("Blank fields in the form are filled in")
 	public void blank_fields_in_the_form_are_filled_in() {
-		MerchantDashboardStepDef.ticketAdd("Kargo gonderimi","Kargom teslim edilemedi");
+		MerchantDashboardStepDef.ticketAdd("Cargo shipping","Kargom teslim edilemedi");
 
 	}
 	@Then("Click on the Save button")

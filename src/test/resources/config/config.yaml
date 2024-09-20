@@ -14,11 +14,16 @@ blogsUrl=https://qa.agileswiftcargo.com/get-blogs
 aboutUrl=https://qa.agileswiftcargo.com/about-us
 faqUrl=https://qa.agileswiftcargo.com/faq-list
 contactUrl=https://qa.agileswiftcargo.com/contact-send
-
 dashboardUrl=https://qa.agileswiftcargo.com/dashboard
 parcelUrl=https://qa.agileswiftcargo.com/merchant/parcel/index
-
+createMerchantUrl=https://qa.agileswiftcargo.com/admin/merchant/create
+ParcelLogs = Logs
+Print = Print
 AdminDashURL=https://qa.agileswiftcargo.com/dashboard
 EmailMerpnh=pouneh.merchant@agileswiftcargo.com
 EmailAdpnh=pouneh.admin@agileswiftcargo.com
 Passpnh=Agile.0924
+
+
+
+

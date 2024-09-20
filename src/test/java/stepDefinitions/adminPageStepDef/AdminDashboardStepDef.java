@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.adminPages.AdminDashboard;
 import stepDefinitions.BaseStep;
 import utilities.Driver;
+import utilities.JSUtilities;
 import utilities.ReusableMethods;
 
 import java.time.Duration;
@@ -36,5 +37,34 @@ public class AdminDashboardStepDef extends BaseStep {
         Assert.assertTrue(ReusableMethods.isElementVisible(adminDashboard.adminLogoutButton));
     }
 
+    @Then("On the page that opens, the text {string} is verified")
+    public void on_the_page_that_opens_the_text_is_verified(String ticket) {
+       ReusableMethods.scrollToText(Driver.getDriver(),ticket);
+    }
 
+    @Then("Click on the save button to save the ticket.")
+    public void click_on_the_save_button_to_save_the_ticket() {
+        ReusableMethods.scrollToElement(adminDashboard.ticketSaveButton);
+        ReusableMethods.hardWait(1);
+        adminDashboard.ticketSaveButton.click();
+    }
+
+    @Then("Click on the edit button in the drop-down menu")
+    public void click_on_the_edit_button_in_the_drop_down_menu() {
+        ReusableMethods.hardWait(2);
+        JSUtilities.clickWithJS(Driver.getDriver(),adminDashboard.ticketEditButton);
+    }
+
+    @Then("Click the Save Change button to save the edits.")
+    public void click_the_save_change_button_to_save_the_edits() {
+        ReusableMethods.scrollToElement(adminDashboard.ticketSaveChangeButton);
+        ReusableMethods.hardWait(1);
+        adminDashboard.ticketSaveChangeButton.click();
+    }
+
+    @Then("The page that opens is verified")
+    public void the_page_that_opens_is_verified() {
+        ReusableMethods.hardWait(1);
+       adminDashboard.nameText.isDisplayed();
+    }
 }
