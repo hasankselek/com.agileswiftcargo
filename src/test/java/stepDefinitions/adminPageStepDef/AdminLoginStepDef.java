@@ -70,10 +70,46 @@ public class AdminLoginStepDef extends BaseStep {
         ReusableMethods.waitForPageToLoad( 5);
 
     }
+    @And("Als Admin,Verifies {string} button is visible and redirect to {string}.")
+    public void alsAdminVerifiesButtonIsVisibleAndRedirectTo(String arg0, String arg1) {
+    }
 
+    @And("test the visibility of the Forgot Password icon on the opened page")
+    public void testTheVisibilityOfTheForgotPasswordIconOnTheOpenedPage() {
+        assertTrue(adminLoginPage.forgotPasswordButton.isDisplayed());
+    }
 
+    @And("Click on the Forgot Password icon")
+    public void clickOnTheIcon() {
+        adminLoginPage.forgotPasswordButton.click();
+    }
 
+    @And("test the visibility of the Email Address text box")
+    public void testTheVisibilityOfTheEmailAddressTextBoxAndEnterANewEmailAddress() {
+        assertTrue(adminLoginPage.forgotEmailTextBox.isDisplayed());
+        ReusableMethods.hardWait(2);
+    }
 
+    @And("Test the visibility of the `Send Password Reset Link` Icon")
+    public void testTheVisibilityOfTheSendPasswordResetLinkIcon() {
+        assertTrue(adminLoginPage.sendPassResetLinkButton.isDisplayed());
+    }
+
+    @And("enter a new Email Address and click on the link")
+    public void enterANewEmailAddressAndClickOnTheLink() {
+        String email="gulcihan.admin@agileswiftcargo.com";
+        adminLoginPage.forgotEmailTextBox.sendKeys(email);
+        ReusableMethods.hardWait(2);
+        adminLoginPage.sendPassResetLinkButton.click();
+        ReusableMethods.hardWait(2);
+    }
+
+    @Then("Test that Verifies email has been sent to the entered email address")
+    public void testThatVerifiesEmailHasBeenSentToTheEnteredEmailAddress() {
+        String  succesText="We have emailed your password reset link!";
+        assertTrue(adminLoginPage.succesAlerttext.isDisplayed());
+        assertEquals(adminLoginPage.succesAlerttext.getText(),succesText);
+    }
 }
 
 

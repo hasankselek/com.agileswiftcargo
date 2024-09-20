@@ -236,8 +236,9 @@ public class HomePageStepDef extends BaseStep {
 
 	@Then("Click on {string}")
 	public void click_on(String tiklanacakKelime) {
+		ReusableMethods.hardWait(1);
 		ReusableMethods.clickWithText(tiklanacakKelime);
-		ReusableMethods.hardWait(3);
+		ReusableMethods.hardWait(2);
 	}
 
 	@Then("The page that opens is verified as {string}")

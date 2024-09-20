@@ -19,7 +19,7 @@ Feature: As a user I want to view information in the 'Our Sevices' field.
 
 
   @ser3
-  Scenario: TC_0502 'Last Services' area visibilty and redirect test
+  Scenario: TC_0503 'Last Services' area visibilty and redirect test
 
     Given Enters the "homepageUrl"
     Then  Clicks arrow under the "Pick & Drop"

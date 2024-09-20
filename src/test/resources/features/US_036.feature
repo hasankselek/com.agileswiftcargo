@@ -28,22 +28,28 @@ Feature:As an administrator, I want to access, update, add and delete 'Branch' i
   @br2
   Scenario: TC_3602 Redirection test to 'Create Branch' page
 
-    Then Verifies plus (+) sign to the right of the branch list
-    Then Clicks plus (+) sign
-    And  Verifies 'Create Branch' page opens
+    Then Verifies plus sign to the right of the branch list
+    Then Clicks plus sign
+    And  Verifies Create Branch page opens
 
 
   @br3
   Scenario: TC_3603 Branch actions visibility and functionality test
 
   Then Clicks actions dropdown menu
-  Then Verifies 'View' option displayed
-  Then Verifies that the 'View' option redirects to the relevant page
-  Then Verifies 'Edit' option displayed
-  Then Verifies that the 'Edit' option redirects to the relevant page
-  Then Verifies 'Mange In-Charge' option displayed
-  Then Verifies that the 'Mange In-Charge' option redirects to the relevant page
-  And  Verifies 'Delete' option displayed
+  Then Verifies " View" option displayed
+  Then Verifies that the View option redirects to the relevant page
+  Then Returns to branch page
+  Then Clicks actions dropdown menu
+  Then Verifies " Edit" option displayed
+  Then Verifies that the Edit option redirects to the relevant page
+  Then Returns to branch page
+  Then Clicks actions dropdown menu
+  Then Verifies " Mange In-Charge" option displayed
+  Then Verifies that the Mange In-Charge option redirects to the relevant page
+  Then Returns to branch page
+  Then Clicks actions dropdown menu
+  And  Verifies " Delete" option displayed
   And  Verifies delete the branch
 
 
