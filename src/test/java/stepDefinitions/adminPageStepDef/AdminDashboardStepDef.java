@@ -67,4 +67,21 @@ public class AdminDashboardStepDef extends BaseStep {
         ReusableMethods.hardWait(1);
        adminDashboard.nameText.isDisplayed();
     }
+
+    @And("Click on the Payroll link in the left menu.")
+    public void clickOnThePayrollLinkInTheLeftMenu() {
+
+        JSUtilities.scrollToElement(Driver.getDriver(), adminDashboard.payrollText);
+        adminDashboard.payrollText.click();
+        ReusableMethods.hardWait(2);
+
+
+    }
+
+    @And("Click on the Salary Generate link in the left menu.")
+    public void clickOnTheSalaryGenerateLinkInTheLeftMenu() {
+
+        adminDashboard.salaryGenerateText.click();
+        ReusableMethods.hardWait(2);
+    }
 }

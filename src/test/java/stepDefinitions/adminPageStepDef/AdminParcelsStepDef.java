@@ -13,6 +13,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import pages.adminPages.AdminParcelsPage;
 import pages.adminPages.AdminProfilPage;
+import stepDefinitions.BaseStep;
 import utilities.ConfigLoader;
 import utilities.Driver;
 import utilities.JSUtilities;
@@ -21,12 +22,12 @@ import utilities.ReusableMethods;
 import java.util.Arrays;
 import java.util.List;
 
-public class AdminParcelsStepDef {
+public class AdminParcelsStepDef extends BaseStep {
 
     AdminProfilPage adminProfilPage = new AdminProfilPage();
     AdminParcelsPage adminParcelsPage = new AdminParcelsPage();
 
-    ConfigLoader configLoader = new ConfigLoader();
+
 
     private static String aranacakMetin;
     private static String expectedParcelDetail;

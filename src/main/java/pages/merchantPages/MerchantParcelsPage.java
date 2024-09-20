@@ -67,5 +67,11 @@ public class MerchantParcelsPage extends BasePage {
     public WebElement saveButton;
     @FindBy(xpath = "//*[text()='Submit']")
     public WebElement submitButton;
+    @FindBy(xpath = "//input[@id='customFile']")
+    public WebElement importPath;
+    @FindBy(xpath = "//button[normalize-space()='Import']")
+    public WebElement importButton2;
+    @FindBy(xpath = "(//tr/td[3])[1]")
+    public WebElement trackingID;
 
 }

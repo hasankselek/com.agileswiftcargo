@@ -3,6 +3,7 @@ package stepDefinitions.homePageStepDef;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
 import stepDefinitions.BaseStep;
+import utilities.ReusableMethods;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -26,12 +27,14 @@ public class TrackingPageStepDef extends BaseStep {
 	@Then("Verifies that cargo information is displayed")
 	public void verifiesThatCargoInformationIsDisplayed() {
 
+		ReusableMethods.hardWait(3);
 		PAGES.getTrackingPage().getVisibleCargoInfo();
 	}
 
 	@Then("Verifies that error messages")
 	public void verifiesThatErrorMessages() {
 
+		ReusableMethods.hardWait(3);
 		PAGES.getTrackingPage().getParcelNotFoundPic();
 	}
 

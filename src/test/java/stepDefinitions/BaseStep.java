@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import com.github.javafaker.Faker;
+import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.WebDriver;
 import pages.adminPages.AdminMerchantManageMerchantPage;
 import pages.homePages.HomePage;
@@ -25,16 +26,18 @@ public abstract class BaseStep {
 
 	protected static Faker faker;
 
+
 	public BaseStep() {
 		DRIVER = Driver.getDriver();
 
 		PAGES = new Pages();
 
-		configLoader = new ConfigLoader();
+		configLoader=new ConfigLoader();
 
 		adminMerchantManageMerchantPage = new AdminMerchantManageMerchantPage();
 
 		faker = new Faker();
+
 	}
 
 }

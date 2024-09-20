@@ -1,4 +1,4 @@
-browser=chrome
+browser=firefox
 homepageUrl=https://qa.agileswiftcargo.com/
 loginpageUrl=https://qa.agileswiftcargo.com/login
 testData=src/test/resources/testData/testData.xlsx
@@ -14,11 +14,30 @@ blogsUrl=https://qa.agileswiftcargo.com/get-blogs
 aboutUrl=https://qa.agileswiftcargo.com/about-us
 faqUrl=https://qa.agileswiftcargo.com/faq-list
 contactUrl=https://qa.agileswiftcargo.com/contact-send
-
 dashboardUrl=https://qa.agileswiftcargo.com/dashboard
 parcelUrl=https://qa.agileswiftcargo.com/merchant/parcel/index
 createMerchantUrl=https://qa.agileswiftcargo.com/admin/merchant/create
+
 adminHomePageUrl=https://qa.agileswiftcargo.com/dashboard
 
+ParcelLogs = Logs
+Print = Print
+AdminDashURL=https://qa.agileswiftcargo.com/dashboard
+EmailMerpnh=pouneh.merchant@agileswiftcargo.com
+EmailAdpnh=pouneh.admin@agileswiftcargo.com
+Passpnh=Agile.0924
+testExcel=/Users/hasan/Desktop/com.agileswiftcargo/src/test/resources/testData/parcel_import.xlsx
 
 
+
+
+logo1=Alibaba
+logo2=Amazon
+logo3=eBay
+logo4=ulily
+logo5=tsy
+logo6=Target
+logo7=Shopify
+logo8=Depot
+logo9=Dell
+logo10=Walmart
