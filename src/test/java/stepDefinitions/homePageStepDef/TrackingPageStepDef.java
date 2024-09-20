@@ -7,6 +7,7 @@ import utilities.ReusableMethods;
 import static org.junit.Assert.*;
 
 
+
 public class TrackingPageStepDef extends BaseStep {
 
     @Then("Verifies that it redirects to the Tracking page")
@@ -25,10 +26,10 @@ public class TrackingPageStepDef extends BaseStep {
 
     @Then("Verifies that cargo information is displayed")
     public void verifiesThatCargoInformationIsDisplayed() {
+		ReusableMethods.hardWait(3);
+		PAGES.getTrackingPage().getVisibleCargoInfo();
+	}
 
-        ReusableMethods.hardWait(3);
-        PAGES.getTrackingPage().getVisibleCargoInfo();
-    }
 
     @Then("Verifies that error messages")
     public void verifiesThatErrorMessages() {

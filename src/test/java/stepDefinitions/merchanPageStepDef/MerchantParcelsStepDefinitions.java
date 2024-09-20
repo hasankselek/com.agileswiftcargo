@@ -184,6 +184,7 @@ public class MerchantParcelsStepDefinitions extends BaseStep {
 
     @Then("the user should be redirected to the import page")
     public void theUserShouldBeRedirectedToTheImportPage() {
+
         Assert.assertEquals(Driver.getDriver().getCurrentUrl(), "https://qa.agileswiftcargo.com/merchant/parcel/import-parcel");
         ReusableMethods.hardWait(2);
         ReusableMethods.uploadFile(configLoader.getConfigValue("testExcel"), merchantParcelsPage.importPath);

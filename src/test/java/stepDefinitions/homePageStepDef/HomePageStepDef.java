@@ -4,6 +4,7 @@ import io.cucumber.java.en.*;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import stepDefinitions.BaseStep;
+import stepDefinitions.merchanPageStepDef.MerchantParcelsStepDefinitions;
 import utilities.Driver;
 import utilities.JSUtilities;
 import utilities.ReusableMethods;
@@ -18,6 +19,11 @@ public class HomePageStepDef extends BaseStep {
     int indexOfRandomBlogText;
     WebElement selectedBlogText;
     int expectedSizeOfBlogText;
+
+    List<WebElement> textBlogBeforClick;
+
+    MerchantParcelsStepDefinitions pgs = new MerchantParcelsStepDefinitions();
+
 
     @Then("Enters the {string}")
     public void enters_the(String configdenUrl) {
@@ -90,7 +96,6 @@ public class HomePageStepDef extends BaseStep {
 
         PAGES.getHomePage().enterTrackingID(trackingID);
     }
-
 
     @And("Clicks {string} button")
     public void clicksButton(String text) {
