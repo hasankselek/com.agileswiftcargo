@@ -1,35 +1,24 @@
 package stepDefinitions.homePageStepDef;
 
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import io.cucumber.java.en.*;
 import org.junit.Assert;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import pages.homePages.HomePage;
 import stepDefinitions.BaseStep;
 import stepDefinitions.merchanPageStepDef.MerchantParcelsStepDefinitions;
 import utilities.Driver;
 import utilities.JSUtilities;
 import utilities.ReusableMethods;
 
-import java.time.Duration;
 import java.util.List;
-import java.util.Random;
 
 import static org.junit.Assert.*;
 
 public class HomePageStepDef extends BaseStep {
 
-    HomePage homePage = new HomePage();
-    Random random = new Random();
     int indexOfBlogsCollection;
     int indexOfRandomBlogText;
     WebElement selectedBlogText;
     int expectedSizeOfBlogText;
-
 
     List<WebElement> textBlogBeforClick;
 
@@ -107,8 +96,6 @@ public class HomePageStepDef extends BaseStep {
 
         PAGES.getHomePage().enterTrackingID(trackingID);
     }
-
-
 
     @And("Clicks {string} button")
     public void clicksButton(String text) {
@@ -241,7 +228,6 @@ public class HomePageStepDef extends BaseStep {
 
     }
 
-
     @Then("Click on {string}")
     public void click_on(String tiklanacakKelime) {
         ReusableMethods.clickWithText(tiklanacakKelime);
@@ -263,22 +249,26 @@ public class HomePageStepDef extends BaseStep {
 
     @When("Assert visibility of Home link.")
     public void assert_visibility_of_home_link() {
+
         Assert.assertTrue(ReusableMethods.isElementVisible(PAGES.getHomePage().homeText));
     }
 
     @When("Assert visiblility and clickablility of'Blogs'link.")
     public void assert_visiblility_and_clickablility_of_blogs_link() {
+
         Assert.assertTrue(ReusableMethods.isElementVisible(PAGES.getHomePage().blogsText));
         Assert.assertTrue(PAGES.getHomePage().blogsText.isEnabled());
     }
 
     @Then("Clicks on Blogs button in homepage.")
     public void click_on_the_blogs_button() {
+
         PAGES.getHomePage().blogsText.click();
     }
 
     @Then("Assert directed page title equals to Blogs.")
     public void assert_directed_page_title_equals_to_blogs() {
+
         String expectedTitle = "Blogs";
         String actualTitle = PAGES.getHomePage().BlogsTitle.getText();
         Assert.assertEquals(expectedTitle, actualTitle);
@@ -286,37 +276,42 @@ public class HomePageStepDef extends BaseStep {
 
     @Then("Entry block text of selected blog.")
     public void entry_block_text_of_selected_blog() {
-        List<WebElement> tBBC=PAGES.getHomePage().textBeforeClick;
-        indexOfRandomBlogText=random.nextInt(tBBC.size()-1);
+
+        List<WebElement> tBBC = PAGES.getHomePage().textBeforeClick;
+        indexOfRandomBlogText = random.nextInt(tBBC.size() - 1);
         if (indexOfRandomBlogText > 2) {
-            JSUtilities.scrollToElement(Driver.getDriver(),tBBC.get(indexOfRandomBlogText));
+            JSUtilities.scrollToElement(Driver.getDriver(), tBBC.get(indexOfRandomBlogText));
         }
         selectedBlogText = tBBC.get(indexOfRandomBlogText);
     }
+
     @Then("Assert opened blog block text equals to enterd block text.")
     public void assert_opened_blog_block_text_equals_to_enterd_block_text() {
-        String expectedString=selectedBlogText.getText();
+        String expectedString = selectedBlogText.getText();
         String actualString = PAGES.getHomePage().smallTextAfterClick.getText();
         Assert.assertEquals(expectedString, actualString);
     }
 
     @Then("Entry text count of selected Blog.")
     public void entry_text_count_of_selected_blog() {
-        List<WebElement> textBlogs=PAGES.getHomePage().textBeforeClick;
-      indexOfRandomBlogText=random.nextInt(textBlogs.size());
-     selectedBlogText=PAGES.getHomePage().textBeforeClick.get(indexOfRandomBlogText);
-      if(indexOfRandomBlogText>2){ReusableMethods.scrollToElement(textBlogs.get(indexOfRandomBlogText));}
-        expectedSizeOfBlogText =selectedBlogText.getText().length();
+        List<WebElement> textBlogs = PAGES.getHomePage().textBeforeClick;
+        indexOfRandomBlogText = random.nextInt(textBlogs.size());
+        selectedBlogText = PAGES.getHomePage().textBeforeClick.get(indexOfRandomBlogText);
+        if (indexOfRandomBlogText > 2) {
+            ReusableMethods.scrollToElement(textBlogs.get(indexOfRandomBlogText));
+        }
+        expectedSizeOfBlogText = selectedBlogText.getText().length();
     }
+
     @When("Click on entried text Blog.")
     public void click_on_entried_text_blog() {
-       selectedBlogText.click();
+        selectedBlogText.click();
     }
 
     @When("Click on the selected Blog.")
     public void click_on_the_selected_blog() {
-        indexOfBlogsCollection=random.nextInt(PAGES.getHomePage().blogsCollection.size()-1);
-       PAGES.getHomePage().blogsCollection.get(indexOfBlogsCollection).click();
+        indexOfBlogsCollection = random.nextInt(PAGES.getHomePage().blogsCollection.size() - 1);
+        PAGES.getHomePage().blogsCollection.get(indexOfBlogsCollection).click();
     }
 
     @Then("Assert count of clicked Blog text is bigger than entryed text count.")
@@ -332,7 +327,7 @@ public class HomePageStepDef extends BaseStep {
         WebElement selectedLatestBlog = latestBlogs.get(int2);
         if (int2 > 2) {
             JSUtilities.scrollToElement(Driver.getDriver(), selectedLatestBlog);
-            JSUtilities.highlightElementWithJS(Driver.getDriver(),selectedLatestBlog);
+            JSUtilities.highlightElementWithJS(Driver.getDriver(), selectedLatestBlog);
         }
         Assert.assertTrue(selectedLatestBlog.isDisplayed());
         Assert.assertTrue(selectedLatestBlog.isEnabled());

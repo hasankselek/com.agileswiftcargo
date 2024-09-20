@@ -1,4 +1,4 @@
-@login
+@US_017
 Feature: As a merchant, I would like to have an administration panel available to perform administrative tasks and log in to the administration panel with the registered email or phone number and password.
 
   @log1

@@ -1,4 +1,4 @@
-@qwe
+@US_043
 Feature: [US_043] As an administrator, I want to view, update, add and delete information on the 'Offers' page.
 
   Scenario: [TC_4301] Offers List Display

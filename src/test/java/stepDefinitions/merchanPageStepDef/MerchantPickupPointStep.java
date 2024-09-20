@@ -1,22 +1,19 @@
 package stepDefinitions.merchanPageStepDef;
 
-import com.github.javafaker.Faker;
-import io.cucumber.java.cs.A;
+
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.checkerframework.checker.units.qual.K;
+
 import org.junit.*;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
-import pages.merchantPages.MerchantPickupPointPage;
+
 import stepDefinitions.BaseStep;
 import utilities.ReusableMethods;
 
 public class MerchantPickupPointStep extends BaseStep {
 
-    MerchantPickupPointPage merchantPickupPointPage = new MerchantPickupPointPage();
+
     int tableRows1;
     String nameB;
     String contactB;
@@ -28,13 +25,14 @@ public class MerchantPickupPointStep extends BaseStep {
 
     @Then("Click on the Setting button")
     public void click_on_the_Setting_button() {
+
         merchantPickupPointPage.setting.sendKeys(Keys.ENTER);
     }
 
     @Then("Assert visibility and activity of Pickup Point link")
     public void assert_visibility_and_activity_of_pickup_point_link() {
         ReusableMethods.hardWait(3);
-        // Assert.assertTrue(merchantPickupPointPage.pickup.isDisplayed());
+        //Assert.assertTrue(merchantPickupPointPage.pickup.isDisplayed());
         Assert.assertTrue(merchantPickupPointPage.pickup.isEnabled());
     }
 

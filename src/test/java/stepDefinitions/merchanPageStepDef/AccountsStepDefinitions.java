@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.merchantPages.Accounts;
 import pages.merchantPages.MerchantLoginPage;
+import stepDefinitions.BaseStep;
 import utilities.ConfigLoader;
 import utilities.Driver;
 import utilities.ReusableMethods;
@@ -19,13 +20,8 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 
-public class AccountsStepDefinitions {
+public class AccountsStepDefinitions extends BaseStep {
 
-    ConfigLoader configLoader = new ConfigLoader();
-
-    Accounts accounts = new Accounts();
-
-    MerchantLoginPage merchantLoginPage = new MerchantLoginPage();
 
     @Given("Go to the {string}")
     public void go_to_the(String string) {
@@ -85,6 +81,7 @@ public class AccountsStepDefinitions {
 
     @Then("Verify if the Stripe logo is visible")
     public void verify_if_the_logo_is_visible() {
+
         Assert.assertTrue(accounts.stripeLogo.isDisplayed());
     }
 
@@ -97,6 +94,7 @@ public class AccountsStepDefinitions {
 
     @Then("Click on the Stripe link.")
     public void click_on_the_stripe_link() {
+
         accounts.stripeButton.click();
     }
 
@@ -104,24 +102,26 @@ public class AccountsStepDefinitions {
     public void verify_that_stripe_link_redirected_to_the_relevant_page() {
 
         String expectedLabel = "Stripe Payout Details";
-
         Assert.assertEquals(expectedLabel, accounts.stripeMenuLabel.getText());
     }
 
     @Then("Verify that the To Account and Amount fields are visible and allow data input.")
     public void verify_that_the_to_account_and_amount_fields_are_visible_and_allow_data_input() {
+
         Assert.assertTrue(accounts.stripeToAccountBox.isEnabled());
         Assert.assertTrue(accounts.stripeAmountBox.isEnabled());
     }
 
     @Then("Enter valid data into the To Account and Amount fields on the Stripe Payout Details page.")
     public void enter_valid_data_into_the_to_account_and_amount_fields_on_the_stripe_payout_details_page() {
+
         selectToAccount();
         enterAmount();
     }
 
     @Then("Click the Pay Now button.")
     public void click_the_pay_now_button() {
+
         clickPayNow();
     }
 
@@ -158,6 +158,7 @@ public class AccountsStepDefinitions {
 
     @Then("On the Stripe Payout Details page, enter non-numeric data into the Amount field while leaving the To Account field valid.")
     public void onTheStripePayoutDetailsPageEnterNonNumericDataIntoTheAmountFieldWhileLeavingTheToAccountFieldValid() {
+
         selectToAccount();
         enterNonNumbericAmount();
     }

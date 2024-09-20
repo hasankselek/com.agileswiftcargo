@@ -7,12 +7,16 @@ import pages.BasePage;
 public class AdminRegistrationPage extends BasePage {
     @FindBy(xpath = "//*[text()='Sign up here']")
     public WebElement signUpHere;
+
     @FindBy(xpath = "//*[text()='Register']")
     public WebElement registerButton;
+
     @FindBy(id = "business_name")
     public WebElement businessName;
+
     @FindBy(id = "full_name")
     public WebElement fullName;
+
     @FindBy(id = "mobile")
     public WebElement mobile;
 
@@ -30,6 +34,7 @@ public class AdminRegistrationPage extends BasePage {
 
     @FindBy(id = "select2-hub_id-container")
     public WebElement selectHubDropdown;
+
     @FindBy(xpath ="//*[text()='New York City']")
     public WebElement newYorkHub;
 

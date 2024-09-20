@@ -1,4 +1,4 @@
-@register
+@US_003
 Feature: As a user, I want to be able to register on the page in order to perform faster transactions on the site and access more features.
 
   @reg1

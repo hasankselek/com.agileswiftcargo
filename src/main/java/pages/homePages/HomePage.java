@@ -70,7 +70,6 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//*[text()='FAQ']")
     public WebElement faqText;
 
-
     @FindBy(xpath = "//*[text()='Contact']")
     public WebElement contactText;
 

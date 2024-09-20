@@ -1,3 +1,4 @@
+@US_042
 Feature: [US_042] As an administrator, I want to view, update, add and delete information on the 'Parcels' page.
 
   Scenario: [TC_4201] Parcels List Display

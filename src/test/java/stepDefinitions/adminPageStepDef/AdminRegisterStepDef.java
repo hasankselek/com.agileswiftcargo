@@ -1,19 +1,13 @@
 package stepDefinitions.adminPageStepDef;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import com.github.javafaker.Faker;
 
-import pages.adminPages.AdminRegistrationPage;
+import io.cucumber.java.en.*;
 import stepDefinitions.BaseStep;
-import utilities.ConfigLoader;
-import utilities.ExcelDataReader;
 import utilities.ReusableMethods;
 import static org.junit.Assert.*;
 
 public class AdminRegisterStepDef extends BaseStep {
-    AdminRegistrationPage adminRegistrationPage = new AdminRegistrationPage();
-    Faker faker = new Faker();
+
+
     @Given("Click on Sign Up Here Icon")
     public void clickOnSignUpHereIcon() {
         adminRegistrationPage.signUpHere.click();

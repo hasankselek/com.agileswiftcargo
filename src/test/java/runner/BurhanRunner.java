@@ -19,6 +19,6 @@ import org.junit.runner.RunWith;
 		publish = true
 )
 
-public class RunnerBurhan {
+public class BurhanRunner {
 
 }

@@ -3,12 +3,13 @@ package stepDefinitions.merchanPageStepDef;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import pages.merchantPages.MerchantForgotPasswordPage;
+import stepDefinitions.BaseStep;
 
 import static org.junit.Assert.*;
 
-public class MerchantForgotPasswordStepDef {
+public class MerchantForgotPasswordStepDef extends BaseStep {
 
-	MerchantForgotPasswordPage merchantForgotPasswordPage = new MerchantForgotPasswordPage();
+
 
 	@Then("Verifies  Email Address textbox and Send Password Reset Link visibilty")
 	public void verifiesEmailAddressTextboxAndSendPasswordResetLinkVisibilty() {

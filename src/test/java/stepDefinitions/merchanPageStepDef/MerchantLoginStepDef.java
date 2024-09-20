@@ -8,18 +8,15 @@ import org.junit.Assert;
 import pages.homePages.HomePage;
 import pages.merchantPages.MerchantDashboard;
 import pages.merchantPages.MerchantLoginPage;
+import stepDefinitions.BaseStep;
 import utilities.ConfigLoader;
 import utilities.ExcelDataReader;
 import utilities.ReusableMethods;
 
 import static org.junit.Assert.*;
 
-public class MerchantLoginStepDef {
-    MerchantDashboard merchantDashboard=new MerchantDashboard();
+public class MerchantLoginStepDef extends BaseStep {
 
-	MerchantLoginPage merchantLoginPage = new MerchantLoginPage();
-
-	HomePage homePage = new HomePage();
 
 	ExcelDataReader reader = new ExcelDataReader(merchantLoginPage.configLoader.getConfigValue("testData"),
 			"merchantLogin");

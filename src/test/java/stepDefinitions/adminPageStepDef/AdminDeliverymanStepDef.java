@@ -1,38 +1,25 @@
 package stepDefinitions.adminPageStepDef;
 
-import com.github.javafaker.Faker;
-import io.cucumber.java.bs.A;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+
+import io.cucumber.java.en.*;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import pages.adminPages.AdminDeliveryManPage;
+
 import stepDefinitions.BaseStep;
-import utilities.Driver;
-import utilities.JSUtilities;
+
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
-
 
 
 public class AdminDeliverymanStepDef extends BaseStep {
-    AdminDeliveryManPage adminDeliveryManPage = new AdminDeliveryManPage();
-    Faker faker = new Faker();
-    Random random = new Random();
 
     String fakerPhone;
     String fakerName;
     String fakerEmail;
     String fakerEmail2;
     String fakerName2;
-
-
 
 
     @When("Login with admin")
@@ -98,12 +85,14 @@ public class AdminDeliverymanStepDef extends BaseStep {
     public void click_on_the_save_button() {
         adminDeliveryManPage.saveInPlusDel.sendKeys(Keys.ENTER);
     }
+
     @Then("Click on the edit button")
     public void click_on_the_edit_button() {
         adminDeliveryManPage.editButton.sendKeys(Keys.ENTER);
     }
-    @Then ("Verify enters for filter the used information shows in result")
-    public void verify_enters_for_filter_the_used_information_shows_in_result(){
+
+    @Then("Verify enters for filter the used information shows in result")
+    public void verify_enters_for_filter_the_used_information_shows_in_result() {
         adminDeliveryManPage.delNameBox.sendKeys(faker.name().fullName());
         adminDeliveryManPage.delEmailBox.sendKeys(faker.internet().emailAddress());
         adminDeliveryManPage.delPhoneBox.sendKeys(faker.phoneNumber().cellPhone());

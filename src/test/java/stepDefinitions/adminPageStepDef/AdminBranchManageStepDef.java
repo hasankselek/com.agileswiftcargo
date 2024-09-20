@@ -1,16 +1,15 @@
 package stepDefinitions.adminPageStepDef;
 
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Then;
-import org.junit.Assert;
+import io.cucumber.java.en.*;
 import pages.adminPages.AdminBranchManagePage;
+import stepDefinitions.BaseStep;
 import utilities.ReusableMethods;
 
 import static org.junit.Assert.*;
 
-public class AdminBranchManageStepDef {
+public class AdminBranchManageStepDef extends BaseStep {
 
-    AdminBranchManagePage adminBranchManagePage = new AdminBranchManagePage();
+
     String gonderilenHubName;
 
     @Then("Opens branch page")
@@ -85,7 +84,7 @@ public class AdminBranchManageStepDef {
         String expectedUrl = "https://qa.agileswiftcargo.com/admin/hubs/create";
         String actualUrl = adminBranchManagePage.driver.getCurrentUrl();
 
-        assertEquals(expectedUrl,actualUrl);
+        assertEquals(expectedUrl, actualUrl);
 
 
     }
@@ -100,7 +99,7 @@ public class AdminBranchManageStepDef {
     public void verifiesOptionDisplayed(String menuName) {
 
 
-        assertEquals(adminBranchManagePage.getDropdownItem(menuName).getText(),menuName.trim());
+        assertEquals(adminBranchManagePage.getDropdownItem(menuName).getText(), menuName.trim());
 
 
     }

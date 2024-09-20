@@ -1,6 +1,6 @@
-
 @US_008
 Feature: As a user, I want to see customer satisfaction data.
+
   Background: Common Steps
     Given Enters the "homepageUrl"
     Then Verifies access to homepage

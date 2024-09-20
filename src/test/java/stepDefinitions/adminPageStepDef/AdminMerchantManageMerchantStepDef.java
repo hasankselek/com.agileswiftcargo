@@ -1,12 +1,7 @@
 package stepDefinitions.adminPageStepDef;
 
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
+import io.cucumber.java.en.*;
 import stepDefinitions.BaseStep;
-import utilities.ReusableMethods;
-
-import static org.junit.Assert.fail;
 
 public class AdminMerchantManageMerchantStepDef extends BaseStep {
 
@@ -49,9 +44,9 @@ public class AdminMerchantManageMerchantStepDef extends BaseStep {
 
     }
 
-
     @And("Click on the + Button")
     public void clickOnTheButton() {
+
         PAGES.getAdminMerchantManageMerchantPage().getClickPlusButton();
     }
 
@@ -81,26 +76,31 @@ public class AdminMerchantManageMerchantStepDef extends BaseStep {
 
     @And("Fills in the {string} {string} {string} {string} {string} {string} requested information")
     public void fillsInTheRequestedInformation(String businessName, String name, String phone,String hub,String status,String adress) {
+
         PAGES.getAdminMerchantManageMerchantPage().getFillRequestedEditInformation(businessName,name,phone,hub,status,adress);
     }
 
     @And("Clicks on the Save Change button")
     public void clicksOnTheSaveChangeButton() {
+
         PAGES.getAdminMerchantManageMerchantPage().getClickSaveChangeButton();
     }
 
     @Then("Verifies that the error messages is displayed")
     public void verifiesThatTheErrorMessagesIsDisplayed() {
+
         PAGES.getAdminMerchantManageMerchantPage().getEmptyInfoErrorMessages();
     }
 
     @And("Clicks on the Save button")
     public void clicksOnTheSaveButton() {
+
         PAGES.getAdminMerchantManageMerchantPage().getClickSaveButton();
     }
 
     @Then("Verifies that the wrong phone number error messages is displayed")
     public void verifiesThatTheWrongPhoneNumberErrorMessagesIsDisplayed() {
+
         PAGES.getAdminMerchantManageMerchantPage().getWrongPhoneNumberMessage();
     }
 

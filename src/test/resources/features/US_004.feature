@@ -66,10 +66,10 @@ Feature:As a user, I want to check the status of the cargo using the 'Track Now'
     Then Verifies that error messages
 
     Examples:
-      | TrackingID |
+      | TrackingID      |
       | AS726353160C464 |
-      | asdasdasda |
-      | !'^+%&/(=) |
+      | asdasdasda      |
+      | !'^+%&/(=)      |
 
 
 

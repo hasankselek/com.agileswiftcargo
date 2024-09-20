@@ -22,34 +22,35 @@ import static org.junit.Assert.assertEquals;
 
 public class MerchantDashboardStepDef extends BaseStep {
 
-    MerchantDashboard merchantDashboard=new MerchantDashboard();
-    MerchantLoginPage merchantLoginPage = new MerchantLoginPage();
-    HomePage homePage = new HomePage();
+
     ExcelDataReader reader = new ExcelDataReader(merchantLoginPage.configLoader.getConfigValue("testData"),"merchantLogin");
 
 
   @Then("Click profile icon")
     public void click_profile_icon() {
-    PAGES.getMerchantDashboard().getClickProfileIcon();
+
+	  PAGES.getMerchantDashboard().getClickProfileIcon();
 	}
 
 	@Then("Verifies {string} {string} {string} {string} links are displayed")
-	public void verifies_links_are_displayed(String Profile, String PaymentInformation, String ChangePassword,
-			String Logout) {
+	public void verifies_links_are_displayed(String Profile, String PaymentInformation, String ChangePassword, String Logout) {
 
 		PAGES.getMerchantDashboard().getVerifyProfileIconLinks(Profile, PaymentInformation, ChangePassword, Logout);
 	}
 
 	@Then("Click on Ticket from the sidebar menu")
 	public void click_on_from_the_sidebar_menu() {
+
 		merchantDashboard.navBarTicketText.click();
 
 	}
+
 	@Then("On the page that opens, the text Ticket is verified")
 	public void on_the_page_that_opens_the_text_is_verified() {
 		Assert.assertTrue(merchantDashboard.ticketText.isDisplayed());
 
 	}
+
 	@Then("Verifies registered tickets from the User Info section")
 	public void verifies_registered_tickets_from_the_user_Info_section() {
 		Assert.assertTrue(merchantDashboard.userInfoName.isDisplayed());

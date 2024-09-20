@@ -5,14 +5,12 @@ import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import pages.homePages.OurPartnersPage;
+import stepDefinitions.BaseStep;
 import utilities.ConfigLoader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
-public class OurPartnersStepDef {
-
-    ConfigLoader configLoader = new ConfigLoader();
-    OurPartnersPage ourPartnersPage = new OurPartnersPage();
+public class OurPartnersStepDef extends BaseStep {
 
     @Given("Go to page {string}")
     public void go_to_page(String pageUrl) {
@@ -22,6 +20,7 @@ public class OurPartnersStepDef {
 
     @Then("Scroll to Our Partners area.")
     public void scrollToOurPartnersArea() {
+
         ReusableMethods.scrollToElement(ourPartnersPage.ourPartnersTitle);
     }
 
@@ -49,6 +48,7 @@ public class OurPartnersStepDef {
 
     @Then("Verify that second slide is selected.")
     public void verifyThatSecondSlideIsSelected() {
+
         ReusableMethods.hardWait(1);
         Assert.assertFalse(ourPartnersPage.partnersLogosList.get(0).isDisplayed());
         Assert.assertFalse(ourPartnersPage.partnersLogosList.get(9).isDisplayed());
@@ -63,6 +63,7 @@ public class OurPartnersStepDef {
 
     @Then("Click on logo {int}")
     public void clickOnLogo(int number) {
+
         ReusableMethods.switchToWindowWithTitleContains("Agile");
         ReusableMethods.hardWait(1);
         ourPartnersPage.partnersLogosList.get(number-1).click();

@@ -1,4 +1,4 @@
-@branchs
+@US_036
 Feature:As an administrator, I want to access, update, add and delete 'Branch' information on the 'Branch Manage' page.
 
 
@@ -20,9 +20,9 @@ Feature:As an administrator, I want to access, update, add and delete 'Branch' i
     And  Clicks " Clear" button
     And  Verifies filter cleaned
     Examples:
-      | hubs |
-      |New York City|
-      |Orlando |
+      | hubs          |
+      | New York City |
+      | Orlando       |
 
 
   @br2
@@ -36,21 +36,21 @@ Feature:As an administrator, I want to access, update, add and delete 'Branch' i
   @br3
   Scenario: TC_3603 Branch actions visibility and functionality test
 
-  Then Clicks actions dropdown menu
-  Then Verifies " View" option displayed
-  Then Verifies that the View option redirects to the relevant page
-  Then Returns to branch page
-  Then Clicks actions dropdown menu
-  Then Verifies " Edit" option displayed
-  Then Verifies that the Edit option redirects to the relevant page
-  Then Returns to branch page
-  Then Clicks actions dropdown menu
-  Then Verifies " Mange In-Charge" option displayed
-  Then Verifies that the Mange In-Charge option redirects to the relevant page
-  Then Returns to branch page
-  Then Clicks actions dropdown menu
-  And  Verifies " Delete" option displayed
-  And  Verifies delete the branch
+    Then Clicks actions dropdown menu
+    Then Verifies " View" option displayed
+    Then Verifies that the View option redirects to the relevant page
+    Then Returns to branch page
+    Then Clicks actions dropdown menu
+    Then Verifies " Edit" option displayed
+    Then Verifies that the Edit option redirects to the relevant page
+    Then Returns to branch page
+    Then Clicks actions dropdown menu
+    Then Verifies " Mange In-Charge" option displayed
+    Then Verifies that the Mange In-Charge option redirects to the relevant page
+    Then Returns to branch page
+    Then Clicks actions dropdown menu
+    And  Verifies " Delete" option displayed
+    And  Verifies delete the branch
 
 
 

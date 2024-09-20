@@ -2,13 +2,11 @@ package stepDefinitions.merchanPageStepDef;
 
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
-import pages.merchantPages.MerchantReportsParcelStatusPage;
 import stepDefinitions.BaseStep;
 import utilities.ReusableMethods;
 
 public class MerchantReportsParcelStatusStepDeff extends BaseStep {
 
-    MerchantReportsParcelStatusPage merchantReportsParcelStatusPage = new MerchantReportsParcelStatusPage();
 
     @Then("Clicks Reports menu on left side")
     public void clicks_reports_menu_on_left_side() {

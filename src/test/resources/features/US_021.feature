@@ -1,4 +1,3 @@
-
 @US_021
 Feature: As a merchant, I want to access, update, add and delete information on the ticket page.
 

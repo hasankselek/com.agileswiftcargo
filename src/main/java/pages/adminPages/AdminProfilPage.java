@@ -18,21 +18,28 @@ public class AdminProfilPage extends BasePage {
 
     @FindBy(xpath = "//*[text()='Sign in']")
     public WebElement signInButton;
+
     @FindBy(xpath = "//*[text()='Sign up here']")
     public WebElement signUpHere;
+
     @FindBy(xpath = ("//img[@class='logo-img']"))
     public WebElement logo;
 
     @FindBy(xpath = ("//*[@class='nav-item login-button']"))
     public WebElement loginButton;
+
     @FindBy(xpath = "//*[text()='Forgot Password']")
     public WebElement forgotPasswordButton;
+
     @FindBy(xpath = "//*[@class='invalid-feedback']")
     public WebElement warningMessageText;
+
     @FindBy(xpath = "//*[@class='form-control form-control-lg ']")
     public WebElement forgotEmailTextBox;
+
     @FindBy(xpath = "//*[@type='submit']")
     public WebElement sendPassResetLinkButton;
+
     @FindBy(xpath = "//*[@class='alert alert-success']")
     public WebElement succesAlerttext;
 

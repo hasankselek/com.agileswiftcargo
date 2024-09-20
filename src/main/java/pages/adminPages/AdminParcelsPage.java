@@ -14,11 +14,8 @@ public class AdminParcelsPage extends BasePage {
     @FindBy(xpath = "//*[@id='table']//tbody//tr")
     public List<WebElement> parcelsTableListByLines;
 
-
     @FindBy(xpath = "//*[@id='table']//tbody//tr//td")
     public List<WebElement> parcelsTableDataOneByOne;
-
-    //Filter Section
 
     @FindBy(xpath = "//*[@class='form-group col-12 col-sm-6 col-md-4 col-lg-4 col-xl-2']")
     public List<WebElement> parcelFilterList;

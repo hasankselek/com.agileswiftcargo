@@ -2,12 +2,10 @@ package stepDefinitions;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import stepDefinitions.merchanPageStepDef.MerchantParcelsStepDefinitions;
+
 import utilities.ReusableMethods;
 
 public class E2EStepDef extends BaseStep{
-
-    MerchantParcelsStepDefinitions track = new MerchantParcelsStepDefinitions();
 
     @When("Enter tracking id trackID in the Enter tracking id box")
     public void enterTrackingIdInTheEnterTrackingIdBox() {
@@ -20,6 +18,7 @@ public class E2EStepDef extends BaseStep{
     @Then("Enter tracking id wrong TrackID in the Enter tracking id box")
     public void enterTrackingIdWrongTrackIDInTheEnterTrackingIdBox() {
 
+        PAGES.getHomePage().enterTrackingID(track.getTrackingID().substring(0, 16));
         PAGES.getHomePage().enterTrackingID(track.getTrackingID().substring(0,16));
     }
 }

@@ -9,7 +9,7 @@ import utilities.ReusableMethods;
 
 public class MerchantAccInvoiceStepDef extends BaseStep {
 
-    MerchantAccInvoicePage merchantAccInvoicePage = new MerchantAccInvoicePage();
+
 
     @Then("Clicks Accounts menu on left side")
     public void clicks_accounts_menu_on_left_side() {

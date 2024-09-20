@@ -19,36 +19,39 @@ import java.time.Duration;
 
 
 public class AdminDashboardChangePasswordStepDef extends BaseStep {
-    AdminDashboard adminDashboard = new AdminDashboard();
-    AdminProfilPage adminProfilPage=new AdminProfilPage();
-    AdminRegistrationPage adminRegistrationPage = new AdminRegistrationPage();
-    Faker faker = new Faker();
-    String oldPass ="Agile.0924";
-    String newPass ="123456";
-    String enteredOldPassword="";
-    String enteredNewPassword="";
-    String enteredConfirmPassword="";
-    ExcelDataReader reader = new ExcelDataReader(adminDashboard.configLoader.getConfigValue("testData"),"adminLogin");
-    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(2));
+
+
+    String oldPass = "Agile.0924";
+    String newPass = "123456";
+    String enteredOldPassword = "";
+    String enteredNewPassword = "";
+    String enteredConfirmPassword = "";
+    ExcelDataReader reader = new ExcelDataReader(adminDashboard.configLoader.getConfigValue("testData"), "adminLogin");
+
+
     @Then("Click on the icon of the Change password link")
     public void click_on_the_icon_of_the_change_password_link() {
         adminDashboard.adminChangePasswordButton.click();
     }
+
     @Then("visibility of the Old Password box on the opened page")
     public void visibility_of_the_old_password_box_on_the_opened_page() {
         Assert.assertTrue(ReusableMethods.isElementVisible(adminDashboard.adminChangePasswordOldButton));
         wait.until(ExpectedConditions.elementToBeClickable(adminDashboard.adminChangePasswordOldButton));
     }
+
     @Then("visibility of the New Password box")
     public void visibility_of_the_new_password_box() {
         Assert.assertTrue(ReusableMethods.isElementVisible(adminDashboard.adminChangePasswordNewButton));
         wait.until(ExpectedConditions.elementToBeClickable(adminDashboard.adminChangePasswordNewButton));
     }
+
     @Then("visibility of the Confirm Password box")
     public void visibility_of_the_confirm_password_box() {
         Assert.assertTrue(ReusableMethods.isElementVisible(adminDashboard.adminChangePasswordConfirmButton));
         wait.until(ExpectedConditions.elementToBeClickable(adminDashboard.adminChangePasswordConfirmButton));
     }
+
     @Then("visibility of the Save Change button")
     public void visibility_of_the_save_change_button() {
         Assert.assertTrue(ReusableMethods.isElementVisible(adminDashboard.adminChangePasswordSaveChange));
@@ -93,6 +96,6 @@ public class AdminDashboardChangePasswordStepDef extends BaseStep {
 
     @Then("test whether the old password and the new password have changed")
     public void testWhetherTheOldPasswordAndTheNewPasswordHaveChanged() {
-    Assert.assertTrue(ReusableMethods.paymentNotificationCatcher());
+        Assert.assertTrue(ReusableMethods.paymentNotificationCatcher());
     }
 }
