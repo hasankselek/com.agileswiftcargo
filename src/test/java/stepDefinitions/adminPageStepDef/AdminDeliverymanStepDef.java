@@ -12,6 +12,7 @@ import org.openqa.selenium.WebElement;
 import pages.adminPages.AdminDeliveryManPage;
 import stepDefinitions.BaseStep;
 import utilities.Driver;
+import utilities.JSUtilities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +59,8 @@ public class AdminDeliverymanStepDef extends BaseStep {
     public void verify_visibility_and_activity_of_plus_button() {
         Assert.assertTrue(adminDeliveryManPage.plusButton.isDisplayed());
         Assert.assertTrue(adminDeliveryManPage.plusButton.isEnabled());
+
+
     }
 
     @When("Verify visibility and activity of action button")

@@ -45,7 +45,7 @@ public class MerchantParcelsStepDefinitions extends BaseStep {
     }
     @Then("the user clicks on the {string} button on the parcels page")
     public void the_user_clicks_on_the_button_on_the_parcels_page(String addtext) {
-        merchantParcelsPage.addButton.click();
+        ReusableMethods.clickWithText(addtext);
 
     }
     @Then("the user should be redirected to the Create Parcel page")
@@ -188,11 +188,11 @@ public class MerchantParcelsStepDefinitions extends BaseStep {
     }
 
 
-
-
-
-
-
-
-
+    @Then("the user should be redirected to the import page")
+    public void theUserShouldBeRedirectedToTheImportPage() {
+        Assert.assertEquals(Driver.getDriver().getCurrentUrl(),"https://qa.agileswiftcargo.com/merchant/parcel/import-parcel");
+        ReusableMethods.uploadFile(configLoader.getConfigValue("testExcel"),merchantParcelsPage.importPath);
+        ReusableMethods.hardWait(1);
+        merchantParcelsPage.importButton2.click();
+    }
 }
