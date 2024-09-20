@@ -28,3 +28,13 @@ Feature: [US_043] As an administrator, I want to view, update, add and delete in
     And Verify that the "Edit Offer" page loads correctly by checking the page title and URL.
     # Edit the offer details and save.
     # Verify that the offer is editted successfully
+
+  Scenario: [TC_4304] Delete Offer
+
+    Given Go to the "homepageUrl"
+    Then Login as an admin
+    Then Click on the "Offers" link in the left menu.
+    Then Click the Actions menu next to the offer you want to edit.
+    Then Select "Delete" option.
+    # Then Confirm the deletion.
+    # And Verify that the offer is editted successfully
