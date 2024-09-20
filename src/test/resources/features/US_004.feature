@@ -67,7 +67,7 @@ Feature:As a user, I want to check the status of the cargo using the 'Track Now'
 
     Examples:
       | TrackingID |
-      | 1231231231 |
+      | AS726353160C464 |
       | asdasdasda |
       | !'^+%&/(=) |
 
