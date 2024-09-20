@@ -1,3 +1,4 @@
+@US_024
 Feature: As a merchant, I want to view my invoices.
 
   @TC_2401

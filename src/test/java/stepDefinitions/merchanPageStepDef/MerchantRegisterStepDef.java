@@ -1,155 +1,153 @@
 package stepDefinitions.merchanPageStepDef;
 
-import com.github.javafaker.Faker;
+
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pages.merchantPages.MerchantRegistrationPage;
+import stepDefinitions.BaseStep;
 import utilities.ReusableMethods;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
-public class MerchantRegisterStepDef {
 
-	MerchantRegistrationPage merchantRegistrationPage = new MerchantRegistrationPage();
+public class MerchantRegisterStepDef extends BaseStep {
 
-	Faker faker = new Faker();
 
-	@Then("Verifies Business Name, Full Name, Mobile, Password, Address box visibility")
-	public void verifiesBusinessNameFullNameMobilePasswordAddressBoxVisibility() {
-		assertTrue(merchantRegistrationPage.businessNameBox.isDisplayed());
-		assertTrue(merchantRegistrationPage.fullNameBox.isDisplayed());
-		assertTrue(merchantRegistrationPage.mobileBox.isDisplayed());
-		assertTrue(merchantRegistrationPage.passwordBox.isDisplayed());
-		assertTrue(merchantRegistrationPage.addressBox.isDisplayed());
+    @Then("Verifies Business Name, Full Name, Mobile, Password, Address box visibility")
+    public void verifiesBusinessNameFullNameMobilePasswordAddressBoxVisibility() {
+        assertTrue(merchantRegistrationPage.businessNameBox.isDisplayed());
+        assertTrue(merchantRegistrationPage.fullNameBox.isDisplayed());
+        assertTrue(merchantRegistrationPage.mobileBox.isDisplayed());
+        assertTrue(merchantRegistrationPage.passwordBox.isDisplayed());
+        assertTrue(merchantRegistrationPage.addressBox.isDisplayed());
 
-	}
+    }
 
-	@Then("Verifies Business Name, Full Name, Mobile, Password, Address box able to entering")
-	public void verifiesBusinessNameFullNameMobilePasswordAddressBoxAbleToEntering() {
+    @Then("Verifies Business Name, Full Name, Mobile, Password, Address box able to entering")
+    public void verifiesBusinessNameFullNameMobilePasswordAddressBoxAbleToEntering() {
 
-		assertTrue(merchantRegistrationPage.businessNameBox.isEnabled());
-		assertTrue(merchantRegistrationPage.fullNameBox.isEnabled());
-		assertTrue(merchantRegistrationPage.mobileBox.isEnabled());
-		assertTrue(merchantRegistrationPage.passwordBox.isEnabled());
-		assertTrue(merchantRegistrationPage.addressBox.isEnabled());
+        assertTrue(merchantRegistrationPage.businessNameBox.isEnabled());
+        assertTrue(merchantRegistrationPage.fullNameBox.isEnabled());
+        assertTrue(merchantRegistrationPage.mobileBox.isEnabled());
+        assertTrue(merchantRegistrationPage.passwordBox.isEnabled());
+        assertTrue(merchantRegistrationPage.addressBox.isEnabled());
 
-	}
+    }
 
-	@Then("Verifies I agree to Agile Swift Cargo Privacy Policy & Terms checkbox visibilty")
-	public void verifiesIAgreeToAgileSwiftCargoPrivacyPolicyTermsCheckboxVisibilty() {
+    @Then("Verifies I agree to Agile Swift Cargo Privacy Policy & Terms checkbox visibilty")
+    public void verifiesIAgreeToAgileSwiftCargoPrivacyPolicyTermsCheckboxVisibilty() {
 
-		assertTrue(merchantRegistrationPage.privacyPolicyCheckbox.isDisplayed());
+        assertTrue(merchantRegistrationPage.privacyPolicyCheckbox.isDisplayed());
 
-	}
+    }
 
-	@Then("Verifies I agree to Agile Swift Cargo Privacy Policy & Terms  text redirect to Privacy Policy & Terms page")
-	public void verifiesIAgreeToAgileSwiftCargoPrivacyPolicyTermsTextRedirectToPrivacyPolicyTermsPage() {
+    @Then("Verifies I agree to Agile Swift Cargo Privacy Policy & Terms  text redirect to Privacy Policy & Terms page")
+    public void verifiesIAgreeToAgileSwiftCargoPrivacyPolicyTermsTextRedirectToPrivacyPolicyTermsPage() {
 
-		merchantRegistrationPage.privacyPolicyLink.click();
+        merchantRegistrationPage.privacyPolicyLink.click();
 
-		String expectedPageUrl = "https://qa.agileswiftcargo.com/privacy-and-policy";
+        String expectedPageUrl = "https://qa.agileswiftcargo.com/privacy-and-policy";
 
-		assertEquals(expectedPageUrl, merchantRegistrationPage.driver.getCurrentUrl());
+        assertEquals(expectedPageUrl, merchantRegistrationPage.driver.getCurrentUrl());
 
-	}
+    }
 
-	@Then("Clicks register button")
-	public void clicksRegisterButton() {
-		merchantRegistrationPage.registerButton.click();
-	}
+    @Then("Clicks register button")
+    public void clicksRegisterButton() {
 
-	@Then("Enters into Business Name box")
-	public void entersIntoBusinessNameBox() {
+        merchantRegistrationPage.registerButton.click();
+    }
 
-		merchantRegistrationPage.businessNameBox.sendKeys(faker.company().name());
+    @Then("Enters into Business Name box")
+    public void entersIntoBusinessNameBox() {
 
-	}
+        merchantRegistrationPage.businessNameBox.sendKeys(faker.company().name());
 
-	@Then("Enters into Full Name box")
-	public void entersIntoFullNameBox() {
+    }
 
-		merchantRegistrationPage.fullNameBox.sendKeys(faker.name().fullName());
-	}
+    @Then("Enters into Full Name box")
+    public void entersIntoFullNameBox() {
 
-	@And("Selects hub")
-	public void selectsHub() {
+        merchantRegistrationPage.fullNameBox.sendKeys(faker.name().fullName());
+    }
 
-		merchantRegistrationPage.selectHubDropdown.click();
+    @And("Selects hub")
+    public void selectsHub() {
 
-		merchantRegistrationPage.newYorkHub.click();
-		ReusableMethods.hardWait(2);
-		merchantRegistrationPage.selectHubDropdown.click();
-	}
+        merchantRegistrationPage.selectHubDropdown.click();
 
-	@And("Enters into Mobile box")
-	public void entersIntoMobileBox() {
+        merchantRegistrationPage.newYorkHub.click();
+        ReusableMethods.hardWait(2);
+        merchantRegistrationPage.selectHubDropdown.click();
+    }
 
-		merchantRegistrationPage.mobileBox.sendKeys(faker.phoneNumber().subscriberNumber(11));
-		ReusableMethods.hardWait(1);
-	}
+    @And("Enters into Mobile box")
+    public void entersIntoMobileBox() {
 
-	@Then("Enters into Password box")
-	public void entersIntoPasswordBox() {
+        merchantRegistrationPage.mobileBox.sendKeys(faker.phoneNumber().subscriberNumber(11));
+        ReusableMethods.hardWait(1);
+    }
 
-		merchantRegistrationPage.passwordBox.sendKeys(faker.internet().password(6, 10));
-		ReusableMethods.hardWait(1);
+    @Then("Enters into Password box")
+    public void entersIntoPasswordBox() {
 
-	}
+        merchantRegistrationPage.passwordBox.sendKeys(faker.internet().password(6, 10));
+        ReusableMethods.hardWait(1);
 
-	@Then("Enters into Address box")
-	public void entersIntoAddressBox() {
+    }
 
-		merchantRegistrationPage.addressBox.sendKeys(faker.address().fullAddress());
-		ReusableMethods.hardWait(1);
+    @Then("Enters into Address box")
+    public void entersIntoAddressBox() {
 
-	}
+        merchantRegistrationPage.addressBox.sendKeys(faker.address().fullAddress());
+        ReusableMethods.hardWait(1);
 
-	@When("Clicks Privacy Policy & Terms. checkbox")
-	public void clicksPrivacyPolicyTermsCheckbox() {
+    }
 
-		merchantRegistrationPage.privacyPolicyCheckbox.click();
-	}
+    @When("Clicks Privacy Policy & Terms. checkbox")
+    public void clicksPrivacyPolicyTermsCheckbox() {
 
-	@And("Verifies login page opens")
-	public void verifiesLoginPageOpens() {
+        merchantRegistrationPage.privacyPolicyCheckbox.click();
+    }
 
-		assertTrue(merchantRegistrationPage.driver.getCurrentUrl().contains("login"));
+    @And("Verifies login page opens")
+    public void verifiesLoginPageOpens() {
 
-	}
+        assertTrue(merchantRegistrationPage.driver.getCurrentUrl().contains("login"));
 
-	@Then("Clicks Register My Account button")
-	public void clicksRegisterMyAccountButton() {
+    }
 
-		merchantRegistrationPage.registerMyAccButton.click();
-	}
+    @Then("Clicks Register My Account button")
+    public void clicksRegisterMyAccountButton() {
 
-	@And("Verifies warning message visiblty")
-	public void verifiesWarningMessageVisiblty() {
+        merchantRegistrationPage.registerMyAccButton.click();
+    }
 
-		merchantRegistrationPage.warningMessage.isDisplayed();
+    @And("Verifies warning message visiblty")
+    public void verifiesWarningMessageVisiblty() {
 
-	}
+        merchantRegistrationPage.warningMessage.isDisplayed();
 
-	@Then("Enters wrong format password into Password box")
-	public void entersWrongFormatPasswordIntoPasswordBox() {
+    }
 
-		merchantRegistrationPage.passwordBox.sendKeys(faker.internet().password(1, 5));
+    @Then("Enters wrong format password into Password box")
+    public void entersWrongFormatPasswordIntoPasswordBox() {
 
-	}
+        merchantRegistrationPage.passwordBox.sendKeys(faker.internet().password(1, 5));
 
-	@Then("Verifies Select Hub dropdown visibilty")
-	public void verifiesSelectHubDropdownVisibilty() {
+    }
 
-		assertTrue(merchantRegistrationPage.selectHubDropdown.isDisplayed());
+    @Then("Verifies Select Hub dropdown visibilty")
+    public void verifiesSelectHubDropdownVisibilty() {
 
-	}
+        assertTrue(merchantRegistrationPage.selectHubDropdown.isDisplayed());
 
-	@And("Verifies Register My Account button visibilty")
-	public void verifiesRegisterMyAccountButtonVisibilty() {
+    }
 
-		assertTrue(merchantRegistrationPage.registerMyAccButton.isDisplayed());
-	}
+    @And("Verifies Register My Account button visibilty")
+    public void verifiesRegisterMyAccountButtonVisibilty() {
+
+        assertTrue(merchantRegistrationPage.registerMyAccButton.isDisplayed());
+    }
 
 }

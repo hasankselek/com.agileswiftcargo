@@ -1,11 +1,10 @@
 package stepDefinitions.adminPageStepDef;
 
-import io.cucumber.java.en.Then;
-import pages.adminPages.AdminOffersPage;
-import utilities.ReusableMethods;
+import io.cucumber.java.en.*;
+import stepDefinitions.BaseStep;
 
-public class AdminOffersStepDef {
-    AdminOffersPage adminOffersPage = new AdminOffersPage();
+
+public class AdminOffersStepDef extends BaseStep {
 
     @Then("Click on the plus + icon located in the top right corner of the page.")
     public void click_on_the_plus_icon_located_in_the_top_right_corner_of_the_page() {

@@ -1,5 +1,6 @@
 @US_030
 Feature:As a merchant, I want to view, update, add, and delete pickup points
+
   Background: Common Step
     Given Go to the "dashboardUrl"
     When Login as a merchant
@@ -26,7 +27,7 @@ Feature:As a merchant, I want to view, update, add, and delete pickup points
     And Click Plus button
     Then Assert the directed page title is equal to Create Pickup Point
 
-    @5
+  @5
   Scenario: [TC_3005]Verifying visibility of added row
     Then Click on the Setting button
     Then Click on the Pickup Point link

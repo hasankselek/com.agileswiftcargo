@@ -1,4 +1,4 @@
-@55
+@US_010
 Feature:[US_010]As a user I want to view block posts.
 
   Background: Common Step

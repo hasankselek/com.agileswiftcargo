@@ -35,11 +35,8 @@ public class AdminBranchManagePage extends BasePage {
     @FindBy(xpath = "//*[@tabindex='-1']")
     public List<WebElement> actionsDropdowns;
 
-
     @FindBy(xpath = "//*[@class='swal2-confirm swal2-styled']")
     public WebElement yesButtonOnDelete;
-
-
 
     public WebElement getDropdownItem(String itemText){
 

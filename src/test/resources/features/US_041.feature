@@ -33,19 +33,19 @@ Feature: As an administrator, I want to view, update, add and delete information
     Then Click the Save Change button to save the edits.
     And The text Success confirms successful registration
 
-    @TC_4104
-    Scenario: Test to check a ticket on the ticket page as an administrator
+  @TC_4104
+  Scenario: Test to check a ticket on the ticket page as an administrator
 
-      Given Click on the edit button in the drop-down menu
-      Then Click on View
-      And The page that opens is verified
+    Given Click on the edit button in the drop-down menu
+    Then Click on View
+    And The page that opens is verified
 
-      @TC_4105
-      Scenario: Test of deleting a ticket on the ticket page as an administrator
+  @TC_4105
+  Scenario: Test of deleting a ticket on the ticket page as an administrator
 
-        Given Click on the edit button in the drop-down menu
-        Then Click on Delete
-        Then Click the Yes button from the alert that opens
-        And The text Success confirms successful registration
+    Given Click on the edit button in the drop-down menu
+    Then Click on Delete
+    Then Click the Yes button from the alert that opens
+    And The text Success confirms successful registration
 
 

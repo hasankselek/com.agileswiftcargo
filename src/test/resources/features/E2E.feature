@@ -1,6 +1,6 @@
-Feature:E2e Test
+Feature:E2E Test
 
-@e2e
+  @e2e
   Scenario: User adds parcel from excel
 
     Given Enters the "homepageUrl"
@@ -9,7 +9,7 @@ Feature:E2e Test
     Then Enters row 1 in Password textbox
     And  Clicks Sign In button
     When the user clicks on the "Parcels" link
-    Then the opened page should be the "Parcels" page
+    And  the opened page should be the "Parcels" page
     And the user clicks on the " Import" button on the parcels page
     Then the user should be redirected to the import page
     And Click profile icon
@@ -20,6 +20,6 @@ Feature:E2e Test
     Then Verifies that error messages
     Then Enter tracking id trackID in the Enter tracking id box
     And Clicks "Track Now" button
-   Then Verifies that cargo information is displayed
+    Then Verifies that cargo information is displayed
 
 

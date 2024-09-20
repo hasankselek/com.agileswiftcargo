@@ -1,3 +1,4 @@
+@US_027
 Feature: As a merchant, I want to view reports related to the statuses of products.
 
   @TC_2701

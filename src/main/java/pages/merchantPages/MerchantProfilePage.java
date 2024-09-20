@@ -25,8 +25,7 @@ public class MerchantProfilePage extends BasePage {
 	@FindBy(xpath = "(//div[contains(@class,'d-flex')])[14]")
 	private WebElement merchantAdress;
 
-	public void getDisplayedMerchantInformation(String name, String email, String phone, String businessName,
-			String adress) {
+	public void getDisplayedMerchantInformation(String name, String email, String phone, String businessName, String adress) {
 
 		assertTrue(merchantName.getText().contains(name));
 		assertTrue(merchantEmail.getText().contains(email));

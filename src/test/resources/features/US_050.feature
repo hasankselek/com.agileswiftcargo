@@ -2,12 +2,12 @@
 Feature:As an administrator, I want to view, update, add and delete information on the 'Salary Generate' page.
 
   Background:Common Steps
-   Given Enters the "loginpageUrl"
-   And Enters row 8 in Email
-   And Enters row 8 in Password
-   And Clicks Sign In button
-   And Click on the Payroll link in the left menu.
-   And Click on the Salary Generate link in the left menu.
+    Given Enters the "loginpageUrl"
+    And Enters row 8 in Email
+    And Enters row 8 in Password
+    And Clicks Sign In button
+    And Click on the Payroll link in the left menu.
+    And Click on the Salary Generate link in the left menu.
 
   Scenario:Salary Generate' list should be visible.
     And  Verify Salary Generate button directed to Salary Generate

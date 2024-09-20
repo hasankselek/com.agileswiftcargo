@@ -1,6 +1,6 @@
-@t05
-
+@US_030
 Feature:[US_028]As a merchant, I want to view all reports related to shipments
+
   Background: Common Step
     Given Go to the "dashboardUrl"
     When Login as a merchant

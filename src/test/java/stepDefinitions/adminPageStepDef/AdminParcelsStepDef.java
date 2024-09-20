@@ -1,46 +1,31 @@
 package stepDefinitions.adminPageStepDef;
 
-import java.util.ArrayList;
 
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import pages.adminPages.AdminParcelsPage;
-import pages.adminPages.AdminProfilPage;
 import stepDefinitions.BaseStep;
-import utilities.ConfigLoader;
 import utilities.Driver;
 import utilities.JSUtilities;
 import utilities.ReusableMethods;
-
 import java.util.Arrays;
 import java.util.List;
 
 public class AdminParcelsStepDef extends BaseStep {
 
-    AdminProfilPage adminProfilPage = new AdminProfilPage();
-    AdminParcelsPage adminParcelsPage = new AdminParcelsPage();
-
-
 
     private static String aranacakMetin;
     private static String expectedParcelDetail;
-
     private static String editedCustomerName;
-
 
     @Then("Login as an admin")
     public void login_as_an_admin() {
         adminProfilPage.directlyLoginAsAdmin(6);
 
     }
-
 
     @Then("Verify that the table headers {string},{string}, {string}, {string}, {string}, {string}, {string}, {string} is displayed correctly.")
     public void verify_that_the_table_headers_is_displayed_correctly(String header1, String header2, String header3,

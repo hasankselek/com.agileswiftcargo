@@ -54,8 +54,8 @@ Feature:As a merchant, I want to view and update my profile information.
     Then Verifies that the error message is displayed
 
     Examples:
-      | name             | adress        |
-      |                  |               |
+      | name | adress |
+      |      |        |
 
 
 

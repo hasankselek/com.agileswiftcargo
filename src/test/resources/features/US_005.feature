@@ -1,4 +1,4 @@
-@services
+@US_005
 Feature: As a user I want to view information in the 'Our Sevices' field.
 
   @ser1
