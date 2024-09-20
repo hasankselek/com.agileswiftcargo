@@ -1,4 +1,4 @@
-browser=chrome
+browser=firefox
 homepageUrl=https://qa.agileswiftcargo.com/
 loginpageUrl=https://qa.agileswiftcargo.com/login
 testData=src/test/resources/testData/testData.xlsx
@@ -23,7 +23,7 @@ AdminDashURL=https://qa.agileswiftcargo.com/dashboard
 EmailMerpnh=pouneh.merchant@agileswiftcargo.com
 EmailAdpnh=pouneh.admin@agileswiftcargo.com
 Passpnh=Agile.0924
-testExcel=C:\Users\Toshiba\IdeaProjects\com.agileswiftcargo\src\test\resources\testData\parcel_import.xlsx
+testExcel=/Users/hasan/Desktop/com.agileswiftcargo/src/test/resources/testData/parcel_import.xlsx
 
 
 

@@ -32,7 +32,7 @@ public class HomePage extends BasePage {
     private List<WebElement> whyAgileSwiftCargoImages;
 
     @FindBy(xpath = "//input[@placeholder='Enter tracking id']")
-    private WebElement trackingIdTextBox;
+    public WebElement trackingIdTextBox;
 
     @FindBy(xpath = "//*[@class='text-primary']")
     private List<WebElement> navigationArrows;

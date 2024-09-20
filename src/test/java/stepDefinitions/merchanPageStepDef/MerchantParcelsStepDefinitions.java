@@ -27,6 +27,7 @@ public class MerchantParcelsStepDefinitions extends BaseStep {
 
     ExcelDataReader reader = new ExcelDataReader(merchantLoginPage.configLoader.getConfigValue("testData"),"merchantLogin");
 
+    public static String trackID;
 
     @Then("the parcels table should be visible under the parcels heading")
     public void the_parcels_table_should_be_visible_under_the_parcels_heading() {
@@ -191,8 +192,17 @@ public class MerchantParcelsStepDefinitions extends BaseStep {
     @Then("the user should be redirected to the import page")
     public void theUserShouldBeRedirectedToTheImportPage() {
         Assert.assertEquals(Driver.getDriver().getCurrentUrl(),"https://qa.agileswiftcargo.com/merchant/parcel/import-parcel");
+        ReusableMethods.hardWait(2);
         ReusableMethods.uploadFile(configLoader.getConfigValue("testExcel"),merchantParcelsPage.importPath);
-        ReusableMethods.hardWait(1);
+        ReusableMethods.hardWait(3);
         merchantParcelsPage.importButton2.click();
+        ReusableMethods.hardWait(2);
+        trackID = merchantParcelsPage.trackingID.getText();
     }
+
+    public String getTrackingID(){
+
+        return trackID;
+    }
+
 }
