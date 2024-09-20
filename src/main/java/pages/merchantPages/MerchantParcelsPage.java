@@ -20,44 +20,52 @@ public class MerchantParcelsPage extends BasePage {
     public WebElement noteButton;
     @FindBy(xpath = "(//*[@class='form-group col-12 col-md-6'])[6]")
     public WebElement invoysButton;
-    @FindBy(xpath = "btn btn-success btn-sm ")
-    public WebElement impotrButton;
+
     @FindBy(xpath = "(//*[@class='btn btn-sm ml-2 bnone'])[2]")
     public WebElement dropdownButton;
-    @FindBy(xpath = "(//*[@class='dropdown-item'])[1]")
-    public WebElement viewButton;
-    @FindBy(xpath = "(//*[@class='dropdown-item'])[2]")
+    @FindBy(xpath = "//*[text()=' View']")
+    public WebElement viewtext;
+    @FindBy(xpath = "//*[text()=' Parcel Logs']")
     public WebElement parcelLogsButton;
-    @FindBy(xpath = "(//*[@class='dropdown-item'])[3]")
+    @FindBy(xpath = "//*[text()=' Clone']")
     public WebElement cloneButton;
-    @FindBy(xpath = "(//*[@class='dropdown-item'])[4]")
+    @FindBy(xpath = "//*[text()=' Edit']")
     public WebElement editButton;
-    @FindBy(xpath = "(//*[@class='fa fa-trash'])[1]")
+    @FindBy(xpath = "//*[text()=' Delete']")
     public WebElement deletButton;
-    @FindBy(xpath = "//*[@class='btn btn-success btn-sm float-right']")
+    @FindBy(xpath = "//*[text()='Download Sample']")
     public WebElement downloadSampleButton;
     @FindBy(id = "customFile")
     public WebElement cooseButton;
-    @FindBy(xpath = "//*[text()=' Import']")
+    @FindBy(xpath = "(//*[@data-toggle='tooltip'])[6]")
     public WebElement importButton;
     @FindBy(xpath = "(//*[@class='form-control cash-collection'])[1]")
     public WebElement cashButton;
-    @FindBy(xpath = "(//*[@class='select2-selection__rendered'])[2]")
+    @FindBy(xpath = "(//*[text()=' Select Category'])[2]")
     public WebElement categorytButton;
+    @FindBy(xpath = "(//*[text()='KG'])[2]")
+    public WebElement selectKG;
     @FindBy(xpath = "(//*[@class='select2-selection__arrow'])[4]")
     public WebElement typeButton;
     @FindBy(xpath = "//*[@class='select2-results__option select2-results__option--selectable select2-results__option--selected']")
     public WebElement samedayButton;
-    @FindBy(xpath = "//*[text()='Customer Name']")
+    @FindBy(xpath = "//*[@id='customer_name']")
     public WebElement custumerNameButton;
     @FindBy(xpath = "//*[@class='select2-results__options']")
     public WebElement kgText;
-    @FindBy(xpath = "(//*[@class='form-control'])[14]")
+    @FindBy(xpath = "//*[@placeholder='Customer Phone']")
     public WebElement customerPhoneButton;
+    @FindBy(xpath = "(//*[text()=' Select Delivery Type'])[2]")
+    public WebElement selectDeliveryTypeButton;
+    @FindBy(xpath = "//*[@id=select2-delivery_type_id-result-2hpc-1]")
+    public WebElement selectSumDay;
     @FindBy(xpath = "(//*[@class='custom-control-label'])[2]")
     public WebElement parcellbankButton;
-    @FindBy(xpath = "(//*[@class='form-control'])[15]")
+    @FindBy(xpath = "//*[@id='customer_address']")
     public WebElement addressButton;
-    @FindBy(xpath = "//*[@class='btn btn-space btn-primary']")
+    @FindBy(xpath = "//*[text()='Save']")
     public WebElement saveButton;
+    @FindBy(xpath = "//*[text()='Submit']")
+    public WebElement submitButton;
+
 }

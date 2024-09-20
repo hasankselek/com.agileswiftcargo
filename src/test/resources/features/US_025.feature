@@ -104,3 +104,80 @@ Feature: A test of access to the Agileswiftcargo homepage
     And   the user clicks on the "Parcels" link
     And the user clicks on the "Import" button on the parcels page
     Then the user should be redirected to the import page
+  @TC_2511
+  Scenario: Checking visibility and functionality of the "Download Sample" button
+    Given Enters the "homepageUrl"
+    When Clicks of the "Login" button
+    Then Enters row 4 in Email Address textbox
+    Then Enters row 4 in Password textbox
+    Then Clicks Sign In button
+    And   the user clicks on the "Parcels" link
+    And the user clicks on the Import button on the parcels page
+    Then the "Download Sample" button should be visible
+    And  the "Download Sample" button should be functional
+  @TC_2512
+  Scenario: Importing parcels using the "Import" button and validating the file
+    Given Enters the "homepageUrl"
+    When Clicks of the "Login" button
+    Then Enters row 4 in Email Address textbox
+    Then Enters row 4 in Password textbox
+    Then Clicks Sign In button
+    And   the user clicks on the "Parcels" link
+    And the user clicks on the Import button on the parcels page
+    And the user clicks the "Choose" File button to upload a file
+    Then the user uploads a parcels import Excel file
+    And the user verifies that the uploaded file contains the list of parcels
+  @TC_2513
+  Scenario: Checking if the "View" link is visible and functional for a parcel
+    Given Enters the "homepageUrl"
+    When Clicks of the "Login" button
+    Then Enters row 4 in Email Address textbox
+    Then Enters row 4 in Password textbox
+    Then Clicks Sign In button
+    And   the user clicks on the "Parcels" link
+    When the user clicks the "°°°" button for a parcel
+    Then the user should see the "View" link for a parcel
+    And the "View" link should be functional
+  @TC_2514
+  Scenario: Viewing parcel logs and checking updates
+    Given Enters the "homepageUrl"
+    When Clicks of the "Login" button
+    Then Enters row 4 in Email Address textbox
+    Then Enters row 4 in Password textbox
+    Then Clicks Sign In button
+    And   the user clicks on the "Parcels" link
+    When the user clicks the "°°°" button for a parcel
+    And the user selects "Parcel Logs" from the menu
+    Then the user should see the location and status updates of the parcel on the page
+  @TC_2515
+  Scenario: Cloning a parcel from the dashboard
+    Given Enters the "homepageUrl"
+    When Clicks of the "Login" button
+    Then Enters row 4 in Email Address textbox
+    Then Enters row 4 in Password textbox
+    Then Clicks Sign In button
+    And   the user clicks on the "Parcels" link
+    When the user clicks the "°°°" button for a parcel
+    And the user selects "Clone" from the menu
+    Then the user should see a new copy of the parcel created
+  @TC_2516
+  Scenario: Editing a parcel from the dashboard
+    Given Enters the "homepageUrl"
+    When Clicks of the "Login" button
+    Then Enters row 4 in Email Address textbox
+    Then Enters row 4 in Password textbox
+    Then Clicks Sign In button
+    And   the user clicks on the "Parcels" link
+    When the user clicks the "°°°" button for a parcel
+    And the user selects "Edit" from the menu
+    Then the "Edit" option should be functional
+  @TC_2517
+  Scenario: Deleting a parcel from the dashboard
+    Given Enters the "homepageUrl"
+    When Clicks of the "Login" button
+    Then Enters row 4 in Email Address textbox
+    Then Enters row 4 in Password textbox
+    Then Clicks Sign In button
+    And   the user clicks on the "Parcels" link
+    When the user clicks the "°°°" button for a parcel
+    And the user selects "Delete"
